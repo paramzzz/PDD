@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#EAF6F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="#0F98B8">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Patient Case"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ClearPath AI will auto-generate risk score &amp; pre-op checklist"
+                android:textColor="#DFF7FB"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="18dp"
+            android:layout_margin="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PATIENT DETAILS"
+                android:textStyle="bold"
+                android:textColor="#90A4AE"/>
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Full Name *"
+                android:background="@drawable/edit_bg"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:weightSum="3">
+
+                <EditText
+                    android:id="@+id/etAge"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:hint="Age *"
+                    android:background="@drawable/edit_bg"
+                    android:padding="16dp"
+                    android:inputType="number"/>
+
+                <EditText
+                    android:id="@+id/etGender"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="2"
+                    android:layout_marginStart="12dp"
+                    android:hint="Gender (M/F/Other) *"
+                    android:background="@drawable/edit_bg"
+                    android:padding="16dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="18dp"
+            android:layout_marginHorizontal="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CHIEF COMPLAINT *"
+                android:textStyle="bold"
+                android:textColor="#90A4AE"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI will auto-adjust risk score based on keywords (e.g. 'chest pain' -> STAT)"
+                android:textColor="#78909C"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
+
+            <EditText
+                android:id="@+id/etComplaint"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:hint="Describe the primary reason for visit in detail..."
+                android:gravity="top"
+                android:padding="16dp"
+                android:background="@drawable/edit_bg"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="18dp"
+            android:layout_margin="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INITIAL RISK LEVEL"
+                android:textStyle="bold"
+                android:textColor="#90A4AE"/>
+
+            <EditText
+                android:id="@+id/etInitialRisk"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="STAT / High / Medium / Low"
+                android:background="@drawable/edit_bg"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="18dp"
+            android:layout_marginHorizontal="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VITALS (OPTIONAL)"
+                android:textStyle="bold"
+                android:textColor="#90A4AE"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:weightSum="2">
+
+                <EditText
+                    android:id="@+id/etBp"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:hint="BP (mmHg)"
+                    android:background="@drawable/edit_bg"
+                    android:padding="16dp"/>
+
+                <EditText
+                    android:id="@+id/etHr"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:hint="HR (bpm)"
+                    android:background="@drawable/edit_bg"
+                    android:padding="16dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:weightSum="2">
+
+                <EditText
+                    android:id="@+id/etTemp"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:hint="Temp (°F)"
+                    android:background="@drawable/edit_bg"
+                    android:padding="16dp"/>
+
+                <EditText
+                    android:id="@+id/etSpo2"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:hint="SpO₂ (%)"
+                    android:background="@drawable/edit_bg"
+                    android:padding="16dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="18dp"
+            android:layout_margin="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INSURANCE"
+                android:textStyle="bold"
+                android:textColor="#90A4AE"/>
+
+            <EditText
+                android:id="@+id/etInsurance"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Insurance Provider"
+                android:background="@drawable/edit_bg"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/etPolicy"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="Policy Number"
+                android:background="@drawable/edit_bg"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Register &amp; Launch AI Workflow"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:backgroundTint="#1099BC"
+            android:layout_margin="16dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

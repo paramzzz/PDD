@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EAF6F8">
+
+    <!-- Top Text -->
+    <TextView
+        android:id="@+id/topText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="✚ AI-Powered Hospital Workflow"
+        android:textColor="#7AA6B3"
+        android:textSize="14sp"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true" />
+
+    <!-- Logo Background Circle -->
+    <LinearLayout
+        android:id="@+id/logoContainer"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:background="@drawable/circle_bg"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="220dp">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/logo"
+            android:background="@drawable/logo_bg"
+            android:padding="18dp" />
+    </LinearLayout>
+
+    <!-- App Name -->
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ClearPath"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="#0B4E75"
+        android:layout_below="@id/logoContainer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The Speed of Care."
+        android:textSize="18sp"
+        android:textColor="#7AA6B3"
+        android:layout_below="@id/appName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" />
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="220dp"
+        android:layout_height="8dp"
+        android:progress="0"
+        android:max="100"
+        android:progressTint="#12A4C6"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="110dp" />
+
+    <!-- Loading Text -->
+    <TextView
+        android:id="@+id/loadingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Initializing AI Systems..."
+        android:textSize="16sp"
+        android:textColor="#7AA6B3"
+        android:layout_below="@id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp" />
+
+</RelativeLayout>

@@ -1,0 +1,1251 @@
+{
+  "stats": {
+    "suites": 12,
+    "tests": 23,
+    "passes": 10,
+    "pending": 0,
+    "failures": 13,
+    "start": "2026-08-06T11:28:34.129Z",
+    "end": "2026-08-06T11:31:49.883Z",
+    "duration": 195754,
+    "testsRegistered": 23,
+    "passPercent": 43.47826086956522,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "93b0abef-03e3-48bb-8dde-174dee6186d6",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5f15f945-ce72-48d1-910b-c77c014dd702",
+          "title": "🧠 Module 7: AI Multi-Document Case Intelligence & Clinical Summary",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\aiSummary.test.js",
+          "file": "\\tests\\aiSummary.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"🧠 Module 7: AI Multi-Document Case Intelligence & Clinical Summary\"",
+              "fullTitle": "🧠 Module 7: AI Multi-Document Case Intelligence & Clinical Summary \"before all\" hook in \"🧠 Module 7: AI Multi-Document Case Intelligence & Clinical Summary\"",
+              "timedOut": false,
+              "duration": 52799,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nloginPage = new LoginPage(driver);\nviewerPage = new ViewerPage(driver);\nawait loginPage.open();",
+              "err": {},
+              "uuid": "c38dbda7-8952-4629-8bca-d46ad21392f8",
+              "parentUUID": "5f15f945-ce72-48d1-910b-c77c014dd702",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"🧠 Module 7: AI Multi-Document Case Intelligence & Clinical Summary\"",
+              "fullTitle": "🧠 Module 7: AI Multi-Document Case Intelligence & Clinical Summary \"after all\" hook in \"🧠 Module 7: AI Multi-Document Case Intelligence & Clinical Summary\"",
+              "timedOut": false,
+              "duration": 1288,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "1d2382b1-6408-46e9-810d-2f684281e4e3",
+              "parentUUID": "5f15f945-ce72-48d1-910b-c77c014dd702",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-AI-01: Verify Multi-Document AI Bundle Summary Card & Risk Score",
+              "fullTitle": "🧠 Module 7: AI Multi-Document Case Intelligence & Clinical Summary TC-AI-01: Verify Multi-Document AI Bundle Summary Card & Risk Score",
+              "timedOut": false,
+              "duration": 19323,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await viewerPage.openViewerForDocument(1);\n  const text = await viewerPage.getAiClinicalSummaryText();\n  expect(text).to.include('AI BUNDLE CLINICAL INTELLIGENCE SUMMARY');\n  expect(text).to.include('AI RISK SCORING ENGINE');\n  expect(text).to.include('AUTOMATED TREATMENT APPROVAL');\n  const duration = Date.now() - startTime;\n  excelReporter.recordMetric('viewerLoadTimes', duration);\n  const screenshot = await captureScreenshot(driver, 'TC-AI-01_BundleSummary', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-AI-01',\n    module: 'AI Intelligence',\n    testName: 'Verify AI Bundle Summary & Risk Engine',\n    expected: 'AI Clinical Summary report renders multi-document synthesis & risk score',\n    actual: 'Multi-document AI bundle summary & risk scoring verified',\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-AI-01', 'AI Summary report verified', duration);\n  await viewerPage.closeViewer();\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-AI-01_BundleSummary', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-AI-01',\n    module: 'AI Intelligence',\n    testName: 'Verify AI Bundle Summary & Risk Engine',\n    expected: 'AI Summary report renders cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-AI-01', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "TimeoutError: Waiting for element to be located By(css selector, *[id=\"mdms-viewer-tab-content\"])\nWait timed out after 15070ms",
+                "estack": "TimeoutError: Waiting for element to be located By(css selector, *[id=\"mdms-viewer-tab-content\"])\nWait timed out after 15070ms\n    at C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\node_modules\\selenium-webdriver\\lib\\webdriver.js:929:22\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": null
+              },
+              "uuid": "63e1f53d-5f6d-4892-9f15-cee20c10fe5d",
+              "parentUUID": "5f15f945-ce72-48d1-910b-c77c014dd702",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "63e1f53d-5f6d-4892-9f15-cee20c10fe5d"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 19323,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "f88f3e20-d739-4884-81af-5081285421db",
+          "title": "📊 Module 3: Executive Dashboard Telemetry",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\dashboard.test.js",
+          "file": "\\tests\\dashboard.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"📊 Module 3: Executive Dashboard Telemetry\"",
+              "fullTitle": "📊 Module 3: Executive Dashboard Telemetry \"before all\" hook in \"📊 Module 3: Executive Dashboard Telemetry\"",
+              "timedOut": false,
+              "duration": 2334,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nloginPage = new LoginPage(driver);\ndashboardPage = new DashboardPage(driver);\nawait loginPage.open();",
+              "err": {},
+              "uuid": "62be23aa-d480-4101-8536-fd217935b558",
+              "parentUUID": "f88f3e20-d739-4884-81af-5081285421db",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"📊 Module 3: Executive Dashboard Telemetry\"",
+              "fullTitle": "📊 Module 3: Executive Dashboard Telemetry \"after all\" hook in \"📊 Module 3: Executive Dashboard Telemetry\"",
+              "timedOut": false,
+              "duration": 419,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "3e16ba6c-038c-4ded-aa01-c49442f5b8cd",
+              "parentUUID": "f88f3e20-d739-4884-81af-5081285421db",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-DASH-01: Verify Executive Telemetry Stat Cards",
+              "fullTitle": "📊 Module 3: Executive Dashboard Telemetry TC-DASH-01: Verify Executive Telemetry Stat Cards",
+              "timedOut": false,
+              "duration": 1783,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await dashboardPage.navigateToTab('home');\n  \n  const critical = await dashboardPage.getCriticalCount();\n  const pending = await dashboardPage.getPendingCount();\n  const cleared = await dashboardPage.getClearedCount();\n  expect(critical).to.not.be.empty;\n  expect(pending).to.not.be.empty;\n  expect(cleared).to.not.be.empty;\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-DASH-01_Stats', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-DASH-01',\n    module: 'Dashboard',\n    testName: 'Verify Stat Cards',\n    expected: 'Telemetry stat cards render real-time values',\n    actual: `Critical=${critical}, Pending=${pending}, Cleared=${cleared}`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-DASH-01', 'Dashboard stats verified', duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-DASH-01_Stats', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-DASH-01',\n    module: 'Dashboard',\n    testName: 'Verify Stat Cards',\n    expected: 'Telemetry cards render cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-DASH-01', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "AssertionError: expected '' not to be empty",
+                "estack": "AssertionError: expected '' not to be empty\n    at Context.<anonymous> (tests\\dashboard.test.js:35:33)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": null
+              },
+              "uuid": "1e13196b-a508-4c68-b5ce-c4f5381370fa",
+              "parentUUID": "f88f3e20-d739-4884-81af-5081285421db",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "1e13196b-a508-4c68-b5ce-c4f5381370fa"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1783,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "82a10e75-6214-4d7d-8c0c-a7614d27245f",
+          "title": "🚨 Module 11: Emergency Prioritization Engine",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\emergencyPriority.test.js",
+          "file": "\\tests\\emergencyPriority.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"🚨 Module 11: Emergency Prioritization Engine\"",
+              "fullTitle": "🚨 Module 11: Emergency Prioritization Engine \"before all\" hook in \"🚨 Module 11: Emergency Prioritization Engine\"",
+              "timedOut": false,
+              "duration": 1808,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nloginPage = new LoginPage(driver);\nviewerPage = new ViewerPage(driver);\nawait loginPage.open();",
+              "err": {},
+              "uuid": "2487f851-7b99-485f-8052-ee847972feda",
+              "parentUUID": "82a10e75-6214-4d7d-8c0c-a7614d27245f",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"🚨 Module 11: Emergency Prioritization Engine\"",
+              "fullTitle": "🚨 Module 11: Emergency Prioritization Engine \"after all\" hook in \"🚨 Module 11: Emergency Prioritization Engine\"",
+              "timedOut": false,
+              "duration": 205,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "59d0f211-0f49-403e-857e-0effad654343",
+              "parentUUID": "82a10e75-6214-4d7d-8c0c-a7614d27245f",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-EME-01: Verify Emergency Priority Level Badge & Queue Categorization",
+              "fullTitle": "🚨 Module 11: Emergency Prioritization Engine TC-EME-01: Verify Emergency Priority Level Badge & Queue Categorization",
+              "timedOut": false,
+              "duration": 17209,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await viewerPage.openViewerForDocument(1);\n  const text = await viewerPage.getAiClinicalSummaryText();\n  const hasEmergencyBadge = text.includes('Emergency Priority Level:') || text.includes('Critical') || text.includes('Emergency');\n  expect(hasEmergencyBadge).to.be.true;\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-EME-01_Priority', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-EME-01',\n    module: 'Emergency Priority',\n    testName: 'Verify Emergency Priority Level Badge',\n    expected: 'Emergency priority level badge renders',\n    actual: 'Emergency priority level confirmed',\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-EME-01', 'Emergency priority verified', duration);\n  await viewerPage.closeViewer();\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-EME-01_Priority', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-EME-01',\n    module: 'Emergency Priority',\n    testName: 'Verify Emergency Priority Level Badge',\n    expected: 'Emergency priority level badge renders cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-EME-01', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "TimeoutError: Waiting for element to be located By(css selector, *[id=\"mdms-viewer-tab-content\"])\nWait timed out after 15018ms",
+                "estack": "TimeoutError: Waiting for element to be located By(css selector, *[id=\"mdms-viewer-tab-content\"])\nWait timed out after 15018ms\n    at C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\node_modules\\selenium-webdriver\\lib\\webdriver.js:929:22\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": null
+              },
+              "uuid": "ca0bbb93-ab21-4048-8660-b4bc7144fbff",
+              "parentUUID": "82a10e75-6214-4d7d-8c0c-a7614d27245f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "ca0bbb93-ab21-4048-8660-b4bc7144fbff"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 17209,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "64290068-1aac-4f89-a215-e2a3694b8e36",
+          "title": "🏥 Module 12: End-to-End Enterprise Clinical Intelligence Journey",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\fullWorkflow.test.js",
+          "file": "\\tests\\fullWorkflow.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"🏥 Module 12: End-to-End Enterprise Clinical Intelligence Journey\"",
+              "fullTitle": "🏥 Module 12: End-to-End Enterprise Clinical Intelligence Journey \"before all\" hook in \"🏥 Module 12: End-to-End Enterprise Clinical Intelligence Journey\"",
+              "timedOut": false,
+              "duration": 10022,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "sampleFiles = ensureSampleFiles();\ndriver = await createDriver();\nloginPage = new LoginPage(driver);\nscanCenterPage = new ScanCenterPage(driver);\nuploadPage = new UploadPage(driver);\nviewerPage = new ViewerPage(driver);\n\nawait loginPage.open();",
+              "err": {},
+              "uuid": "c81de597-f51f-4b59-a2b4-1bb6330c2609",
+              "parentUUID": "64290068-1aac-4f89-a215-e2a3694b8e36",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"🏥 Module 12: End-to-End Enterprise Clinical Intelligence Journey\"",
+              "fullTitle": "🏥 Module 12: End-to-End Enterprise Clinical Intelligence Journey \"after all\" hook in \"🏥 Module 12: End-to-End Enterprise Clinical Intelligence Journey\"",
+              "timedOut": false,
+              "duration": 274,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "fda667e4-5269-4294-989b-14fb8dac97a0",
+              "parentUUID": "64290068-1aac-4f89-a215-e2a3694b8e36",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-E2E-01: Execute Full E2E Multi-Doc Journey (Upload -> Multi-Doc AI Assessment -> Approval Decision)",
+              "fullTitle": "🏥 Module 12: End-to-End Enterprise Clinical Intelligence Journey TC-E2E-01: Execute Full E2E Multi-Doc Journey (Upload -> Multi-Doc AI Assessment -> Approval Decision)",
+              "timedOut": false,
+              "duration": 8418,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  // 1. Login as Doctor\n  await loginPage.loginAsDoctor('Dr. Sarah Wilson');\n  \n  // 2. Open Scan Center\n  await scanCenterPage.openScanCenter();\n  \n  // 3. Upload Document\n  await uploadPage.uploadFile(sampleFiles.jpgPath, 1, 'ECG');\n  // 4. Verify AI Viewer opens with Case Intelligence\n  const isViewerOpen = await viewerPage.isModalVisible();\n  expect(isViewerOpen).to.be.true;\n  const reportText = await viewerPage.getAiClinicalSummaryText();\n  expect(reportText).to.include('AI BUNDLE CLINICAL INTELLIGENCE SUMMARY');\n  expect(reportText).to.include('AUTOMATED TREATMENT APPROVAL');\n  // 5. Test Corner Close Button\n  await viewerPage.clickCloseButton();\n  const isClosed = await viewerPage.isModalVisible();\n  expect(isClosed).to.be.false;\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-E2E-01_FullJourney', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-E2E-01',\n    module: 'End-to-End Workflow',\n    testName: 'Full Multi-Doc Clinical Journey',\n    expected: 'Full end-to-end journey executes cleanly without error',\n    actual: 'Full clinical journey executed with 100% success',\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-E2E-01', 'Full End-to-End Clinical Journey PASS', duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-E2E-01_FullJourney', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-E2E-01',\n    module: 'End-to-End Workflow',\n    testName: 'Full Multi-Doc Clinical Journey',\n    expected: 'Full journey executes cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-E2E-01', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "ElementNotInteractableError: element not interactable\n  (Session info: chrome=151.0.7922.75)",
+                "estack": "ElementNotInteractableError: element not interactable\n  (Session info: chrome=151.0.7922.75)\n    at Object.throwDecodedError (node_modules\\selenium-webdriver\\lib\\error.js:523:15)\n    at parseHttpResponse (node_modules\\selenium-webdriver\\lib\\http.js:527:13)\n    at Executor.execute (node_modules\\selenium-webdriver\\lib\\http.js:459:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Driver.execute (node_modules\\selenium-webdriver\\lib\\webdriver.js:745:17)\n    at async UploadPage.uploadFile (pages\\UploadPage.js:33:5)\n    at async Context.<anonymous> (tests\\fullWorkflow.test.js:46:7)",
+                "diff": null
+              },
+              "uuid": "61fcb019-8bed-474f-869b-fd537b8b529a",
+              "parentUUID": "64290068-1aac-4f89-a215-e2a3694b8e36",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "61fcb019-8bed-474f-869b-fd537b8b529a"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 8418,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 120000
+        },
+        {
+          "uuid": "c3ebb28e-5354-498b-b22d-14228d0fad33",
+          "title": "🔑 Module 1: Login & Role Management",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\login.test.js",
+          "file": "\\tests\\login.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"🔑 Module 1: Login & Role Management\"",
+              "fullTitle": "🔑 Module 1: Login & Role Management \"before all\" hook in \"🔑 Module 1: Login & Role Management\"",
+              "timedOut": false,
+              "duration": 5569,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nloginPage = new LoginPage(driver);\nawait loginPage.open();",
+              "err": {},
+              "uuid": "ed7d59ac-d0f5-4874-aafe-22d5067b0cd0",
+              "parentUUID": "c3ebb28e-5354-498b-b22d-14228d0fad33",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"🔑 Module 1: Login & Role Management\"",
+              "fullTitle": "🔑 Module 1: Login & Role Management \"after all\" hook in \"🔑 Module 1: Login & Role Management\"",
+              "timedOut": false,
+              "duration": 345,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "b7a87133-30ad-4ad6-9a16-42be6cb71fd7",
+              "parentUUID": "c3ebb28e-5354-498b-b22d-14228d0fad33",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-LOG-01: Verify Application Launch & Title",
+              "fullTitle": "🔑 Module 1: Login & Role Management TC-LOG-01: Verify Application Launch & Title",
+              "timedOut": false,
+              "duration": 557,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  const title = await loginPage.getPageTitle();\n  expect(title).to.include('CLEAR PATH');\n  \n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-LOG-01_Launch', 'pass');\n  \n  excelReporter.addResult({\n    testId: 'TC-LOG-01',\n    module: 'Login',\n    testName: 'Application Launch',\n    expected: 'Page loads with CLEAR PATH title',\n    actual: `Loaded successfully with title: ${title}`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-LOG-01', 'Application Launch', duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-LOG-01_Launch', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-LOG-01',\n    module: 'Login',\n    testName: 'Application Launch',\n    expected: 'Page loads cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-LOG-01', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "AssertionError: expected 'ClearPath AI — Hospital Intelligence …' to include 'CLEAR PATH'",
+                "estack": "AssertionError: expected 'ClearPath AI — Hospital Intelligence …' to include 'CLEAR PATH'\n    at Context.<anonymous> (tests\\login.test.js:27:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": null
+              },
+              "uuid": "f3067adb-6fbe-495a-9c85-520abbcdd062",
+              "parentUUID": "c3ebb28e-5354-498b-b22d-14228d0fad33",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-LOG-02: Doctor Login Role Selection",
+              "fullTitle": "🔑 Module 1: Login & Role Management TC-LOG-02: Doctor Login Role Selection",
+              "timedOut": false,
+              "duration": 466,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await loginPage.loginAsDoctor('Dr. Sarah Wilson');\n  const role = await loginPage.getActiveRole();\n  expect(role).to.equal('DOCTOR');\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-LOG-02_DoctorLogin', 'pass');\n  \n  excelReporter.addResult({\n    testId: 'TC-LOG-02',\n    module: 'Login',\n    testName: 'Doctor Login',\n    expected: 'Role set to DOCTOR',\n    actual: `Active role confirmed: ${role}`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-LOG-02', 'Doctor Login Successful', duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-LOG-02_DoctorLogin', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-LOG-02',\n    module: 'Login',\n    testName: 'Doctor Login',\n    expected: 'Role set to DOCTOR',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-LOG-02', e, duration);\n  throw e;\n}",
+              "err": {},
+              "uuid": "a973046d-51bf-43e5-a60b-247b9b84af00",
+              "parentUUID": "c3ebb28e-5354-498b-b22d-14228d0fad33",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-LOG-03: Nurse Login Role Selection",
+              "fullTitle": "🔑 Module 1: Login & Role Management TC-LOG-03: Nurse Login Role Selection",
+              "timedOut": false,
+              "duration": 356,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await loginPage.loginAsNurse('Priya Nair');\n  const role = await loginPage.getActiveRole();\n  expect(role).to.equal('NURSE');\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-LOG-03_NurseLogin', 'pass');\n  \n  excelReporter.addResult({\n    testId: 'TC-LOG-03',\n    module: 'Login',\n    testName: 'Nurse Login',\n    expected: 'Role set to NURSE',\n    actual: `Active role confirmed: ${role}`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-LOG-03', 'Nurse Login Successful', duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-LOG-03_NurseLogin', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-LOG-03',\n    module: 'Login',\n    testName: 'Nurse Login',\n    expected: 'Role set to NURSE',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-LOG-03', e, duration);\n  throw e;\n}",
+              "err": {},
+              "uuid": "21e9e320-b285-40e5-8bbc-8cfd5f443eb8",
+              "parentUUID": "c3ebb28e-5354-498b-b22d-14228d0fad33",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a973046d-51bf-43e5-a60b-247b9b84af00",
+            "21e9e320-b285-40e5-8bbc-8cfd5f443eb8"
+          ],
+          "failures": [
+            "f3067adb-6fbe-495a-9c85-520abbcdd062"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1379,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "eaec97bd-52d6-40db-a694-a54a86bc2c47",
+          "title": "🧩 Module 2: Bottom Navigation Bar",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\navigation.test.js",
+          "file": "\\tests\\navigation.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"🧩 Module 2: Bottom Navigation Bar\"",
+              "fullTitle": "🧩 Module 2: Bottom Navigation Bar \"before all\" hook in \"🧩 Module 2: Bottom Navigation Bar\"",
+              "timedOut": false,
+              "duration": 3661,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nloginPage = new LoginPage(driver);\ndashboardPage = new DashboardPage(driver);\nawait loginPage.open();",
+              "err": {},
+              "uuid": "15ad660a-3c49-41a7-bfbb-965105490eb5",
+              "parentUUID": "eaec97bd-52d6-40db-a694-a54a86bc2c47",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"🧩 Module 2: Bottom Navigation Bar\"",
+              "fullTitle": "🧩 Module 2: Bottom Navigation Bar \"after all\" hook in \"🧩 Module 2: Bottom Navigation Bar\"",
+              "timedOut": false,
+              "duration": 253,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "3e669d89-b420-4026-bf8a-4bcf34c0ae94",
+              "parentUUID": "eaec97bd-52d6-40db-a694-a54a86bc2c47",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-NAV-01: Navigate to Tab 'HOME'",
+              "fullTitle": "🧩 Module 2: Bottom Navigation Bar TC-NAV-01: Navigate to Tab 'HOME'",
+              "timedOut": false,
+              "duration": 895,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await dashboardPage.navigateToTab(tab);\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'pass');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens successfully`,\n    actual: `Tab ${tab.toUpperCase()} loaded cleanly`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass(testId, `Navigation to ${tab} PASS`, duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'fail');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens cleanly`,\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail(testId, e, duration);\n  throw e;\n}",
+              "err": {},
+              "uuid": "2f51029e-abc5-4635-b009-45967a555d1d",
+              "parentUUID": "eaec97bd-52d6-40db-a694-a54a86bc2c47",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-NAV-02: Navigate to Tab 'PATIENTS'",
+              "fullTitle": "🧩 Module 2: Bottom Navigation Bar TC-NAV-02: Navigate to Tab 'PATIENTS'",
+              "timedOut": false,
+              "duration": 629,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await dashboardPage.navigateToTab(tab);\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'pass');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens successfully`,\n    actual: `Tab ${tab.toUpperCase()} loaded cleanly`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass(testId, `Navigation to ${tab} PASS`, duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'fail');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens cleanly`,\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail(testId, e, duration);\n  throw e;\n}",
+              "err": {},
+              "uuid": "50f2552d-9194-493c-aa8b-769b7df97879",
+              "parentUUID": "eaec97bd-52d6-40db-a694-a54a86bc2c47",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-NAV-03: Navigate to Tab 'CARETEAM'",
+              "fullTitle": "🧩 Module 2: Bottom Navigation Bar TC-NAV-03: Navigate to Tab 'CARETEAM'",
+              "timedOut": false,
+              "duration": 3665,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await dashboardPage.navigateToTab(tab);\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'pass');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens successfully`,\n    actual: `Tab ${tab.toUpperCase()} loaded cleanly`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass(testId, `Navigation to ${tab} PASS`, duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'fail');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens cleanly`,\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail(testId, e, duration);\n  throw e;\n}",
+              "err": {},
+              "uuid": "413de4eb-d70f-4d8c-af5e-371be11753a9",
+              "parentUUID": "eaec97bd-52d6-40db-a694-a54a86bc2c47",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-NAV-04: Navigate to Tab 'SCAN'",
+              "fullTitle": "🧩 Module 2: Bottom Navigation Bar TC-NAV-04: Navigate to Tab 'SCAN'",
+              "timedOut": false,
+              "duration": 1458,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await dashboardPage.navigateToTab(tab);\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'pass');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens successfully`,\n    actual: `Tab ${tab.toUpperCase()} loaded cleanly`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass(testId, `Navigation to ${tab} PASS`, duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'fail');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens cleanly`,\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail(testId, e, duration);\n  throw e;\n}",
+              "err": {},
+              "uuid": "dd688e4e-c50a-40ae-8fd3-4c9f3e89ac7f",
+              "parentUUID": "eaec97bd-52d6-40db-a694-a54a86bc2c47",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-NAV-05: Navigate to Tab 'COMMAND'",
+              "fullTitle": "🧩 Module 2: Bottom Navigation Bar TC-NAV-05: Navigate to Tab 'COMMAND'",
+              "timedOut": false,
+              "duration": 850,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await dashboardPage.navigateToTab(tab);\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'pass');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens successfully`,\n    actual: `Tab ${tab.toUpperCase()} loaded cleanly`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass(testId, `Navigation to ${tab} PASS`, duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'fail');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens cleanly`,\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail(testId, e, duration);\n  throw e;\n}",
+              "err": {},
+              "uuid": "087ea5eb-89d0-488f-8151-f2d09945a260",
+              "parentUUID": "eaec97bd-52d6-40db-a694-a54a86bc2c47",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-NAV-06: Navigate to Tab 'ALERTS'",
+              "fullTitle": "🧩 Module 2: Bottom Navigation Bar TC-NAV-06: Navigate to Tab 'ALERTS'",
+              "timedOut": false,
+              "duration": 647,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await dashboardPage.navigateToTab(tab);\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'pass');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens successfully`,\n    actual: `Tab ${tab.toUpperCase()} loaded cleanly`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass(testId, `Navigation to ${tab} PASS`, duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'fail');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens cleanly`,\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail(testId, e, duration);\n  throw e;\n}",
+              "err": {},
+              "uuid": "7bd7a829-0401-4446-9f2c-d48ff431ba9f",
+              "parentUUID": "eaec97bd-52d6-40db-a694-a54a86bc2c47",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-NAV-07: Navigate to Tab 'PROFILE'",
+              "fullTitle": "🧩 Module 2: Bottom Navigation Bar TC-NAV-07: Navigate to Tab 'PROFILE'",
+              "timedOut": false,
+              "duration": 713,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await dashboardPage.navigateToTab(tab);\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'pass');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens successfully`,\n    actual: `Tab ${tab.toUpperCase()} loaded cleanly`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass(testId, `Navigation to ${tab} PASS`, duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'fail');\n  excelReporter.addResult({\n    testId,\n    module: 'Navigation',\n    testName: `Navigate to ${tab.toUpperCase()}`,\n    expected: `Tab ${tab.toUpperCase()} opens cleanly`,\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail(testId, e, duration);\n  throw e;\n}",
+              "err": {},
+              "uuid": "a0bc21a8-f15b-473c-93d5-6a52150444d7",
+              "parentUUID": "eaec97bd-52d6-40db-a694-a54a86bc2c47",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2f51029e-abc5-4635-b009-45967a555d1d",
+            "50f2552d-9194-493c-aa8b-769b7df97879",
+            "413de4eb-d70f-4d8c-af5e-371be11753a9",
+            "dd688e4e-c50a-40ae-8fd3-4c9f3e89ac7f",
+            "087ea5eb-89d0-488f-8151-f2d09945a260",
+            "7bd7a829-0401-4446-9f2c-d48ff431ba9f",
+            "a0bc21a8-f15b-473c-93d5-6a52150444d7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8857,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "b2eb08aa-7935-4de0-bd45-655e43c56f7f",
+          "title": "👨‍⚕️ Module 4: Patient Directory & Search",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\patient.test.js",
+          "file": "\\tests\\patient.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"👨‍⚕️ Module 4: Patient Directory & Search\"",
+              "fullTitle": "👨‍⚕️ Module 4: Patient Directory & Search \"before all\" hook in \"👨‍⚕️ Module 4: Patient Directory & Search\"",
+              "timedOut": false,
+              "duration": 3872,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nloginPage = new LoginPage(driver);\npatientPage = new PatientPage(driver);\nawait loginPage.open();\nawait patientPage.openPatients();",
+              "err": {},
+              "uuid": "2de51e69-da5f-456b-99dc-00de990cd93d",
+              "parentUUID": "b2eb08aa-7935-4de0-bd45-655e43c56f7f",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"👨‍⚕️ Module 4: Patient Directory & Search\"",
+              "fullTitle": "👨‍⚕️ Module 4: Patient Directory & Search \"after all\" hook in \"👨‍⚕️ Module 4: Patient Directory & Search\"",
+              "timedOut": false,
+              "duration": 118,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "5f08d465-62bc-4e05-ad12-ca45bdee8dfd",
+              "parentUUID": "b2eb08aa-7935-4de0-bd45-655e43c56f7f",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-PAT-01: Load Patient Directory & Count Cards",
+              "fullTitle": "👨‍⚕️ Module 4: Patient Directory & Search TC-PAT-01: Load Patient Directory & Count Cards",
+              "timedOut": false,
+              "duration": 238,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  const count = await patientPage.getPatientCardsCount();\n  expect(count).to.be.above(0);\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-PAT-01_Cards', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-PAT-01',\n    module: 'Patient Directory',\n    testName: 'Load Patient Directory Cards',\n    expected: 'Multiple patient cards render',\n    actual: `Loaded ${count} patient cards`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-PAT-01', `Directory loaded ${count} cards`, duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-PAT-01_Cards', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-PAT-01',\n    module: 'Patient Directory',\n    testName: 'Load Patient Directory Cards',\n    expected: 'Cards render cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-PAT-01', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "AssertionError: expected +0 to be above +0",
+                "estack": "AssertionError: expected +0 to be above +0\n    at Context.<anonymous> (tests\\patient.test.js:31:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": ""
+              },
+              "uuid": "553c9b68-1da6-4a08-957c-ec52796d66bb",
+              "parentUUID": "b2eb08aa-7935-4de0-bd45-655e43c56f7f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-PAT-02: Search Patient by Name Query",
+              "fullTitle": "👨‍⚕️ Module 4: Patient Directory & Search TC-PAT-02: Search Patient by Name Query",
+              "timedOut": false,
+              "duration": 15581,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await patientPage.searchPatient('Ravi');\n  const count = await patientPage.getPatientCardsCount();\n  expect(count).to.be.above(0);\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-PAT-02_Search', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-PAT-02',\n    module: 'Patient Directory',\n    testName: 'Search Patient by Query',\n    expected: 'Filtered patient results render',\n    actual: `Found ${count} search result cards`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-PAT-02', 'Patient search filtered cleanly', duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-PAT-02_Search', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-PAT-02',\n    module: 'Patient Directory',\n    testName: 'Search Patient by Query',\n    expected: 'Search results render cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-PAT-02', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "TimeoutError: Waiting for element to be located By(css selector, *[id=\"pt-search-inp\"])\nWait timed out after 15267ms",
+                "estack": "TimeoutError: Waiting for element to be located By(css selector, *[id=\"pt-search-inp\"])\nWait timed out after 15267ms\n    at C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\node_modules\\selenium-webdriver\\lib\\webdriver.js:929:22\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": null
+              },
+              "uuid": "83572ff7-66ca-4e0b-8984-87be77628b46",
+              "parentUUID": "b2eb08aa-7935-4de0-bd45-655e43c56f7f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "553c9b68-1da6-4a08-957c-ec52796d66bb",
+            "83572ff7-66ca-4e0b-8984-87be77628b46"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 15819,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "375ad85a-dee7-4482-8a9b-71b602138843",
+          "title": "📂 Module 5: Patient Document Repository",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\repository.test.js",
+          "file": "\\tests\\repository.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"📂 Module 5: Patient Document Repository\"",
+              "fullTitle": "📂 Module 5: Patient Document Repository \"before all\" hook in \"📂 Module 5: Patient Document Repository\"",
+              "timedOut": false,
+              "duration": 5639,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nloginPage = new LoginPage(driver);\nscanCenterPage = new ScanCenterPage(driver);\nawait loginPage.open();\nawait scanCenterPage.openScanCenter();",
+              "err": {},
+              "uuid": "5df87d12-a994-4c2e-97fa-2545cc82f652",
+              "parentUUID": "375ad85a-dee7-4482-8a9b-71b602138843",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"📂 Module 5: Patient Document Repository\"",
+              "fullTitle": "📂 Module 5: Patient Document Repository \"after all\" hook in \"📂 Module 5: Patient Document Repository\"",
+              "timedOut": false,
+              "duration": 376,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "6b6bcb55-8e85-43dc-82a1-b21151006e53",
+              "parentUUID": "375ad85a-dee7-4482-8a9b-71b602138843",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-REP-01: Load Patient Repository Documents",
+              "fullTitle": "📂 Module 5: Patient Document Repository TC-REP-01: Load Patient Repository Documents",
+              "timedOut": false,
+              "duration": 1016,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await scanCenterPage.selectPatient(1);\n  const count = await scanCenterPage.getDocumentCardsCount();\n  expect(count).to.be.above(0);\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-REP-01_Load', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-REP-01',\n    module: 'Repository',\n    testName: 'Load Patient Documents',\n    expected: 'Document cards render in repository',\n    actual: `Loaded ${count} document cards for Patient #1`,\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-REP-01', `Repository loaded ${count} document cards`, duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-REP-01_Load', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-REP-01',\n    module: 'Repository',\n    testName: 'Load Patient Documents',\n    expected: 'Document cards render cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-REP-01', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "AssertionError: expected +0 to be above +0",
+                "estack": "AssertionError: expected +0 to be above +0\n    at Context.<anonymous> (tests\\repository.test.js:32:27)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": ""
+              },
+              "uuid": "f97fdae8-0498-4fc4-98cc-a6d5f8cac882",
+              "parentUUID": "375ad85a-dee7-4482-8a9b-71b602138843",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-REP-02: Filter Documents by Search Term",
+              "fullTitle": "📂 Module 5: Patient Document Repository TC-REP-02: Filter Documents by Search Term",
+              "timedOut": false,
+              "duration": 791,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await scanCenterPage.searchDocuments('MRI');\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-REP-02_Search', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-REP-02',\n    module: 'Repository',\n    testName: 'Search Document Repository',\n    expected: 'Repository search returns matching clinical records',\n    actual: 'Search query executed successfully',\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-REP-02', 'Repository search completed', duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-REP-02_Search', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-REP-02',\n    module: 'Repository',\n    testName: 'Search Document Repository',\n    expected: 'Search returns cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-REP-02', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "JavascriptError: javascript error: searchMDMSDocuments is not defined\n  (Session info: chrome=151.0.7922.75)",
+                "estack": "JavascriptError: javascript error: searchMDMSDocuments is not defined\n  (Session info: chrome=151.0.7922.75)\n    at Object.throwDecodedError (node_modules\\selenium-webdriver\\lib\\error.js:523:15)\n    at parseHttpResponse (node_modules\\selenium-webdriver\\lib\\http.js:527:13)\n    at Executor.execute (node_modules\\selenium-webdriver\\lib\\http.js:459:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Driver.execute (node_modules\\selenium-webdriver\\lib\\webdriver.js:745:17)\n    at async ScanCenterPage.searchDocuments (pages\\ScanCenterPage.js:44:5)\n    at async Context.<anonymous> (tests\\repository.test.js:69:7)",
+                "diff": null
+              },
+              "uuid": "b8e50da8-1c4e-4ab6-b9f7-967fa1c947e7",
+              "parentUUID": "375ad85a-dee7-4482-8a9b-71b602138843",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "f97fdae8-0498-4fc4-98cc-a6d5f8cac882",
+            "b8e50da8-1c4e-4ab6-b9f7-967fa1c947e7"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1807,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "6c768fe3-974b-47b8-8329-ccff517567ff",
+          "title": "🔍 Module 10: Multi-Field Search & Analytics",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\search.test.js",
+          "file": "\\tests\\search.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"🔍 Module 10: Multi-Field Search & Analytics\"",
+              "fullTitle": "🔍 Module 10: Multi-Field Search & Analytics \"before all\" hook in \"🔍 Module 10: Multi-Field Search & Analytics\"",
+              "timedOut": false,
+              "duration": 2318,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nloginPage = new LoginPage(driver);\nscanCenterPage = new ScanCenterPage(driver);\nawait loginPage.open();\nawait scanCenterPage.openScanCenter();",
+              "err": {},
+              "uuid": "92c74008-5d2b-4f78-923e-c5d27a63b6c1",
+              "parentUUID": "6c768fe3-974b-47b8-8329-ccff517567ff",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"🔍 Module 10: Multi-Field Search & Analytics\"",
+              "fullTitle": "🔍 Module 10: Multi-Field Search & Analytics \"after all\" hook in \"🔍 Module 10: Multi-Field Search & Analytics\"",
+              "timedOut": false,
+              "duration": 197,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "9d8af457-bd59-4e64-8684-76525d51bd66",
+              "parentUUID": "6c768fe3-974b-47b8-8329-ccff517567ff",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-SCH-01: Execute Multi-Field Clinical Search",
+              "fullTitle": "🔍 Module 10: Multi-Field Search & Analytics TC-SCH-01: Execute Multi-Field Clinical Search",
+              "timedOut": false,
+              "duration": 783,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await scanCenterPage.searchDocuments('Ravi');\n  const duration = Date.now() - startTime;\n  excelReporter.recordMetric('apiResponseTimes', duration);\n  const screenshot = await captureScreenshot(driver, 'TC-SCH-01_Search', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-SCH-01',\n    module: 'Search',\n    testName: 'Multi-Field Clinical Search',\n    expected: 'Search returns filtered records',\n    actual: 'Multi-field search returned cleanly',\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-SCH-01', 'Search query executed', duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-SCH-01_Search', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-SCH-01',\n    module: 'Search',\n    testName: 'Multi-Field Clinical Search',\n    expected: 'Search returns cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-SCH-01', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "JavascriptError: javascript error: searchMDMSDocuments is not defined\n  (Session info: chrome=151.0.7922.75)",
+                "estack": "JavascriptError: javascript error: searchMDMSDocuments is not defined\n  (Session info: chrome=151.0.7922.75)\n    at Object.throwDecodedError (node_modules\\selenium-webdriver\\lib\\error.js:523:15)\n    at parseHttpResponse (node_modules\\selenium-webdriver\\lib\\http.js:527:13)\n    at Executor.execute (node_modules\\selenium-webdriver\\lib\\http.js:459:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Driver.execute (node_modules\\selenium-webdriver\\lib\\webdriver.js:745:17)\n    at async ScanCenterPage.searchDocuments (pages\\ScanCenterPage.js:44:5)\n    at async Context.<anonymous> (tests\\search.test.js:30:7)",
+                "diff": null
+              },
+              "uuid": "708f65a0-6820-4eee-81c6-53fb2bb0ed14",
+              "parentUUID": "6c768fe3-974b-47b8-8329-ccff517567ff",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "708f65a0-6820-4eee-81c6-53fb2bb0ed14"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 783,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "30323913-6c20-4b7e-a9ce-21122e00e071",
+          "title": "🎯 Module 8: Automated Treatment Approval Engine",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\treatmentApproval.test.js",
+          "file": "\\tests\\treatmentApproval.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"🎯 Module 8: Automated Treatment Approval Engine\"",
+              "fullTitle": "🎯 Module 8: Automated Treatment Approval Engine \"before all\" hook in \"🎯 Module 8: Automated Treatment Approval Engine\"",
+              "timedOut": false,
+              "duration": 2191,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nloginPage = new LoginPage(driver);\nviewerPage = new ViewerPage(driver);\nawait loginPage.open();",
+              "err": {},
+              "uuid": "83775ee4-a96c-4a03-b1d4-7e90ad147a32",
+              "parentUUID": "30323913-6c20-4b7e-a9ce-21122e00e071",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"🎯 Module 8: Automated Treatment Approval Engine\"",
+              "fullTitle": "🎯 Module 8: Automated Treatment Approval Engine \"after all\" hook in \"🎯 Module 8: Automated Treatment Approval Engine\"",
+              "timedOut": false,
+              "duration": 153,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "7855962c-8693-4620-9dfb-137c9753afc2",
+              "parentUUID": "30323913-6c20-4b7e-a9ce-21122e00e071",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-APP-01: Verify Treatment Approval Decision & Confidence %",
+              "fullTitle": "🎯 Module 8: Automated Treatment Approval Engine TC-APP-01: Verify Treatment Approval Decision & Confidence %",
+              "timedOut": false,
+              "duration": 16725,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await viewerPage.openViewerForDocument(1);\n  const text = await viewerPage.getAiClinicalSummaryText();\n  const hasValidDecision = text.includes('EMERGENCY FAST TRACK') || \n                           text.includes('APPROVED') || \n                           text.includes('REQUIRES DOCTOR REVIEW') ||\n                           text.includes('WAITING FOR INSURANCE');\n  expect(hasValidDecision).to.be.true;\n  expect(text).to.include('AI Confidence:');\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-APP-01_Decision', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-APP-01',\n    module: 'Treatment Approval',\n    testName: 'Verify Automated Approval Decision',\n    expected: 'Automated Treatment Approval badge & confidence score render',\n    actual: 'Approval decision & AI confidence verified',\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-APP-01', 'Treatment Approval decision verified', duration);\n  await viewerPage.closeViewer();\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-APP-01_Decision', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-APP-01',\n    module: 'Treatment Approval',\n    testName: 'Verify Automated Approval Decision',\n    expected: 'Approval decision renders cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-APP-01', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "TimeoutError: Waiting for element to be located By(css selector, *[id=\"mdms-viewer-tab-content\"])\nWait timed out after 15128ms",
+                "estack": "TimeoutError: Waiting for element to be located By(css selector, *[id=\"mdms-viewer-tab-content\"])\nWait timed out after 15128ms\n    at C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\node_modules\\selenium-webdriver\\lib\\webdriver.js:929:22\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": null
+              },
+              "uuid": "9c003ee6-e5e8-43c0-b73c-2339613455c6",
+              "parentUUID": "30323913-6c20-4b7e-a9ce-21122e00e071",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "9c003ee6-e5e8-43c0-b73c-2339613455c6"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 16725,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        },
+        {
+          "uuid": "feb2d40a-039e-4001-b8a6-1a621582438a",
+          "title": "🚀 Module 6: Medical Document Upload Workflow",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\upload.test.js",
+          "file": "\\tests\\upload.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"🚀 Module 6: Medical Document Upload Workflow\"",
+              "fullTitle": "🚀 Module 6: Medical Document Upload Workflow \"before all\" hook in \"🚀 Module 6: Medical Document Upload Workflow\"",
+              "timedOut": false,
+              "duration": 2305,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "sampleFiles = ensureSampleFiles();\ndriver = await createDriver();\nloginPage = new LoginPage(driver);\nscanCenterPage = new ScanCenterPage(driver);\nuploadPage = new UploadPage(driver);\nviewerPage = new ViewerPage(driver);\n\nawait loginPage.open();\nawait scanCenterPage.openScanCenter();",
+              "err": {},
+              "uuid": "44c06112-baa9-4403-adf4-aaca62793ffe",
+              "parentUUID": "feb2d40a-039e-4001-b8a6-1a621582438a",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"🚀 Module 6: Medical Document Upload Workflow\"",
+              "fullTitle": "🚀 Module 6: Medical Document Upload Workflow \"after all\" hook in \"🚀 Module 6: Medical Document Upload Workflow\"",
+              "timedOut": false,
+              "duration": 113,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "105e251e-7d15-4a2a-b7e8-059c2acc265f",
+              "parentUUID": "feb2d40a-039e-4001-b8a6-1a621582438a",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-UPL-01: Upload Medical Document & Auto-Open Intelligence Viewer",
+              "fullTitle": "🚀 Module 6: Medical Document Upload Workflow TC-UPL-01: Upload Medical Document & Auto-Open Intelligence Viewer",
+              "timedOut": false,
+              "duration": 1551,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await uploadPage.uploadFile(sampleFiles.jpgPath, 1, 'Prescription');\n  \n  const duration = Date.now() - startTime;\n  excelReporter.recordMetric('uploadTimes', duration);\n  const isViewerOpen = await viewerPage.isModalVisible();\n  expect(isViewerOpen).to.be.true;\n  const screenshot = await captureScreenshot(driver, 'TC-UPL-01_Upload', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-UPL-01',\n    module: 'Upload',\n    testName: 'Upload Prescription Document',\n    expected: 'Document uploaded & AI Intelligence viewer auto-opened',\n    actual: 'Upload completed cleanly in multi-step progress',\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-UPL-01', 'Document upload completed', duration);\n  await viewerPage.closeViewer();\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-UPL-01_Upload', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-UPL-01',\n    module: 'Upload',\n    testName: 'Upload Prescription Document',\n    expected: 'Upload completed cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-UPL-01', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "ElementNotInteractableError: element not interactable\n  (Session info: chrome=151.0.7922.75)",
+                "estack": "ElementNotInteractableError: element not interactable\n  (Session info: chrome=151.0.7922.75)\n    at Object.throwDecodedError (node_modules\\selenium-webdriver\\lib\\error.js:523:15)\n    at parseHttpResponse (node_modules\\selenium-webdriver\\lib\\http.js:527:13)\n    at Executor.execute (node_modules\\selenium-webdriver\\lib\\http.js:459:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Driver.execute (node_modules\\selenium-webdriver\\lib\\webdriver.js:745:17)\n    at async UploadPage.uploadFile (pages\\UploadPage.js:33:5)\n    at async Context.<anonymous> (tests\\upload.test.js:40:7)",
+                "diff": null
+              },
+              "uuid": "5e64fcf7-dd2a-43f7-9543-38811e271fa4",
+              "parentUUID": "feb2d40a-039e-4001-b8a6-1a621582438a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "5e64fcf7-dd2a-43f7-9543-38811e271fa4"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1551,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 90000
+        },
+        {
+          "uuid": "cc3bbdb7-ed8d-46d5-82fb-f9b87c90a163",
+          "title": "🖼️ Module 9: Streamlined Medical Viewer & Controls",
+          "fullFile": "C:\\Users\\Param\\Downloads\\clear-path-app\\selenium-tests\\tests\\viewer.test.js",
+          "file": "\\tests\\viewer.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"🖼️ Module 9: Streamlined Medical Viewer & Controls\"",
+              "fullTitle": "🖼️ Module 9: Streamlined Medical Viewer & Controls \"before all\" hook in \"🖼️ Module 9: Streamlined Medical Viewer & Controls\"",
+              "timedOut": false,
+              "duration": 1566,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await createDriver();\nloginPage = new LoginPage(driver);\nviewerPage = new ViewerPage(driver);\nawait loginPage.open();",
+              "err": {},
+              "uuid": "f1bdb9c5-3ee3-437b-9b3b-03105536e783",
+              "parentUUID": "cc3bbdb7-ed8d-46d5-82fb-f9b87c90a163",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"🖼️ Module 9: Streamlined Medical Viewer & Controls\"",
+              "fullTitle": "🖼️ Module 9: Streamlined Medical Viewer & Controls \"after all\" hook in \"🖼️ Module 9: Streamlined Medical Viewer & Controls\"",
+              "timedOut": false,
+              "duration": 172,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) await driver.quit();",
+              "err": {},
+              "uuid": "1392acaf-860f-4cb0-8389-6812c626bcf7",
+              "parentUUID": "cc3bbdb7-ed8d-46d5-82fb-f9b87c90a163",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "TC-VIE-01: Verify Toolbar Controls (Zoom, Rotate, Reset)",
+              "fullTitle": "🖼️ Module 9: Streamlined Medical Viewer & Controls TC-VIE-01: Verify Toolbar Controls (Zoom, Rotate, Reset)",
+              "timedOut": false,
+              "duration": 2809,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  await viewerPage.openViewerForDocument(1);\n  \n  await viewerPage.zoomIn();\n  await viewerPage.zoomOut();\n  await viewerPage.rotate();\n  await viewerPage.reset();\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-VIE-01_Controls', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-VIE-01',\n    module: 'Viewer',\n    testName: 'Verify Viewer Controls',\n    expected: 'Zoom, Rotate, and Reset controls execute cleanly',\n    actual: 'Toolbar controls executed without error',\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-VIE-01', 'Viewer controls verified', duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-VIE-01_Controls', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-VIE-01',\n    module: 'Viewer',\n    testName: 'Verify Viewer Controls',\n    expected: 'Viewer controls execute cleanly',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-VIE-01', e, duration);\n  throw e;\n}",
+              "err": {},
+              "uuid": "ad46d3ac-f037-4a4f-b1b0-3a43c614bcca",
+              "parentUUID": "cc3bbdb7-ed8d-46d5-82fb-f9b87c90a163",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "TC-VIE-02: Verify Corner Close Button Dismisses Modal",
+              "fullTitle": "🖼️ Module 9: Streamlined Medical Viewer & Controls TC-VIE-02: Verify Corner Close Button Dismisses Modal",
+              "timedOut": false,
+              "duration": 841,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const startTime = Date.now();\ntry {\n  const isVisibleBefore = await viewerPage.isModalVisible();\n  expect(isVisibleBefore).to.be.true;\n  await viewerPage.clickCloseButton();\n  \n  const isVisibleAfter = await viewerPage.isModalVisible();\n  expect(isVisibleAfter).to.be.false;\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-VIE-02_CloseBtn', 'pass');\n  excelReporter.addResult({\n    testId: 'TC-VIE-02',\n    module: 'Viewer',\n    testName: 'Verify Corner Close Button',\n    expected: 'Corner close button dismisses viewer modal',\n    actual: 'Modal dismissed cleanly on button click',\n    status: 'PASS',\n    duration,\n    screenshot\n  });\n  logger.pass('TC-VIE-02', 'Corner close button verified', duration);\n} catch (e) {\n  const duration = Date.now() - startTime;\n  const screenshot = await captureScreenshot(driver, 'TC-VIE-02_CloseBtn', 'fail');\n  excelReporter.addResult({\n    testId: 'TC-VIE-02',\n    module: 'Viewer',\n    testName: 'Verify Corner Close Button',\n    expected: 'Close button dismisses modal',\n    actual: e.message,\n    status: 'FAIL',\n    duration,\n    screenshot\n  });\n  logger.fail('TC-VIE-02', e, duration);\n  throw e;\n}",
+              "err": {
+                "message": "NoSuchElementError: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"*[id=\"mdms-viewer-modal\"]\"}\n  (Session info: chrome=151.0.7922.75)",
+                "estack": "NoSuchElementError: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"*[id=\"mdms-viewer-modal\"]\"}\n  (Session info: chrome=151.0.7922.75)\n    at Object.throwDecodedError (node_modules\\selenium-webdriver\\lib\\error.js:523:15)\n    at parseHttpResponse (node_modules\\selenium-webdriver\\lib\\http.js:527:13)\n    at Executor.execute (node_modules\\selenium-webdriver\\lib\\http.js:459:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Driver.execute (node_modules\\selenium-webdriver\\lib\\webdriver.js:745:17)\n    at async ViewerPage.isModalVisible (pages\\ViewerPage.js:19:21)\n    at async Context.<anonymous> (tests\\viewer.test.js:71:31)",
+                "diff": null
+              },
+              "uuid": "fc6f850a-e03c-4a22-800f-ceebe94dc37c",
+              "parentUUID": "cc3bbdb7-ed8d-46d5-82fb-f9b87c90a163",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ad46d3ac-f037-4a4f-b1b0-3a43c614bcca"
+          ],
+          "failures": [
+            "fc6f850a-e03c-4a22-800f-ceebe94dc37c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3650,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 120000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.8.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports/html",
+        "reportFilename": "mochawesome"
+      },
+      "version": "6.3.2"
+    }
+  }
+}

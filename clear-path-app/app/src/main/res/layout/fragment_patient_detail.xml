@@ -1,0 +1,1477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#EAF6F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0F98B8"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvDetailName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient Name"
+                android:textStyle="bold"
+                android:textSize="26sp"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tvDetailMeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDetailName"
+                android:text="00y · M · Arrived 0m ago"
+                android:textColor="#DFF7FB"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvDetailRiskTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:text="RISK --"
+                android:textColor="#F44336"
+                android:background="#FFE5E5"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="10dp"
+            android:background="#0F98B8">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tabOverview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Overview"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/chip_active_bg"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+                <TextView
+                    android:id="@+id/tabAiAnalysis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AI Analysis"
+                    android:textColor="#DFF7FB"
+                    android:background="@drawable/chip_inactive_bg"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+                <TextView
+                    android:id="@+id/tabRiskScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Risk Score"
+                    android:textColor="#DFF7FB"
+                    android:background="@drawable/chip_inactive_bg"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+                <TextView
+                    android:id="@+id/tabInsurance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Insurance"
+                    android:textColor="#DFF7FB"
+                    android:background="@drawable/chip_inactive_bg"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+                <TextView
+                    android:id="@+id/tabPreOp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pre-Op"
+                    android:textColor="#DFF7FB"
+                    android:background="@drawable/chip_inactive_bg"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+                <TextView
+                    android:id="@+id/tabApproval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Approval"
+                    android:textColor="#DFF7FB"
+                    android:background="@drawable/chip_inactive_bg"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:id="@+id/containerOverview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="16dp"
+                android:layout_margin="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VITALS"
+                    android:textStyle="bold"
+                    android:textColor="#90A4AE"
+                    android:textSize="12sp" />
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:layout_marginTop="12dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:orientation="vertical"
+                        android:background="#F8FBFB"
+                        android:padding="16dp"
+                        android:layout_margin="4dp"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/tvDetailBp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--/--"
+                            android:textSize="22sp"
+                            android:textColor="#37474F"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Blood Pressure"
+                            android:textColor="#90A4AE"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:orientation="vertical"
+                        android:background="#F8FBFB"
+                        android:padding="16dp"
+                        android:layout_margin="4dp"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/tvDetailHr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-- bpm"
+                            android:textSize="22sp"
+                            android:textColor="#37474F"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Heart Rate"
+                            android:textColor="#90A4AE"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:orientation="vertical"
+                        android:background="#F8FBFB"
+                        android:padding="16dp"
+                        android:layout_margin="4dp"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/tvDetailTemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--°C"
+                            android:textSize="22sp"
+                            android:textColor="#37474F"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Temperature"
+                            android:textColor="#90A4AE"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:orientation="vertical"
+                        android:background="#FFF5F5"
+                        android:padding="16dp"
+                        android:layout_margin="4dp"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/tvDetailSpo2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--%"
+                            android:textSize="22sp"
+                            android:textColor="#F44336"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SpO₂"
+                            android:textColor="#E57373"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </GridLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="16dp"
+                android:layout_marginHorizontal="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CHIEF COMPLAINT"
+                    android:textStyle="bold"
+                    android:textColor="#90A4AE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvDetailComplaint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Loading description details..."
+                    android:textColor="#37474F"
+                    android:textSize="16sp"
+                    android:layout_marginTop="12dp"
+                    android:lineSpacingMultiplier="1.2"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="16dp"
+                android:layout_margin="14dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SIMULTANEOUS CLEARANCE"
+                    android:textStyle="bold"
+                    android:textColor="#90A4AE"
+                    android:textSize="12sp" />
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:layout_marginTop="12dp">
+
+                    <LinearLayout
+                        android:id="@+id/layoutClearanceInsurance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:orientation="vertical"
+                        android:background="#F0F9FB"
+                        android:padding="12dp"
+                        android:layout_margin="2dp"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Insurance"
+                            android:textColor="#0F98B8"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tvClearanceInsuranceValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Checking..."
+                            android:textColor="#546E7A"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutClearanceFinance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:orientation="vertical"
+                        android:background="#E8F5E9"
+                        android:padding="12dp"
+                        android:layout_margin="2dp"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Finance"
+                            android:textColor="#4CAF50"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tvClearanceFinanceValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cleared"
+                            android:textColor="#2E7D32"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutClearanceClinical"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:orientation="vertical"
+                        android:background="#F0F9FB"
+                        android:padding="12dp"
+                        android:layout_margin="2dp"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Clinical"
+                            android:textColor="#0F98B8"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tvClearanceClinicalValue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Checking..."
+                            android:textColor="#546E7A"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                </GridLayout>
+
+                <TextView
+                    android:id="@+id/btnRunClearances"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Run All Clearances Simultaneously"
+                    android:textColor="#FFFFFF"
+                    android:background="#0F98B8"
+                    android:gravity="center"
+                    android:padding="14dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="14dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="16dp"
+                android:layout_marginHorizontal="14dp"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS"
+                    android:textStyle="bold"
+                    android:textColor="#90A4AE"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="waiting"
+                        android:textColor="#0F98B8"
+                        android:background="@drawable/chip_inactive_bg"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="6dp"
+                        android:layout_marginEnd="6dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="in progress"
+                        android:textColor="#0F98B8"
+                        android:background="#E0F7FA"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="6dp"
+                        android:layout_marginEnd="6dp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="cleared"
+                        android:textColor="#B0BEC5"
+                        android:background="@drawable/chip_inactive_bg"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="6dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="admitted"
+                    android:textColor="#B0BEC5"
+                    android:background="@drawable/chip_inactive_bg"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/containerAiAnalysis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="14dp"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚡ AI ANALYSIS ENGINE"
+                    android:textStyle="bold"
+                    android:textColor="#0F98B8"
+                    android:textSize="12sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="Complete"
+                    android:textColor="#4CAF50"
+                    android:background="#E8F5E9"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EXTRACTED SYMPTOMS"
+                    android:textStyle="bold"
+                    android:textColor="#90A4AE"
+                    android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+                    <TextView
+                        android:id="@+id/tvAiSymptom1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chest pain"
+                        android:textColor="#F44336"
+                        android:background="#FFE5E5"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="6dp"/>
+                    <TextView
+                        android:id="@+id/tvAiSymptom2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Diaphoresis"
+                        android:textColor="#F44336"
+                        android:background="#FFE5E5"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="6dp"/>
+                    <TextView
+                        android:id="@+id/tvAiSymptom3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dyspnea"
+                        android:textColor="#F44336"
+                        android:background="#FFE5E5"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AI DIAGNOSIS INSIGHTS"
+                    android:textStyle="bold"
+                    android:textColor="#90A4AE"
+                    android:textSize="11sp"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/tvAiInsight1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• ST-elevation pattern detected (V1-V4) — STEMI protocol"
+                    android:textColor="#0F98B8"
+                    android:background="#F0F9FB"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tvAiInsight2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Troponin I elevated confirms myocardial injury"
+                    android:textColor="#0F98B8"
+                    android:background="#F0F9FB"
+                    android:padding="12dp"
+                    android:layout_marginTop="6dp"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SCAN INTERPRETATION"
+                    android:textStyle="bold"
+                    android:textColor="#90A4AE"
+                    android:textSize="11sp"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/tvAiScanInterpretation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ECG: ST elevation V1-V4, STEMI. Immediate cath lab activation recommended."
+                    android:textColor="#0F98B8"
+                    android:background="#F0F9FB"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BILLING VERIFICATION"
+                    android:textStyle="bold"
+                    android:textColor="#90A4AE"
+                    android:textSize="11sp"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/tvAiBillingVerification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="85% coverage confirmed. co-pay at admission standard."
+                    android:textColor="#2E7D32"
+                    android:background="#E8F5E9"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/containerRiskScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="14dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvRiskEngineTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STAT RISK SCORING ENGINE"
+                android:textStyle="bold"
+                android:textColor="#0F98B8"
+                android:textSize="12sp"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="20dp"
+                android:gravity="center_horizontal">
+
+                <RelativeLayout
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:background="@android:drawable/toast_frame"
+                    android:backgroundTint="#FFE5E5"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tvDialScore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9.5"
+                            android:textColor="#F44336"
+                            android:textSize="44sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/10"
+                            android:textColor="#90A4AE"
+                            android:textSize="14sp"/>
+
+                        <TextView
+                            android:id="@+id/tvDialBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="STAT"
+                            android:textColor="#F44336"
+                            android:background="#FFE5E5"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginTop="6dp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="30dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Clinical Urgency"
+                            android:textColor="#37474F"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tvMetricUrgency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="Critical"
+                            android:textColor="#F44336"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                    <ProgressBar
+                        android:id="@+id/pbUrgency"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="95"
+                        android:progressTint="#F44336"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="16dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Symptom Severity"
+                            android:textColor="#37474F"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tvMetricSeverity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="Severe"
+                            android:textColor="#00838F"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                    <ProgressBar
+                        android:id="@+id/pbSeverity"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="88"
+                        android:progressTint="#00838F"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="16dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lab / Scan Abnormality"
+                            android:textColor="#37474F"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tvMetricAbnormality"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="Detected"
+                            android:textColor="#EF6C00"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                    <ProgressBar
+                        android:id="@+id/pbAbnormality"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="75"
+                        android:progressTint="#EF6C00"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="16dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Insurance Clearance"
+                            android:textColor="#37474F"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tvMetricInsurance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="Cleared"
+                            android:textColor="#2E7D32"
+                            android:textStyle="bold"/>
+                    </RelativeLayout>
+                    <ProgressBar
+                        android:id="@+id/pbInsurance"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:progress="100"
+                        android:progressTint="#2E7D32"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="16dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutRiskBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#FFE5E5"
+                    android:padding="12dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvRiskBannerText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="⚠ Score ≥ 8.0 — Emergency Fast-Track activated. Patient jumps approval queue."
+                        android:textColor="#C62828"
+                        android:textSize="13sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/containerInsurance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="14dp"
+            android:visibility="gone">
+
+            <!-- Card 1: Insurance Details -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="20dp"
+                android:layout_marginBottom="14dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvInsuranceProvider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Star Health Insurance"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="#37474F" />
+                    <TextView
+                        android:id="@+id/tvInsuranceStatusBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:text="Verifying..."
+                        android:textColor="#0F98B8"
+                        android:background="#E0F7FA"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvInsurancePolicy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Policy: STR-2024-88721"
+                    android:textColor="#78909C"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="COVERAGE METER"
+                    android:textStyle="bold"
+                    android:textColor="#B0BEC5"
+                    android:textSize="11sp"
+                    android:layout_marginTop="20dp" />
+
+                <ProgressBar
+                    android:id="@+id/pbInsuranceCoverage"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="85"
+                    android:progressTint="#4CAF50"
+                    android:layout_marginTop="6dp"/>
+
+                <TextView
+                    android:id="@+id/tvInsuranceCoveragePercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="85% covered"
+                    android:textColor="#37474F"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="6dp" />
+
+                <!-- Grid-like copay info -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="#F8FBFB"
+                        android:padding="12dp"
+                        android:layout_marginEnd="6dp"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/tvInsuranceCopay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₹18,000"
+                            android:textSize="18sp"
+                            android:textColor="#37474F"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Co-Pay Required"
+                            android:textColor="#90A4AE"
+                            android:textSize="11sp"
+                            android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="#E8F5E9"
+                        android:padding="12dp"
+                        android:layout_marginStart="6dp"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/tvInsuranceDues"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="₹0"
+                            android:textSize="18sp"
+                            android:textColor="#2E7D32"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Unpaid Dues"
+                            android:textColor="#90A4AE"
+                            android:textSize="11sp"
+                            android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Status alert banner -->
+                <TextView
+                    android:id="@+id/tvInsuranceDetailsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cashless eligible. Pre-auth request sent."
+                    android:textColor="#0F98B8"
+                    android:background="#E0F7FA"
+                    android:padding="12dp"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <!-- Card 2: Dual Verification & Clearance Checklist -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DUAL VERIFICATION"
+                    android:textStyle="bold"
+                    android:textColor="#90A4AE"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SIMULTANEOUS CLEARANCE"
+                    android:textStyle="bold"
+                    android:textColor="#37474F"
+                    android:textSize="15sp"
+                    android:layout_marginTop="2dp"/>
+
+                <!-- Status Boxes Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="14dp">
+
+                    <LinearLayout
+                        android:id="@+id/layoutInsuranceClearanceBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="#F0F9FB"
+                        android:padding="12dp"
+                        android:layout_margin="2dp"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Insurance"
+                            android:textColor="#0F98B8"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tvInsuranceClearanceText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Checking..."
+                            android:textColor="#546E7A"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutFinanceClearanceBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="#E8F5E9"
+                        android:padding="12dp"
+                        android:layout_margin="2dp"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Finance"
+                            android:textColor="#4CAF50"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tvFinanceClearanceText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cleared"
+                            android:textColor="#2E7D32"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutClinicalClearanceBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="#F0F9FB"
+                        android:padding="12dp"
+                        android:layout_margin="2dp"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Clinical"
+                            android:textColor="#0F98B8"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/tvClinicalClearanceText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Checking..."
+                            android:textColor="#546E7A"
+                            android:textSize="11sp"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnReRunVerification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Re-run Verification"
+                    android:textColor="#FFFFFF"
+                    android:background="#0F98B8"
+                    android:gravity="center"
+                    android:padding="14dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/containerPreOp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="14dp"
+            android:visibility="gone">
+
+            <!-- Pre-Op Verification Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="20dp"
+                android:layout_marginBottom="14dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PRE-OP CLEARANCE"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="#37474F" />
+                    <TextView
+                        android:id="@+id/tvPreOpStatusBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="Pending"
+                        android:textColor="#E65100"
+                        android:background="#FFE0B2"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Checklist for surgical &amp; anesthesia readiness"
+                    android:textColor="#78909C"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp" />
+
+                <!-- Pre-op list items -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp">
+
+                    <!-- Fasting -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="8dp"
+                        android:gravity="center_vertical">
+                        <CheckBox
+                            android:id="@+id/cbPreOpNpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="8dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="NPO Status (8h Fasting)"
+                                android:textStyle="bold"
+                                android:textColor="#37474F"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Fasting protocol completed at 06:00 AM"
+                                android:textColor="#78909C"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Consent -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="8dp"
+                        android:gravity="center_vertical">
+                        <CheckBox
+                            android:id="@+id/cbPreOpConsent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="8dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Surgical Consent Forms"
+                                android:textStyle="bold"
+                                android:textColor="#37474F"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Signed by patient and witness"
+                                android:textColor="#78909C"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Labs -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="8dp"
+                        android:gravity="center_vertical">
+                        <CheckBox
+                            android:id="@+id/cbPreOpLabs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="8dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pre-op Labs (CBC, PT/INR)"
+                                android:textStyle="bold"
+                                android:textColor="#37474F"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Completed. Review pending by surgeon"
+                                android:textColor="#78909C"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Anesthesia clearance -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="8dp"
+                        android:gravity="center_vertical">
+                        <CheckBox
+                            android:id="@+id/cbPreOpAnesthesia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginStart="8dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Anesthesia Clearance"
+                                android:textStyle="bold"
+                                android:textColor="#37474F"
+                                android:textSize="14sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Scheduled with Dr. Mehta"
+                                android:textColor="#78909C"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnSubmitPreOp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Complete Pre-Op Verification"
+                    android:textColor="#FFFFFF"
+                    android:background="#E65100"
+                    android:gravity="center"
+                    android:padding="14dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/containerApproval"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="14dp"
+            android:visibility="gone">
+
+            <!-- Final Approval Card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#FFFFFF"
+                android:padding="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ADMISSION APPROVAL"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="#37474F" />
+                    <TextView
+                        android:id="@+id/tvApprovalStatusBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="Pending"
+                        android:textColor="#E65100"
+                        android:background="#FFE0B2"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Verification checklist for formal ward admission"
+                    android:textColor="#78909C"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp" />
+
+                <!-- Verification stages summary -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:background="#F8FBFB"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvApprovalStatusClearances"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✓ Clearances Checked: Insurance, Finance, Clinical"
+                        android:textColor="#2E7D32"
+                        android:textStyle="bold"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvApprovalStatusPreop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✗ Pre-Op Readiness: Pending"
+                        android:textColor="#C62828"
+                        android:textStyle="bold"
+                        android:textSize="13sp"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+
+                <!-- Board Sign-offs -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SIGN-OFF REQUIRED"
+                    android:textStyle="bold"
+                    android:textColor="#B0BEC5"
+                    android:textSize="11sp"
+                    android:layout_marginTop="20dp" />
+
+                <!-- Sign off Checkbox 1 -->
+                <CheckBox
+                    android:id="@+id/cbSignoffDoctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Attending Physician Approval"
+                    android:textColor="#37474F"
+                    android:textSize="14sp"
+                    android:layout_marginTop="10dp"/>
+
+                <!-- Sign off Checkbox 2 -->
+                <CheckBox
+                    android:id="@+id/cbSignoffAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CMO / Admin Clearance"
+                    android:textColor="#37474F"
+                    android:textSize="14sp"
+                    android:layout_marginTop="6dp"/>
+
+                <!-- Admission button -->
+                <TextView
+                    android:id="@+id/btnApproveAdmission"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Approve &amp; Fast-Track Admission"
+                    android:textColor="#FFFFFF"
+                    android:background="#37474F"
+                    android:gravity="center"
+                    android:padding="14dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="24dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+    </LinearLayout>
+</ScrollView>

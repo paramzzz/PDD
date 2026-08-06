@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:title="Command"
+        android:icon="@android:drawable/ic_menu_view"/>
+
+    <item
+        android:id="@+id/nav_patients"
+        android:title="Patients"
+        android:icon="@android:drawable/ic_menu_agenda"/>
+
+    <item
+        android:id="@+id/nav_upload"
+        android:title="Upload"
+        android:icon="@android:drawable/ic_menu_upload"/>
+
+    <item
+        android:id="@+id/nav_alerts"
+        android:title="Alerts"
+        android:icon="@android:drawable/ic_dialog_alert"/>
+
+</menu>

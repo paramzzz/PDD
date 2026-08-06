@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EAF6F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#0F98B8"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Document Bundle Reader"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvCaptureSubHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload · AI reads all documents as one package"
+            android:textColor="#DFF7FB"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="#33FFFFFF"
+                android:textColor="#DFF7FB"
+                android:text="1"
+                android:textSize="12sp"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doc Type"
+                android:textColor="#DFF7FB"
+                android:textSize="13sp"
+                android:layout_marginStart="6dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="#33FFFFFF"
+                android:textColor="#DFF7FB"
+                android:text="2"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginStart="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient"
+                android:textColor="#DFF7FB"
+                android:textSize="13sp"
+                android:layout_marginStart="6dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@android:color/white"
+                android:textColor="#0F98B8"
+                android:text="3"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginStart="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capture"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:layout_margin="16dp"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:drawable/ic_menu_camera"
+            android:backgroundTint="#0F98B8"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ready to Capture"
+            android:textSize="24sp"
+            android:textColor="#263238"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Position the document flat under good lighting. AI will extract OCR text, clinical entities, and generate a structured summary automatically."
+            android:textColor="#546E7A"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tvFileStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No file selected yet"
+            android:textColor="#78909C"
+            android:textStyle="italic"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:background="#F0F9FB"
+            android:padding="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✓  OCR text extraction"
+                android:textColor="#0F98B8"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✓  Clinical entity detection"
+                android:textColor="#0F98B8"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✓  Billing verification"
+                android:textColor="#0F98B8"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✓  Diagnosis cross-reference"
+                android:textColor="#0F98B8"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="16dp">
+
+        <Button
+            android:id="@+id/btnScanCamera"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Scan with Camera"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:backgroundTint="#0F98B8"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnUploadGallery"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Upload from Gallery"
+            android:textColor="#0F98B8"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textAllCaps="false"
+            android:backgroundTint="#FFFFFF"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnSubmitUpload"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Upload Document"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:backgroundTint="#2ECC71"
+            android:enabled="false"/>
+    </LinearLayout>
+</LinearLayout>

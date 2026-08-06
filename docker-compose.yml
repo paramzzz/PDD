@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: clearpath-ai-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - CLEARPATH_SECRET_KEY=clearpath_enterprise_secret_2026_key
+    restart: always
+
+  web:
+    image: nginx:alpine
+    container_name: clearpath-ai-web
+    ports:
+      - "3000:80"
+    volumes:
+      - ../pdd_prj/clear-path-web:/usr/share/nginx/html:ro
+    depends_on:
+      - backend
+    restart: always

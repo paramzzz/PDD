@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#EAF6F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#0F98B8"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Document Bundle Reader"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/tvBundleSubHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload · AI reads all documents as one package"
+            android:textColor="#DFF7FB"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="#33FFFFFF"
+                android:textColor="#DFF7FB"
+                android:text="1"
+                android:textSize="12sp"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doc Type"
+                android:textColor="#DFF7FB"
+                android:textSize="13sp"
+                android:layout_marginStart="6dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@android:color/white"
+                android:textColor="#0F98B8"
+                android:text="2"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginStart="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginStart="6dp" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="#33FFFFFF"
+                android:textColor="#DFF7FB"
+                android:text="3"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginStart="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capture"
+                android:textColor="#DFF7FB"
+                android:textSize="13sp"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SELECT PATIENT"
+        android:textStyle="bold"
+        android:textColor="#78909C"
+        android:textSize="13sp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBundlePatients"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"/>
+</LinearLayout>
