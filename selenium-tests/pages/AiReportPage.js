@@ -1,7 +1,7 @@
 const { By, until } = require('selenium-webdriver');
 const config = require('../config/config');
 
-class AiReportPage {
+class AIReportPage {
   constructor(driver) {
     this.driver = driver;
     this.container = By.id('mdms-viewer-tab-content');
@@ -12,10 +12,16 @@ class AiReportPage {
     return await el.getText();
   }
 
-  async isReportRendered() {
+  async verifyReportComponents() {
     const text = await this.getAiReportText();
-    return text.includes('AI BUNDLE CLINICAL INTELLIGENCE SUMMARY') && text.includes('AUTOMATED TREATMENT APPROVAL');
+    return {
+      hasBundleSummary: text.includes('AI BUNDLE CLINICAL INTELLIGENCE SUMMARY'),
+      hasApprovalDecision: text.includes('AUTOMATED TREATMENT APPROVAL'),
+      hasRiskScore: text.includes('AI RISK SCORING ENGINE'),
+      hasDiagnosis: text.includes('Primary Diagnosis'),
+      hasSymptoms: text.includes('Symptoms Detected')
+    };
   }
 }
 
-module.exports = AiReportPage;
+module.exports = AIReportPage;
