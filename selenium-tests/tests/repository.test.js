@@ -17,6 +17,7 @@ describe('📂 Module 5: Patient Document Repository', function () {
     loginPage = new LoginPage(driver);
     scanCenterPage = new ScanCenterPage(driver);
     await loginPage.open();
+    await loginPage.loginAsDoctor('Dr. Sarah Wilson');
     await scanCenterPage.openScanCenter();
   });
 

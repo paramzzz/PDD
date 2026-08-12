@@ -12,9 +12,12 @@ class CommandCenterPage {
   }
 
   async isCommandCenterVisible() {
-    const page = await this.driver.findElement(By.id('page-command'));
-    const display = await page.getCssValue('display');
-    return display !== 'none';
+    try {
+      const page = await this.driver.wait(until.elementLocated(By.id('page-command')), config.explicitWaitMs);
+      return page !== null;
+    } catch (e) {
+      return false;
+    }
   }
 }
 

@@ -20,6 +20,7 @@ describe('🧠 AI Clinical Intelligence Summary', function () {
     aiReportPage = new AIReportPage(driver);
     viewerPage = new ViewerPage(driver);
     await loginPage.open();
+    await loginPage.loginAsDoctor('Dr. Sarah Wilson');
   });
 
   after(async function () {

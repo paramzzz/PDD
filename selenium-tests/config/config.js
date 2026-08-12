@@ -4,7 +4,7 @@ const path = require('path');
 const webPath = path.resolve(__dirname, '../../clear-path-web/index.html').replace(/\\/g, '/');
 
 module.exports = {
-  baseUrl: process.env.BASE_URL || `file:///${webPath}`,
+  baseUrl: process.env.BASE_URL || 'http://localhost:3000',
   apiUrl: process.env.API_URL || 'http://127.0.0.1:8000',
   browser: process.env.BROWSER || 'chrome',
   headless: process.env.HEADLESS === 'true' || true,

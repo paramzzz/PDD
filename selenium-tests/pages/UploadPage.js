@@ -32,7 +32,24 @@ class UploadPage {
     await this.driver.sleep(400);
 
     await this.driver.executeScript("submitMDMSUpload()");
-    await this.driver.sleep(2500); // Wait for multi-step upload progress & auto viewer modal open
+    
+    // Wait explicitly for upload progress completion and auto-opening of viewer modal
+    await this.driver.wait(async () => {
+      try {
+        const isVisible = await this.driver.executeScript(`
+          const modal = document.getElementById('mdms-viewer-modal');
+          return modal && modal.style.display !== 'none';
+        `);
+        if (!isVisible) return false;
+        const text = await this.driver.executeScript(`
+          const el = document.getElementById('mdms-viewer-tab-content');
+          return el ? el.innerText : '';
+        `);
+        return text.includes('AI BUNDLE') || text.includes('AUTOMATED TREATMENT APPROVAL') || text.includes('AI RISK SCORING') || text.includes('scanned') || text.includes('Prescription') || text.includes('Lab Report') || text.includes('Document');
+      } catch (e) {
+        return false;
+      }
+    }, config.explicitWaitMs, 'Viewer modal failed to auto-open after document upload');
   }
 
   async closeUploadModal() {

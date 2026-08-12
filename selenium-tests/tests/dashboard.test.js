@@ -17,6 +17,7 @@ describe('📊 Module 3: Executive Dashboard Telemetry', function () {
     loginPage = new LoginPage(driver);
     dashboardPage = new DashboardPage(driver);
     await loginPage.open();
+    await loginPage.loginAsDoctor('Dr. Sarah Wilson');
   });
 
   after(async function () {

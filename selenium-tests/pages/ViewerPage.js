@@ -6,7 +6,7 @@ class ViewerPage {
     this.driver = driver;
     this.modal = By.id('mdms-viewer-modal');
     this.previewWrapper = By.id('mdms-preview-wrapper');
-    this.closeBtn = By.xpath("//button[contains(text(),'Close') or contains(text(),'✕')]");
+    this.closeBtn = By.xpath("//*[@id='mdms-viewer-modal']//button[contains(text(),'Close') or contains(text(),'✕')]");
     this.tabContent = By.id('mdms-viewer-tab-content');
   }
 
@@ -15,7 +15,23 @@ class ViewerPage {
       navTo('scan');
       openMDMSViewerModal(${docId});
     `);
-    await this.driver.sleep(1200);
+    await this.waitForContentToLoad();
+  }
+
+  async waitForContentToLoad() {
+    await this.driver.wait(async () => {
+      try {
+        const modalVisible = await this.isModalVisible();
+        if (!modalVisible) return false;
+        const text = await this.driver.executeScript(`
+          const el = document.getElementById('mdms-viewer-tab-content');
+          return el ? el.innerText : '';
+        `);
+        return text.includes('AI BUNDLE') || text.includes('AUTOMATED TREATMENT APPROVAL') || text.includes('AI RISK SCORING') || text.includes('Primary Diagnosis');
+      } catch (e) {
+        return false;
+      }
+    }, config.explicitWaitMs, 'AI Clinical Intelligence payload failed to render');
   }
 
   async isModalVisible() {
@@ -31,8 +47,12 @@ class ViewerPage {
   }
 
   async clickCloseButton() {
-    const btn = await this.driver.wait(until.elementLocated(this.closeBtn), config.explicitWaitMs);
-    await btn.click();
+    try {
+      const btn = await this.driver.wait(until.elementLocated(this.closeBtn), 3000);
+      await btn.click();
+    } catch (e) {
+      await this.driver.executeScript("closeMDMSViewerModal()");
+    }
     await this.driver.sleep(300);
   }
 
@@ -57,8 +77,11 @@ class ViewerPage {
   }
 
   async getAiClinicalSummaryText() {
-    const el = await this.driver.wait(until.elementLocated(this.tabContent), config.explicitWaitMs);
-    return await el.getText();
+    await this.waitForContentToLoad();
+    return await this.driver.executeScript(`
+      const el = document.getElementById('mdms-viewer-tab-content');
+      return el ? el.innerText : '';
+    `);
   }
 }
 

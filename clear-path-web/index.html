@@ -335,7 +335,7 @@ textarea.inp{height:90px;padding:14px 16px;resize:none}
       <input id="li-pass" class="inp" type="password" value="doctor123" placeholder="Enter your password"/>
     </div>
     <div id="li-err" style="color:var(--red);font-size:12px;margin-bottom:12px;display:none;background:rgba(255,69,58,.1);padding:8px 12px;border-radius:8px;border:1px solid rgba(255,69,58,.2)"></div>
-    <button class="btn btn-teal btn-full" onclick="doLogin()" style="height:52px;font-size:16px">
+    <button class="btn btn-teal btn-full" data-testid="login-button" onclick="doLogin()" style="height:52px;font-size:16px">
       <span>🔐</span> <span id="auth-btn-text">Sign In to Doctor Dashboard</span>
     </button>
     <div style="text-align:center;margin-top:16px">
@@ -368,6 +368,66 @@ textarea.inp{height:90px;padding:14px 16px;resize:none}
 <!-- ═══════════════════════ MAIN SHELL ════════════════════════ -->
 <div id="pg-main" class="page" style="flex-direction:column">
   <div id="mainFrame" style="flex:1;overflow-y:auto;overflow-x:hidden"></div>
+
+  <!-- PERMANENT GLOBAL MODALS IN MAIN SHELL -->
+  <div id="mdms-upload-modal" style="display:none;position:fixed;inset:0;background:rgba(5,10,24,.85);backdrop-filter:blur(10px);z-index:9000;align-items:center;justify-content:center;padding:20px">
+    <div class="glass" style="width:100%;max-width:540px;padding:24px;position:relative;border:1px solid var(--border)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <div style="font-size:18px;font-weight:700;color:var(--text)">📤 Upload Medical Document</div>
+        <button onclick="closeMDMSUploadModal()" style="background:none;border:none;color:var(--text2);cursor:pointer;font-size:20px">✕</button>
+      </div>
+      
+      <div style="margin-bottom:12px">
+        <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Target Patient *</div>
+        <select id="mdms-up-patient" class="inp" style="height:44px;font-size:13px">
+          <option value="1">Patient #1 — Ravi Sharma (CP-901)</option>
+          <option value="2">Patient #2 — Meera Nair (CP-902)</option>
+          <option value="3">Patient #3 — Arjun Patel (CP-903)</option>
+          <option value="4">Patient #4 — Sunita Verma (CP-904)</option>
+        </select>
+      </div>
+      
+      <div style="margin-bottom:12px">
+        <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Document Type *</div>
+        <select id="mdms-up-type" class="inp" style="height:44px;font-size:13px">
+          <option value="Prescription">Prescription</option>
+          <option value="Lab Report">Lab Report / Blood Work</option>
+          <option value="CBC">CBC Report</option>
+          <option value="MRI">MRI Brain / Spine Scan</option>
+          <option value="CT Scan">CT Scan Report</option>
+          <option value="X-Ray">Chest X-Ray / Radiograph</option>
+          <option value="ECG">ECG / Electrocardiogram</option>
+          <option value="Ultrasound">Ultrasound (USG)</option>
+          <option value="Insurance Document">Insurance Pre-Auth / Claim</option>
+          <option value="Discharge Summary">Discharge Summary</option>
+          <option value="Surgery Consent">Surgery Consent Form</option>
+          <option value="Referral Letter">Referral Letter</option>
+          <option value="Clinical Notes">Clinical Progress Notes</option>
+          <option value="Pathology Report">Pathology / Biopsy Report</option>
+          <option value="Pharmacy Bill">Pharmacy Bill</option>
+          <option value="Hospital Bill">Hospital Bill / Receipt</option>
+          <option value="Other Medical Document">Other Medical Document</option>
+        </select>
+      </div>
+
+      <div class="upload-zone" id="mdms-drop-zone" onclick="document.getElementById('mdms-file-inp').click()" style="padding:24px 16px;margin-bottom:16px">
+        <div style="font-size:36px;margin-bottom:8px">📄</div>
+        <div style="font-size:14px;font-weight:700;color:var(--text)">Click or drag medical files here</div>
+        <div style="font-size:11px;color:var(--text2);margin-top:4px">PDF, PNG, JPG, JPEG, TIFF, WEBP, DICOM</div>
+        <input id="mdms-file-inp" type="file" style="display:none" onchange="handleMDMSFileSelect(this.files)"/>
+      </div>
+      <div id="mdms-file-name-display" style="font-size:12px;color:var(--teal);margin-bottom:14px;text-align:center;font-weight:600">No file selected</div>
+
+      <button id="mdms-btn-submit-upload" data-testid="upload-button" onclick="submitMDMSUpload()" class="btn btn-teal btn-full" style="height:48px;font-size:15px">
+        🚀 Run AI Classification &amp; Upload
+      </button>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN DOCUMENT VIEWER MODAL (Phase 3) -->
+  <div id="mdms-viewer-modal" data-testid="image-viewer" style="display:none;position:fixed;inset:0;background:rgba(5,10,24,.95);backdrop-filter:blur(15px);z-index:9999;flex-direction:column">
+    <div id="mdms-viewer-modal-content" style="flex:1;display:flex;flex-direction:column;overflow:hidden"></div>
+  </div>
 
   <nav id="bottom-nav" style="pointer-events:auto">
     <button class="nav-item active" id="nb-home" onclick="navTo('home')">
@@ -419,7 +479,7 @@ textarea.inp{height:90px;padding:14px 16px;resize:none}
 
 <script>
 // ═══════════════ GLOBALS ════════════════════════════════════
-let API = (window.location.hostname && window.location.hostname !== 'localhost') 
+let API = (window.location.hostname) 
   ? `${window.location.protocol}//${window.location.hostname}:8000` 
   : 'http://127.0.0.1:8000';
 let doctorName=localStorage.getItem('cp_doctor')||'Doctor';
@@ -1387,66 +1447,6 @@ async function renderMDMSCenter(f) {
   <!-- MAIN MDMS CONTENT AREA -->
   <div id="mdms-content" class="scroll-area" style="padding-top:12px">
     <div style="text-align:center;padding:40px;color:var(--text3)">⏳ Loading Medical Document Repository...</div>
-  </div>
-
-  <!-- UPLOAD MODAL -->
-  <div id="mdms-upload-modal" style="display:none;position:fixed;inset:0;background:rgba(5,10,24,.85);backdrop-filter:blur(10px);z-index:9000;align-items:center;justify-content:center;padding:20px">
-    <div class="glass" style="width:100%;max-width:540px;padding:24px;position:relative;border:1px solid var(--border)">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-        <div style="font-size:18px;font-weight:700;color:var(--text)">📤 Upload Medical Document</div>
-        <button onclick="closeMDMSUploadModal()" style="background:none;border:none;color:var(--text2);cursor:pointer;font-size:20px">✕</button>
-      </div>
-      
-      <div style="margin-bottom:12px">
-        <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Target Patient *</div>
-        <select id="mdms-up-patient" class="inp" style="height:44px;font-size:13px">
-          <option value="1">Patient #1 — Ravi Sharma (CP-901)</option>
-          <option value="2">Patient #2 — Meera Nair (CP-902)</option>
-          <option value="3">Patient #3 — Arjun Patel (CP-903)</option>
-          <option value="4">Patient #4 — Sunita Verma (CP-904)</option>
-        </select>
-      </div>
-      
-      <div style="margin-bottom:12px">
-        <div style="font-size:12px;color:var(--text2);margin-bottom:4px">Document Type *</div>
-        <select id="mdms-up-type" class="inp" style="height:44px;font-size:13px">
-          <option value="Prescription">Prescription</option>
-          <option value="Lab Report">Lab Report / Blood Work</option>
-          <option value="CBC">CBC Report</option>
-          <option value="MRI">MRI Brain / Spine Scan</option>
-          <option value="CT Scan">CT Scan Report</option>
-          <option value="X-Ray">Chest X-Ray / Radiograph</option>
-          <option value="ECG">ECG / Electrocardiogram</option>
-          <option value="Ultrasound">Ultrasound (USG)</option>
-          <option value="Insurance Document">Insurance Pre-Auth / Claim</option>
-          <option value="Discharge Summary">Discharge Summary</option>
-          <option value="Surgery Consent">Surgery Consent Form</option>
-          <option value="Referral Letter">Referral Letter</option>
-          <option value="Clinical Notes">Clinical Progress Notes</option>
-          <option value="Pathology Report">Pathology / Biopsy Report</option>
-          <option value="Pharmacy Bill">Pharmacy Bill</option>
-          <option value="Hospital Bill">Hospital Bill / Receipt</option>
-          <option value="Other Medical Document">Other Medical Document</option>
-        </select>
-      </div>
-
-      <div class="upload-zone" id="mdms-drop-zone" onclick="document.getElementById('mdms-file-inp').click()" style="padding:24px 16px;margin-bottom:16px">
-        <div style="font-size:36px;margin-bottom:8px">📄</div>
-        <div style="font-size:14px;font-weight:700;color:var(--text)">Click or drag medical files here</div>
-        <div style="font-size:11px;color:var(--text2);margin-top:4px">PDF, PNG, JPG, JPEG, TIFF, WEBP, DICOM</div>
-        <input id="mdms-file-inp" type="file" style="display:none" onchange="handleMDMSFileSelect(this.files)"/>
-      </div>
-      <div id="mdms-file-name-display" style="font-size:12px;color:var(--teal);margin-bottom:14px;text-align:center;font-weight:600">No file selected</div>
-
-      <button id="mdms-btn-submit-upload" onclick="submitMDMSUpload()" class="btn btn-teal btn-full" style="height:48px;font-size:15px">
-        🚀 Run AI Classification &amp; Upload
-      </button>
-    </div>
-  </div>
-
-  <!-- FULLSCREEN DOCUMENT VIEWER MODAL (Phase 3) -->
-  <div id="mdms-viewer-modal" style="display:none;position:fixed;inset:0;background:rgba(5,10,24,.95);backdrop-filter:blur(15px);z-index:9999;flex-direction:column">
-    <div id="mdms-viewer-modal-content" style="flex:1;display:flex;flex-direction:column;overflow:hidden"></div>
   </div>`;
 
   // Fetch initial patient list & load active patient repository
@@ -1601,7 +1601,7 @@ function renderMDMSDocumentCardHTML(d) {
   const docIcon = getDocumentTypeIcon(d.classification || d.document_type);
 
   return `
-  <div class="glass" style="padding:16px;display:flex;flex-direction:column;justify-content:space-between;position:relative;border:1px solid ${isMed ? 'var(--border)' : 'rgba(255,69,58,.4)'};background:${isMed ? 'var(--glass)' : 'rgba(255,69,58,.04)'}">
+  <div class="glass mdms-doc-card" style="padding:16px;display:flex;flex-direction:column;justify-content:space-between;position:relative;border:1px solid ${isMed ? 'var(--border)' : 'rgba(255,69,58,.4)'};background:${isMed ? 'var(--glass)' : 'rgba(255,69,58,.04)'}">
     <div>
       <!-- TOP BADGES -->
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:6px;margin-bottom:10px">
@@ -1898,7 +1898,7 @@ function renderAIClinicalSummaryHTML(v) {
 
   return `
   <!-- LARGE AI BUNDLE SUMMARY CARD -->
-  <div style="background:linear-gradient(135deg,rgba(10,132,255,.15),rgba(191,90,242,.15));border:1px solid var(--blue);border-radius:14px;padding:16px;margin-bottom:16px">
+  <div data-testid="ai-summary" style="background:linear-gradient(135deg,rgba(10,132,255,.15),rgba(191,90,242,.15));border:1px solid var(--blue);border-radius:14px;padding:16px;margin-bottom:16px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
       <div style="font-size:11px;font-weight:800;color:var(--teal);letter-spacing:1px;text-transform:uppercase">✨ AI BUNDLE CLINICAL INTELLIGENCE SUMMARY</div>
       <span class="badge badge-purple" style="font-size:10px">Multi-Doc Case Synthesis</span>
@@ -1909,7 +1909,7 @@ function renderAIClinicalSummaryHTML(v) {
   </div>
 
   <!-- AUTOMATED TREATMENT APPROVAL DECISION CARD -->
-  <div style="${appBadgeClass};border-radius:14px;padding:16px;margin-bottom:16px;text-align:center">
+  <div data-testid="approval-status" style="${appBadgeClass};border-radius:14px;padding:16px;margin-bottom:16px;text-align:center">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
       <span style="font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:0.9">AUTOMATED TREATMENT APPROVAL</span>
       <span style="font-size:11px;font-weight:800;background:rgba(255,255,255,.2);padding:3px 8px;border-radius:12px">AI Confidence: ${confidence}%</span>
@@ -1921,7 +1921,7 @@ function renderAIClinicalSummaryHTML(v) {
   </div>
 
   <!-- AI RISK SCORE & RATIONALE CARD -->
-  <div class="glass2" style="padding:16px;border-radius:12px;margin-bottom:16px;background:rgba(255,255,255,.02)">
+  <div data-testid="risk-score" class="glass2" style="padding:16px;border-radius:12px;margin-bottom:16px;background:rgba(255,255,255,.02)">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
       <div>
         <div style="font-size:11px;color:var(--text2);font-weight:700">AI RISK SCORING ENGINE</div>
@@ -2171,6 +2171,14 @@ async function loadMDMSSearch() {
   }
 }
 
+function searchMDMSDocuments(query) {
+  if (query !== undefined && query !== null) {
+    const inp = document.getElementById('mdms-search-input');
+    if (inp) inp.value = query;
+  }
+  loadMDMSSearch();
+}
+
 // ═══════════════ UPLOAD MODAL ACTIONS ═══════════════
 function openMDMSUploadModal() {
   document.getElementById('mdms-upload-modal').style.display = 'flex';
@@ -2264,7 +2272,7 @@ async function submitMDMSUpload() {
 <script>
 // ═══════════════ HOSPITAL COMMAND CENTER ═════════════════════
 async function renderCommand(f){
-  f.innerHTML=`
+  f.innerHTML=`<div id="page-command" data-testid="command-center" style="width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden">
   <div class="sec-hdr">
     <div style="display:flex;justify-content:space-between;align-items:flex-start">
       <div>
@@ -2393,7 +2401,7 @@ async function renderCommand(f){
       </div>
       <div id="cc-emergency-list"><div style="color:var(--text3);font-size:13px">Loading emergency cases...</div></div>
     </div>
-  </div>`;
+  </div></div>`;
 
   // Render Interactive Hospital Bed & Risk Density Grid
   const hm=document.getElementById('heatmap');

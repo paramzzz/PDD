@@ -712,6 +712,10 @@ class NurseSubmitResponseModel(BaseModel):
 
 # --- ENDPOINTS ---
 
+@app.get("/health")
+def health_check():
+    return {"status": "ok", "service": "clear-path-backend"}
+
 @app.post("/signup")
 def signup(data: SignupModel):
     conn = get_db_connection()

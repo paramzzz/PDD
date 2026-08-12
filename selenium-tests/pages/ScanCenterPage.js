@@ -31,21 +31,31 @@ class ScanCenterPage {
       if (sel) { sel.value = '${patientId}'; sel.dispatchEvent(new Event('change')); }
       loadMDMSRepository(${patientId});
     `);
-    await this.driver.sleep(500);
+    await this.driver.wait(until.elementsLocated(this.docCards), config.explicitWaitMs, 'Document cards failed to load for patient');
   }
 
   async getDocumentCardsCount() {
-    const cards = await this.driver.findElements(this.docCards);
-    return cards.length;
+    try {
+      const cards = await this.driver.wait(until.elementsLocated(this.docCards), config.explicitWaitMs);
+      return cards.length;
+    } catch (e) {
+      const cards = await this.driver.findElements(this.docCards);
+      return cards.length;
+    }
   }
 
   async searchDocuments(query) {
     await this.switchTab('search');
     await this.driver.executeScript(`
       const inp = document.getElementById('mdms-search-input');
-      if (inp) { inp.value = '${query}'; searchMDMSDocuments(); }
+      if (inp) { inp.value = '${query}'; }
+      if (typeof searchMDMSDocuments === 'function') {
+        searchMDMSDocuments('${query}');
+      } else {
+        loadMDMSSearch();
+      }
     `);
-    await this.driver.sleep(500);
+    await this.driver.sleep(600);
   }
 }
 

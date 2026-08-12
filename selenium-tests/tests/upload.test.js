@@ -27,6 +27,7 @@ describe('🚀 Module 6: Medical Document Upload Workflow', function () {
     viewerPage = new ViewerPage(driver);
     
     await loginPage.open();
+    await loginPage.loginAsDoctor('Dr. Sarah Wilson');
     await scanCenterPage.openScanCenter();
   });
 

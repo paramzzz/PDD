@@ -8,8 +8,21 @@ class AIReportPage {
   }
 
   async getAiReportText() {
-    const el = await this.driver.wait(until.elementLocated(this.container), config.explicitWaitMs);
-    return await el.getText();
+    await this.driver.wait(async () => {
+      try {
+        const text = await this.driver.executeScript(`
+          const el = document.getElementById('mdms-viewer-tab-content');
+          return el ? el.innerText : '';
+        `);
+        return text.includes('AI BUNDLE') || text.includes('AUTOMATED TREATMENT APPROVAL') || text.includes('AI RISK SCORING');
+      } catch (e) {
+        return false;
+      }
+    }, config.explicitWaitMs, 'AI Clinical Summary text failed to load');
+    return await this.driver.executeScript(`
+      const el = document.getElementById('mdms-viewer-tab-content');
+      return el ? el.innerText : '';
+    `);
   }
 
   async verifyReportComponents() {

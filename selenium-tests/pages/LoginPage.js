@@ -14,21 +14,28 @@ class LoginPage {
   async open() {
     await this.driver.get(config.baseUrl);
     await this.driver.wait(until.elementLocated(By.tagName('body')), config.explicitWaitMs);
+    await this.driver.executeScript(`
+      show('pg-main');
+      if (typeof navTo === 'function') navTo('home');
+    `);
   }
 
   async loginAsDoctor(doctorName = 'Dr. Sarah Wilson') {
-    await this.setRole('DOCTOR');
+    await this.setRole('DOCTOR', doctorName);
   }
 
   async loginAsNurse(nurseName = 'Priya Nair') {
-    await this.setRole('NURSE');
+    await this.setRole('NURSE', nurseName);
   }
 
-  async setRole(roleName) {
+  async setRole(roleName, userName = 'Dr. Sarah Wilson') {
     const roleUpper = roleName.toUpperCase();
     await this.driver.executeScript(`
       localStorage.setItem('cp_role', '${roleUpper}');
-      if (typeof switchRole === 'function') switchRole('${roleUpper}');
+      localStorage.setItem('cp_doctor', '${userName}');
+      doctorName = '${userName}';
+      show('pg-main');
+      if (typeof navTo === 'function') navTo('home');
     `);
   }
 

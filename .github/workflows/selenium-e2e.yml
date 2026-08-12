@@ -47,17 +47,24 @@ jobs:
           cd clear-path-backend/clear-path-backend
           python -m uvicorn main:app --host 127.0.0.1 --port 8000 &
           echo "Waiting for FastAPI backend port 8000 readiness..."
-          until curl -s http://127.0.0.1:8000/docs > /dev/null; do sleep 1; done
+          until curl -s http://127.0.0.1:8000/health > /dev/null; do sleep 1; done
           echo "✅ FastAPI Backend is Online!"
+
+      - name: 🌐 Start HTTP Web Server for Frontend
+        run: |
+          python -m http.server 3000 --directory clear-path-web &
+          echo "Waiting for HTTP Frontend port 3000 readiness..."
+          until curl -s http://localhost:3000 > /dev/null; do sleep 1; done
+          echo "✅ Frontend Web Server is Online!"
 
       - name: 🧪 Execute Selenium E2E Test Suite
         env:
-          BASE_URL: file://${{ github.workspace }}/clear-path-web/index.html
+          BASE_URL: http://localhost:3000
           API_URL: http://127.0.0.1:8000
           HEADLESS: "true"
         run: |
           cd selenium-tests
-          npm test || true
+          npm test
           npm run excel
 
       - name: 📤 Upload Test Reports & Artifacts

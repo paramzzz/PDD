@@ -34,24 +34,38 @@ class DashboardPage {
     await this.driver.sleep(300);
   }
 
+  async waitForStatToPopulate(id) {
+    await this.driver.wait(async () => {
+      try {
+        const text = await this.driver.executeScript(`
+          const el = document.getElementById('${id}');
+          return el ? el.innerText.trim() : '';
+        `);
+        return text !== '' && text !== '—';
+      } catch (e) {
+        return false;
+      }
+    }, config.explicitWaitMs, 'Dashboard stat card value failed to populate');
+  }
+
   async getCriticalCount() {
-    const el = await this.driver.findElement(this.criticalStatNum);
-    return await el.getText();
+    await this.waitForStatToPopulate('ds-stat');
+    return await this.driver.executeScript("return document.getElementById('ds-stat')?.innerText.trim() || '';");
   }
 
   async getPendingCount() {
-    const el = await this.driver.findElement(this.pendingStatNum);
-    return await el.getText();
+    await this.waitForStatToPopulate('ds-pending');
+    return await this.driver.executeScript("return document.getElementById('ds-pending')?.innerText.trim() || '';");
   }
 
   async getClearedCount() {
-    const el = await this.driver.findElement(this.clearedStatNum);
-    return await el.getText();
+    await this.waitForStatToPopulate('ds-cleared');
+    return await this.driver.executeScript("return document.getElementById('ds-cleared')?.innerText.trim() || '';");
   }
 
   async getAvgTime() {
-    const el = await this.driver.findElement(this.avgTimeStatNum);
-    return await el.getText();
+    await this.waitForStatToPopulate('ds-active');
+    return await this.driver.executeScript("return document.getElementById('ds-active')?.innerText.trim() || '';");
   }
 }
 

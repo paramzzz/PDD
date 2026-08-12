@@ -17,6 +17,7 @@ describe('🚨 Emergency Priority Engine', function () {
     loginPage = new LoginPage(driver);
     viewerPage = new ViewerPage(driver);
     await loginPage.open();
+    await loginPage.loginAsDoctor('Dr. Sarah Wilson');
   });
 
   after(async function () {
