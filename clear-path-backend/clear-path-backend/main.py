@@ -3,7 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
-import pymysql
+try:
+    import psycopg2
+    from psycopg2.extras import RealDictCursor
+    HAS_POSTGRES = True
+except ImportError:
+    HAS_POSTGRES = False
 import sqlite3
 import os
 import time
@@ -65,49 +70,24 @@ def ensure_sample_files():
 ensure_sample_files()
 
 # --- DATABASE CONNECTION & FALLBACK ENGINE ---
-USE_SQLITE = False
-DB_NAME_MYSQL = "clearpath_ai"
+DATABASE_URL = os.getenv("DATABASE_URL")
 SQLITE_DB_PATH = os.path.join(BASE_DIR, "clearpath_ai.db")
+USE_SQLITE = True
 
 def get_db_connection():
     global USE_SQLITE
-    if not USE_SQLITE:
+    if DATABASE_URL and HAS_POSTGRES:
         try:
-            conn = pymysql.connect(
-                host="localhost",
-                user="root",
-                password="root",
-                database=DB_NAME_MYSQL,
-                autocommit=True
-            )
+            conn = psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
+            conn.autocommit = True
+            USE_SQLITE = False
             return conn
         except Exception:
-            try:
-                conn = pymysql.connect(
-                    host="localhost",
-                    user="root",
-                    password="root123",
-                    database=DB_NAME_MYSQL,
-                    autocommit=True
-                )
-                return conn
-            except Exception:
-                try:
-                    conn_raw = pymysql.connect(host="localhost", user="root", password="root", autocommit=True)
-                    conn_raw.cursor().execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME_MYSQL}")
-                    conn_raw.close()
-                    return pymysql.connect(host="localhost", user="root", password="root", database=DB_NAME_MYSQL, autocommit=True)
-                except Exception:
-                    try:
-                        conn_raw = pymysql.connect(host="localhost", user="root", password="root123", autocommit=True)
-                        conn_raw.cursor().execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME_MYSQL}")
-                        conn_raw.close()
-                        return pymysql.connect(host="localhost", user="root", password="root123", database=DB_NAME_MYSQL, autocommit=True)
-                    except Exception:
-                        USE_SQLITE = True
+            USE_SQLITE = True
 
     conn = sqlite3.connect(SQLITE_DB_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
+    USE_SQLITE = True
     return conn
 
 def ensure_patient_columns(cursor, is_sqlite=False):
@@ -828,7 +808,7 @@ def get_patient_details():
                     "assigned_nurse_name": "Priya Nair (NUR-1007)"
                 })
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT id, full_name, age, gender, chief_complaint, initial_risk, bp, hr, temperature, spo2,
                    insurance_provider, policy_number, insurance_status, finance_status, clinical_status, pre_op_status, approval_status
@@ -881,7 +861,7 @@ def get_single_patient_detail(id: int):
             cursor.execute("SELECT * FROM patients WHERE id=?", (id,))
             row = cursor.fetchone()
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("SELECT * FROM patients WHERE id=%s", (id,))
             row = cursor.fetchone()
             
@@ -934,7 +914,7 @@ def get_all_nurses():
             rows = cursor.fetchall()
             return [{"id": r[0], "nurse_id": r[1], "name": r[2], "email": r[3], "department": r[4], "hospital_unit": r[5], "shift": r[6], "availability_status": r[7], "assigned_patients_count": r[8]} for r in rows]
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("SELECT id, nurse_id, name, email, department, hospital_unit, shift, availability_status, assigned_patients_count FROM nurses")
             return cursor.fetchall()
     finally:
@@ -1012,7 +992,7 @@ def get_assigned_nurse_requests(nurse_id: Optional[str] = "NUR-1007"):
                 "chief_complaint": row["chief_complaint"] or ""
             } for row in rows]
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT r.id, r.patient_id, r.case_id, r.doctor_id, r.doctor_name, r.nurse_id, r.request_text, r.priority, r.status, r.created_at, p.full_name as patient_name, p.chief_complaint
             FROM nurse_requests r
@@ -1113,7 +1093,7 @@ def get_user_notifications(role: Optional[str] = "DOCTOR", user_id: Optional[int
                 "is_read": r["is_read"], "created_at": r["created_at"]
             } for r in rows]
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT id, type, title, message, patient_id, case_id, priority, is_read, created_at
             FROM notifications
@@ -1141,7 +1121,7 @@ def process_copilot_query(req: CopilotQueryRequest):
             row = cursor.fetchone()
             if row: patient = dict(row)
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("SELECT * FROM patients WHERE id=%s", (pid,))
             patient = cursor.fetchone()
             
@@ -1814,7 +1794,7 @@ def get_pending_document_approvals():
             rows = cursor.fetchall()
             return [dict(row) for row in rows]
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT id, patient_id, patient_name, document_name, document_type, uploaded_by_role, uploaded_by_name, verification_status, created_at
             FROM document_verifications
@@ -1914,7 +1894,7 @@ def get_dashboard_stats():
             cursor.execute("SELECT COUNT(*) FROM patients WHERE LOWER(approval_status) = 'approved'")
             cleared_count = cursor.fetchone()[0]
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("SELECT COUNT(*) as count FROM patients WHERE UPPER(initial_risk) = 'STAT'")
             stat_count = cursor.fetchone()["count"]
             cursor.execute("SELECT COUNT(*) as count FROM patients")
@@ -1961,7 +1941,7 @@ def get_critical_cases_dashboard():
                 result.append(d)
             return result
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT p.*, n.name as assigned_nurse_name, n.department
             FROM patients p
@@ -2012,7 +1992,7 @@ def get_cleared_cases_dashboard():
                 result.append(d)
             return result
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT p.*
             FROM patients p
@@ -2069,7 +2049,7 @@ def get_critical_patient_deep_detail(patient_id: int):
             if not row: raise HTTPException(status_code=404, detail="Patient not found")
             d = dict(row)
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("SELECT * FROM patients WHERE id=%s", (patient_id,))
             row = cursor.fetchone()
             if not row: raise HTTPException(status_code=404, detail="Patient not found")
@@ -2115,7 +2095,7 @@ def get_pending_documents_full():
                 result.append(d)
             return result
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT dv.*, p.age, p.gender, p.chief_complaint, p.initial_risk, p.bp, p.hr, p.spo2, p.insurance_provider, p.insurance_status
             FROM document_verifications dv
@@ -2154,7 +2134,7 @@ def get_document_by_id(doc_id: int):
             d["file_url"] = f"/uploads/{d['document_name']}"
             return d
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT dv.*, p.age, p.gender, p.chief_complaint, p.initial_risk, p.bp, p.hr, p.spo2, p.temperature, p.insurance_provider, p.policy_number, p.insurance_status, p.clinical_status, p.pre_op_status
             FROM document_verifications dv
@@ -2235,7 +2215,7 @@ def get_patient_documents_repository(
             rows = cursor.fetchall()
             docs = [dict(r) for r in rows]
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute(sql_mysql, (patient_id,))
             docs = cursor.fetchall()
             
@@ -2504,7 +2484,7 @@ def get_patient_timeline_api(patient_id: int):
             """, (patient_id,))
             docs = [dict(r) for r in cursor.fetchall()]
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT id, document_name, document_type, classification, uploaded_by_name, uploaded_by_role, verification_status, created_at, reviewed_at, reviewed_by_doctor
             FROM document_verifications
@@ -2670,7 +2650,7 @@ def search_documents_api(
             rows = cursor.fetchall()
             all_results = [dict(r) for r in rows]
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute(sql_mysql, tuple(params))
             all_results = cursor.fetchall()
 
@@ -2776,7 +2756,7 @@ def get_archived_documents_api():
             rows = cursor.fetchall()
             return [dict(r) for r in rows]
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT dv.*, p.full_name as patient_name
             FROM document_verifications dv
@@ -2806,7 +2786,7 @@ def get_document_versions_api(doc_id: int):
             rows = cursor.fetchall()
             versions = [dict(r) for r in rows]
         else:
-            cursor = conn.cursor(pymysql.cursors.DictCursor)
+            cursor = conn.cursor(RealDictCursor if HAS_POSTGRES else None)
             cursor.execute("""
             SELECT * FROM document_verifications
             WHERE patient_id = %s AND (document_name = %s OR duplicate_of = %s OR id = %s)
