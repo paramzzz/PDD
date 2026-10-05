@@ -25,3 +25,7 @@ Thumbs.db
 
 # Temporary logs
 *.log
+
+# Load Test Binaries
+load-tests/bin/
+
