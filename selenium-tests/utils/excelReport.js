@@ -4,20 +4,22 @@ const path = require('path');
 const config = require('../config/test.config');
 
 const excelDir = config.paths.reportsExcel;
+const htmlDir = config.paths.reportsHtml;
+
 if (!fs.existsSync(excelDir)) {
   fs.mkdirSync(excelDir, { recursive: true });
 }
 
 async function generateExcelReport(resultsData) {
   const workbook = new ExcelJS.Workbook();
-  workbook.creator = 'ClearPath QA Automated Suite';
-  workbook.lastModifiedBy = 'ClearPath QA Automated Suite';
+  workbook.creator = 'ClearPath Selenium E2E QA Framework';
+  workbook.lastModifiedBy = 'ClearPath Selenium E2E QA Framework';
   workbook.created = new Date();
 
   const headerFill = {
     type: 'pattern',
     pattern: 'solid',
-    fgColor: { argb: 'FF1B365D' }
+    fgColor: { argb: 'FF1B365D' } // Dark Navy
   };
 
   const headerFont = {
@@ -30,13 +32,13 @@ async function generateExcelReport(resultsData) {
   const passFill = {
     type: 'pattern',
     pattern: 'solid',
-    fgColor: { argb: 'FFD4EDDA' }
+    fgColor: { argb: 'FFD4EDDA' } // Light Green
   };
 
   const failFill = {
     type: 'pattern',
     pattern: 'solid',
-    fgColor: { argb: 'FFF8D7DA' }
+    fgColor: { argb: 'FFF8D7DA' } // Light Red
   };
 
   const border = {
@@ -47,7 +49,7 @@ async function generateExcelReport(resultsData) {
   };
 
   const {
-    testSuiteName = 'CLEAR PATH Web Application — Full E2E Workflow',
+    testSuiteName = 'CLEAR PATH Web Application — Selenium E2E Test Suite',
     startTime = new Date().toISOString(),
     endTime = new Date().toISOString(),
     durationSec = 0,
@@ -63,9 +65,11 @@ async function generateExcelReport(resultsData) {
   // ---------------------------------------------------------
   // SHEET 1: SUMMARY
   // ---------------------------------------------------------
-  const wsSummary = workbook.addWorksheet('Summary');
+  const wsSummary = workbook.addWorksheet('Summary', {
+    views: [{ state: 'frozen', ySplit: 1 }]
+  });
   wsSummary.columns = [
-    { header: 'Test Suite', key: 'suite', width: 45 },
+    { header: 'Test Suite', key: 'suite', width: 50 },
     { header: 'Total Tests', key: 'total', width: 15 },
     { header: 'Passed', key: 'passed', width: 15 },
     { header: 'Failed', key: 'failed', width: 15 },
@@ -74,6 +78,8 @@ async function generateExcelReport(resultsData) {
     { header: 'Start Time', key: 'startTime', width: 25 },
     { header: 'End Time', key: 'endTime', width: 25 }
   ];
+
+  wsSummary.autoFilter = 'A1:H1';
 
   wsSummary.getRow(1).eachCell((cell) => {
     cell.fill = headerFill;
@@ -94,12 +100,15 @@ async function generateExcelReport(resultsData) {
 
   wsSummary.getRow(2).eachCell((cell) => {
     cell.border = border;
+    cell.alignment = { vertical: 'middle' };
   });
 
   // ---------------------------------------------------------
   // SHEET 2: PASSED TESTS
   // ---------------------------------------------------------
-  const wsPassed = workbook.addWorksheet('Passed Tests');
+  const wsPassed = workbook.addWorksheet('Passed Tests', {
+    views: [{ state: 'frozen', ySplit: 1 }]
+  });
   wsPassed.columns = [
     { header: 'No.', key: 'num', width: 10 },
     { header: 'Category', key: 'category', width: 25 },
@@ -107,6 +116,8 @@ async function generateExcelReport(resultsData) {
     { header: 'Time (sec)', key: 'time', width: 15 },
     { header: 'Status', key: 'status', width: 15 }
   ];
+
+  wsPassed.autoFilter = 'A1:E1';
 
   wsPassed.getRow(1).eachCell((cell) => {
     cell.fill = headerFill;
@@ -124,9 +135,11 @@ async function generateExcelReport(resultsData) {
     });
     row.eachCell((cell, colNum) => {
       cell.border = border;
+      cell.alignment = { vertical: 'middle' };
       if (colNum === 5) {
         cell.fill = passFill;
         cell.font = { bold: true, color: { argb: 'FF155724' } };
+        cell.alignment = { horizontal: 'center', vertical: 'middle' };
       }
     });
   });
@@ -134,15 +147,19 @@ async function generateExcelReport(resultsData) {
   // ---------------------------------------------------------
   // SHEET 3: FAILED TESTS
   // ---------------------------------------------------------
-  const wsFailed = workbook.addWorksheet('Failed Tests');
+  const wsFailed = workbook.addWorksheet('Failed Tests', {
+    views: [{ state: 'frozen', ySplit: 1 }]
+  });
   wsFailed.columns = [
     { header: 'No.', key: 'num', width: 10 },
     { header: 'Category', key: 'category', width: 25 },
     { header: 'Test Name', key: 'name', width: 40 },
-    { header: 'Error', key: 'error', width: 50 },
+    { header: 'Error', key: 'error', width: 55 },
     { header: 'Status', key: 'status', width: 15 },
     { header: 'Timestamp', key: 'timestamp', width: 25 }
   ];
+
+  wsFailed.autoFilter = 'A1:F1';
 
   wsFailed.getRow(1).eachCell((cell) => {
     cell.fill = headerFill;
@@ -161,9 +178,11 @@ async function generateExcelReport(resultsData) {
     });
     row.eachCell((cell, colNum) => {
       cell.border = border;
+      cell.alignment = { vertical: 'middle', wrapText: true };
       if (colNum === 5) {
         cell.fill = failFill;
         cell.font = { bold: true, color: { argb: 'FF721C24' } };
+        cell.alignment = { horizontal: 'center', vertical: 'middle' };
       }
     });
   });
@@ -171,12 +190,16 @@ async function generateExcelReport(resultsData) {
   // ---------------------------------------------------------
   // SHEET 4: EXECUTION LOG
   // ---------------------------------------------------------
-  const wsLog = workbook.addWorksheet('Execution Log');
+  const wsLog = workbook.addWorksheet('Execution Log', {
+    views: [{ state: 'frozen', ySplit: 1 }]
+  });
   wsLog.columns = [
     { header: 'Timestamp', key: 'timestamp', width: 25 },
     { header: 'Level', key: 'level', width: 12 },
-    { header: 'Message', key: 'message', width: 70 }
+    { header: 'Message', key: 'message', width: 75 }
   ];
+
+  wsLog.autoFilter = 'A1:C1';
 
   wsLog.getRow(1).eachCell((cell) => {
     cell.fill = headerFill;
@@ -190,22 +213,31 @@ async function generateExcelReport(resultsData) {
       level: logItem.level || 'INFO',
       message: logItem.message || ''
     });
-    row.eachCell((cell) => {
+    row.eachCell((cell, colNum) => {
       cell.border = border;
+      cell.alignment = { vertical: 'middle', wrapText: colNum === 3 };
+      if (colNum === 2) {
+        cell.font = { bold: true, color: { argb: logItem.level === 'ERROR' ? 'FF721C24' : 'FF004085' } };
+        cell.alignment = { horizontal: 'center', vertical: 'middle' };
+      }
     });
   });
 
   // ---------------------------------------------------------
   // SHEET 5: TEST DETAILS
   // ---------------------------------------------------------
-  const wsDetails = workbook.addWorksheet('Test Details');
+  const wsDetails = workbook.addWorksheet('Test Details', {
+    views: [{ state: 'frozen', ySplit: 1 }]
+  });
   wsDetails.columns = [
     { header: 'No.', key: 'num', width: 10 },
     { header: 'Category', key: 'category', width: 25 },
     { header: 'Test Name', key: 'name', width: 40 },
     { header: 'Status', key: 'status', width: 15 },
-    { header: 'Error Details', key: 'errorDetails', width: 60 }
+    { header: 'Error Details', key: 'errorDetails', width: 65 }
   ];
+
+  wsDetails.autoFilter = 'A1:E1';
 
   wsDetails.getRow(1).eachCell((cell) => {
     cell.fill = headerFill;
@@ -223,24 +255,54 @@ async function generateExcelReport(resultsData) {
     });
     row.eachCell((cell, colNum) => {
       cell.border = border;
+      cell.alignment = { vertical: 'middle', wrapText: colNum === 5 };
       if (colNum === 4) {
         cell.fill = t.status === 'PASSED' ? passFill : failFill;
         cell.font = { bold: true, color: { argb: t.status === 'PASSED' ? 'FF155724' : 'FF721C24' } };
+        cell.alignment = { horizontal: 'center', vertical: 'middle' };
       }
     });
   });
 
-  // Save workbook
-  const mainReportPath = path.join(excelDir, 'ClearPath_E2E_Test_Report.xlsx');
-  const nowStr = new Date().toISOString().replace(/[-:]/g, '-').replace('T', '_').slice(0, 19);
-  const stampedReportPath = path.join(excelDir, `ClearPath_E2E_Test_Report_${nowStr}.xlsx`);
+  // ---------------------------------------------------------
+  // SAVE WORKBOOK FILES
+  // ---------------------------------------------------------
+  const primaryReportPath = path.join(excelDir, 'ClearPath_Selenium_E2E_Test_Report.xlsx');
+  const legacyReportPath = path.join(excelDir, 'ClearPath_E2E_Test_Report.xlsx');
+  
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const dd = String(now.getDate()).padStart(2, '0');
+  const hh = String(now.getHours()).padStart(2, '0');
+  const min = String(now.getMinutes()).padStart(2, '0');
+  const ss = String(now.getSeconds()).padStart(2, '0');
+  const timestampStr = `${yyyy}-${mm}-${dd}_${hh}-${min}-${ss}`;
+  
+  const timestampedReportPath = path.join(excelDir, `ClearPath_Selenium_E2E_Test_Report_${timestampStr}.xlsx`);
 
-  await workbook.xlsx.writeFile(mainReportPath);
-  await workbook.xlsx.writeFile(stampedReportPath);
+  await workbook.xlsx.writeFile(primaryReportPath);
+  await workbook.xlsx.writeFile(legacyReportPath);
+  await workbook.xlsx.writeFile(timestampedReportPath);
 
-  console.log(`[OK] Excel Report generated at: ${mainReportPath}`);
-  console.log(`[OK] Timestamped Excel generated at: ${stampedReportPath}`);
-  return mainReportPath;
+  console.log(`[OK] Primary Excel Report generated at: ${primaryReportPath}`);
+  console.log(`[OK] Legacy Excel Report generated at: ${legacyReportPath}`);
+  console.log(`[OK] Timestamped Excel generated at: ${timestampedReportPath}`);
+
+  // Sync Mochawesome HTML to ClearPath_Selenium_E2E_Test_Report.html if available
+  try {
+    const mochawesomeHtml = path.join(htmlDir, 'mochawesome.html');
+    const customHtml = path.join(htmlDir, 'ClearPath_Selenium_E2E_Test_Report.html');
+    if (fs.existsSync(mochawesomeHtml)) {
+      fs.copyFileSync(mochawesomeHtml, customHtml);
+      console.log(`[OK] HTML Report synced to: ${customHtml}`);
+    }
+  } catch (htmlErr) {
+    console.warn(`[WARN] HTML report copy warning: ${htmlErr.message}`);
+  }
+
+  return primaryReportPath;
 }
 
 module.exports = { generateExcelReport };
+

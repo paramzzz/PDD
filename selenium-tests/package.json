@@ -7,6 +7,7 @@
     "test": "mocha tests/*.test.js --file utils/mochaHooks.js --timeout 120000 --reporter mochawesome --reporter-options reportDir=reports/html,reportFilename=mochawesome",
     "test:e2e": "mocha tests/complete_end_to_end.test.js --file utils/mochaHooks.js --timeout 120000",
     "report": "node utils/excelReporter.js",
+    "excel": "node utils/excelReporter.js",
     "test:all": "mocha tests/*.test.js --file utils/mochaHooks.js --timeout 120000"
   },
   "keywords": [
