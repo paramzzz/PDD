@@ -78,7 +78,7 @@ jobs:
         id: report_gen
         run: |
           cd load-tests
-          python utils/generate_excel_report.py
+          python utils/generate_excel_report.py || true
 
       - name: 📤 Upload Performance Reports & Artifacts
         uses: actions/upload-artifact@v4
@@ -86,22 +86,27 @@ jobs:
         with:
           name: CLEAR-PATH-LOAD-TEST-REPORT
           path: |
-            load-tests/reports/excel/ClearPath_Load_Test_Report.xlsx
-            load-tests/reports/html/ClearPath_Load_Test_Report.html
-            load-tests/reports/json/ClearPath_Load_Test_Raw.json
+            load-tests/reports/excel/
+            load-tests/reports/html/
+            load-tests/reports/json/
             clear-path-backend/clear-path-backend/backend.log
+          if-no-files-found: warn
           retention-days: 30
 
-      - name: 📋 Display Load Testing Summary
+      - name: 📋 Generate GitHub Job Summary
         if: always()
         run: |
-          echo "================================================="
-          echo "CLEAR PATH BASELINE LOAD TESTING CI/CD REPORT"
-          echo "================================================="
-          echo "Target Backend     : http://127.0.0.1:8000"
-          echo "Virtual Users      : 100 VUs (Peak)"
-          echo "Duration           : 60 Seconds"
-          echo "Excel Report Path  : load-tests/reports/excel/ClearPath_Load_Test_Report.xlsx"
-          echo "HTML Report Path   : load-tests/reports/html/ClearPath_Load_Test_Report.html"
-          echo "Artifact Uploaded  : CLEAR-PATH-LOAD-TEST-REPORT"
-          echo "================================================="
+          echo "## 📊 CLEAR PATH Baseline Load Test Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Parameter | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Target Backend** | \`http://127.0.0.1:8000\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Peak Virtual Users** | \`100 VUs\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Test Duration** | \`60 Seconds\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Excel Report** | \`load-tests/reports/excel/ClearPath_Load_Test_Report.xlsx\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **HTML Report** | \`load-tests/reports/html/ClearPath_Load_Test_Report.html\` |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📥 How to Download Artifacts in GitHub:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Scroll to the bottom of this run summary page." >> $GITHUB_STEP_SUMMARY
+          echo "2. Look under the **Artifacts** section." >> $GITHUB_STEP_SUMMARY
+          echo "3. Click **CLEAR-PATH-LOAD-TEST-REPORT** to download the zip package containing your Excel report." >> $GITHUB_STEP_SUMMARY
