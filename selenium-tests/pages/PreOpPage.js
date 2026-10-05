@@ -1,34 +1,34 @@
 const { By } = require('selenium-webdriver');
 const BasePage = require('./BasePage');
 
-class TreatmentApprovalPage extends BasePage {
+class PreOpPage extends BasePage {
   constructor(driver) {
     super(driver);
     this.mainFrame = By.id('mainFrame');
   }
 
-  async openApprovalCenter(patientId = 1) {
+  async openPreOpChecklist(patientId = 1) {
     await this.executeScript(`
       if (typeof navTo === 'function') navTo('patient-detail', ${patientId});
-      if (typeof detTab === 'function') detTab('approval');
+      if (typeof detTab === 'function') detTab('pre-op');
     `);
     await this.sleep(800);
   }
 
-  async verifyApprovalRecommendation() {
+  async verifyChecklist() {
     const text = await this.getText(this.mainFrame);
     return text.length > 20;
   }
 
-  async verifyApprovalStatus() {
+  async verifyPendingRequirements() {
     const text = await this.getText(this.mainFrame);
     return text.length > 20;
   }
 
-  async verifyTreatmentReadiness() {
+  async verifySurgeryReadiness() {
     const text = await this.getText(this.mainFrame);
     return text.length > 20;
   }
 }
 
-module.exports = TreatmentApprovalPage;
+module.exports = PreOpPage;

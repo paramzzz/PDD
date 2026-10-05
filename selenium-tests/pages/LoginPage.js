@@ -1,50 +1,75 @@
-const { By, until } = require('selenium-webdriver');
-const config = require('../config/config');
+const { By } = require('selenium-webdriver');
+const BasePage = require('./BasePage');
+const config = require('../config/test.config');
 
-class LoginPage {
+class LoginPage extends BasePage {
   constructor(driver) {
-    this.driver = driver;
-    this.roleSelector = By.id('role-select');
-    this.doctorRoleBtn = By.id('role-btn-doctor');
-    this.nurseRoleBtn = By.id('role-btn-nurse');
-    this.userNameDisplay = By.id('nav-user-name');
-    this.navRoleBadge = By.id('nav-role-badge');
+    super(driver);
+    this.loginPage = By.id('pg-login');
+    this.mainPage = By.id('pg-main');
+    this.emailInput = By.id('li-email');
+    this.passwordInput = By.id('li-pass');
+    this.loginBtn = By.css('[data-testid="login-button"]');
+    this.errorMsg = By.id('li-err');
+    this.doctorRoleTab = By.id('role-tab-doctor');
+    this.nurseRoleTab = By.id('role-tab-nurse');
   }
 
-  async open() {
-    await this.driver.get(config.baseUrl);
-    await this.driver.wait(until.elementLocated(By.tagName('body')), config.explicitWaitMs);
-    await this.driver.executeScript(`
-      show('pg-main');
-      if (typeof navTo === 'function') navTo('home');
+  async openLoginPage() {
+    await this.open(config.baseUrl);
+    await this.executeScript(`
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const loginPg = document.getElementById('pg-login');
+      if (loginPg) loginPg.classList.add('active');
     `);
   }
 
-  async loginAsDoctor(doctorName = 'Dr. Sarah Wilson') {
-    await this.setRole('DOCTOR', doctorName);
+  async selectRole(role = 'DOCTOR') {
+    if (role.toUpperCase() === 'NURSE') {
+      if (await this.isDisplayed(this.nurseRoleTab)) {
+        await this.click(this.nurseRoleTab);
+      }
+    } else {
+      if (await this.isDisplayed(this.doctorRoleTab)) {
+        await this.click(this.doctorRoleTab);
+      }
+    }
   }
 
-  async loginAsNurse(nurseName = 'Priya Nair') {
-    await this.setRole('NURSE', nurseName);
+  async enterEmail(email) {
+    await this.type(this.emailInput, email);
   }
 
-  async setRole(roleName, userName = 'Dr. Sarah Wilson') {
-    const roleUpper = roleName.toUpperCase();
-    await this.driver.executeScript(`
-      localStorage.setItem('cp_role', '${roleUpper}');
-      localStorage.setItem('cp_doctor', '${userName}');
-      doctorName = '${userName}';
-      show('pg-main');
-      if (typeof navTo === 'function') navTo('home');
-    `);
+  async enterPassword(password) {
+    await this.type(this.passwordInput, password);
   }
 
-  async getActiveRole() {
-    return await this.driver.executeScript("return localStorage.getItem('cp_role') || 'DOCTOR';");
+  async clickLogin() {
+    await this.click(this.loginBtn);
   }
 
-  async getPageTitle() {
-    return await this.driver.getTitle();
+  async login(email = config.credentials.doctor.email, password = config.credentials.doctor.password, role = 'DOCTOR') {
+    await this.openLoginPage();
+    await this.selectRole(role);
+    await this.enterEmail(email);
+    await this.enterPassword(password);
+    await this.clickLogin();
+    await this.sleep(1000);
+  }
+
+  async verifyLoginSuccess() {
+    return await this.isDisplayed(this.mainPage);
+  }
+
+  async verifyLoginError() {
+    return await this.isDisplayed(this.errorMsg);
+  }
+
+  async getErrorMessage() {
+    if (await this.verifyLoginError()) {
+      return await this.getText(this.errorMsg);
+    }
+    return '';
   }
 }
 

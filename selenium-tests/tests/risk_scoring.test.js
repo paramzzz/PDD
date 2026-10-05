@@ -1,20 +1,20 @@
 const { expect } = require('chai');
 const { createDriver } = require('../utils/driver');
 const LoginPage = require('../pages/LoginPage');
-const PatientPage = require('../pages/PatientPage');
+const RiskScorePage = require('../pages/RiskScorePage');
 const { captureScreenshot } = require('../utils/screenshot');
 const { recordTest } = require('../utils/testRunner');
 
-describe('N. Search Test Suite', function () {
+describe('F. Risk Scoring Test Suite', function () {
   this.timeout(60000);
   let driver;
   let loginPage;
-  let patientPage;
+  let riskPage;
 
   beforeEach(async function () {
     driver = await createDriver();
     loginPage = new LoginPage(driver);
-    patientPage = new PatientPage(driver);
+    riskPage = new RiskScorePage(driver);
     await loginPage.login();
   });
 
@@ -27,15 +27,15 @@ describe('N. Search Test Suite', function () {
     }
   });
 
-  it('TC-SCH-01: Search Patient Record by Keyword', async function () {
+  it('TC-RISK-01: Verify Clinical Risk Score Generation & Range', async function () {
     const start = Date.now();
     try {
-      await patientPage.searchPatient('Sharma');
-      const isLoaded = await patientPage.isDisplayed(patientPage.mainFrame);
-      expect(isLoaded).to.be.true;
-      recordTest('Search', 'TC-SCH-01: Search Patient Record by Keyword', (Date.now() - start) / 1000, 'PASSED');
+      await riskPage.navigateToRiskOverview();
+      const isScore = await riskPage.verifyRiskScore();
+      expect(isScore).to.be.true;
+      recordTest('Risk Scoring', 'TC-RISK-01: Verify Clinical Risk Score Generation & Range', (Date.now() - start) / 1000, 'PASSED');
     } catch (err) {
-      recordTest('Search', 'TC-SCH-01: Search Patient Record by Keyword', (Date.now() - start) / 1000, 'FAILED', err);
+      recordTest('Risk Scoring', 'TC-RISK-01: Verify Clinical Risk Score Generation & Range', (Date.now() - start) / 1000, 'FAILED', err);
       throw err;
     }
   });

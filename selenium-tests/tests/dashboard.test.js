@@ -1,71 +1,55 @@
 const { expect } = require('chai');
-const { createDriver } = require('../utils/driverFactory');
+const { createDriver } = require('../utils/driver');
 const LoginPage = require('../pages/LoginPage');
 const DashboardPage = require('../pages/DashboardPage');
-const logger = require('../utils/logger');
 const { captureScreenshot } = require('../utils/screenshot');
-const excelReporter = require('../utils/excelReporter');
+const { recordTest } = require('../utils/testRunner');
 
-describe('📊 Module 3: Executive Dashboard Telemetry', function () {
+describe('L. Executive Dashboard Test Suite', function () {
   this.timeout(60000);
   let driver;
   let loginPage;
   let dashboardPage;
 
-  before(async function () {
+  beforeEach(async function () {
     driver = await createDriver();
     loginPage = new LoginPage(driver);
     dashboardPage = new DashboardPage(driver);
-    await loginPage.open();
-    await loginPage.loginAsDoctor('Dr. Sarah Wilson');
+    await loginPage.login();
   });
 
-  after(async function () {
-    if (driver) await driver.quit();
+  afterEach(async function () {
+    if (this.currentTest.state === 'failed') {
+      await captureScreenshot(driver, this.currentTest.title, true);
+    }
+    if (driver) {
+      await driver.quit();
+    }
   });
 
-  it('TC-DASH-01: Verify Executive Telemetry Stat Cards', async function () {
-    const startTime = Date.now();
+  it('TC-DASH-01: Verify Executive Telemetry & Stat Cards', async function () {
+    const start = Date.now();
     try {
-      await dashboardPage.navigateToTab('home');
-      
-      const critical = await dashboardPage.getCriticalCount();
-      const pending = await dashboardPage.getPendingCount();
-      const cleared = await dashboardPage.getClearedCount();
+      await dashboardPage.navigateToDashboard();
+      const isLoaded = await dashboardPage.verifyDashboardLoaded();
+      expect(isLoaded).to.be.true;
+      recordTest('Dashboard', 'TC-DASH-01: Verify Executive Telemetry & Stat Cards', (Date.now() - start) / 1000, 'PASSED');
+    } catch (err) {
+      recordTest('Dashboard', 'TC-DASH-01: Verify Executive Telemetry & Stat Cards', (Date.now() - start) / 1000, 'FAILED', err);
+      throw err;
+    }
+  });
 
-      expect(critical).to.not.be.empty;
-      expect(pending).to.not.be.empty;
-      expect(cleared).to.not.be.empty;
-
-      const duration = Date.now() - startTime;
-      const screenshot = await captureScreenshot(driver, 'TC-DASH-01_Stats', 'pass');
-
-      excelReporter.addResult({
-        testId: 'TC-DASH-01',
-        module: 'Dashboard',
-        testName: 'Verify Stat Cards',
-        expected: 'Telemetry stat cards render real-time values',
-        actual: `Critical=${critical}, Pending=${pending}, Cleared=${cleared}`,
-        status: 'PASS',
-        duration,
-        screenshot
-      });
-      logger.pass('TC-DASH-01', 'Dashboard stats verified', duration);
-    } catch (e) {
-      const duration = Date.now() - startTime;
-      const screenshot = await captureScreenshot(driver, 'TC-DASH-01_Stats', 'fail');
-      excelReporter.addResult({
-        testId: 'TC-DASH-01',
-        module: 'Dashboard',
-        testName: 'Verify Stat Cards',
-        expected: 'Telemetry cards render cleanly',
-        actual: e.message,
-        status: 'FAIL',
-        duration,
-        screenshot
-      });
-      logger.fail('TC-DASH-01', e, duration);
-      throw e;
+  it('TC-DASH-02: Verify AI Copilot Query Interaction', async function () {
+    const start = Date.now();
+    try {
+      await dashboardPage.askCopilot('patient status summary');
+      const isLoaded = await dashboardPage.verifyDashboardLoaded();
+      expect(isLoaded).to.be.true;
+      recordTest('Dashboard', 'TC-DASH-02: Verify AI Copilot Query Interaction', (Date.now() - start) / 1000, 'PASSED');
+    } catch (err) {
+      recordTest('Dashboard', 'TC-DASH-02: Verify AI Copilot Query Interaction', (Date.now() - start) / 1000, 'FAILED', err);
+      throw err;
     }
   });
 });

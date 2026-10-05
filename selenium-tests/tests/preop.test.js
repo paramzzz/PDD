@@ -1,20 +1,20 @@
 const { expect } = require('chai');
 const { createDriver } = require('../utils/driver');
 const LoginPage = require('../pages/LoginPage');
-const PatientPage = require('../pages/PatientPage');
+const PreOpPage = require('../pages/PreOpPage');
 const { captureScreenshot } = require('../utils/screenshot');
 const { recordTest } = require('../utils/testRunner');
 
-describe('N. Search Test Suite', function () {
+describe('J. Pre-Op Checklist Test Suite', function () {
   this.timeout(60000);
   let driver;
   let loginPage;
-  let patientPage;
+  let preOpPage;
 
   beforeEach(async function () {
     driver = await createDriver();
     loginPage = new LoginPage(driver);
-    patientPage = new PatientPage(driver);
+    preOpPage = new PreOpPage(driver);
     await loginPage.login();
   });
 
@@ -27,15 +27,15 @@ describe('N. Search Test Suite', function () {
     }
   });
 
-  it('TC-SCH-01: Search Patient Record by Keyword', async function () {
+  it('TC-PRE-01: Verify Smart Pre-Op Checklist Requirements & Surgery Readiness', async function () {
     const start = Date.now();
     try {
-      await patientPage.searchPatient('Sharma');
-      const isLoaded = await patientPage.isDisplayed(patientPage.mainFrame);
-      expect(isLoaded).to.be.true;
-      recordTest('Search', 'TC-SCH-01: Search Patient Record by Keyword', (Date.now() - start) / 1000, 'PASSED');
+      await preOpPage.openPreOpChecklist(1);
+      const isCheck = await preOpPage.verifyChecklist();
+      expect(isCheck).to.be.true;
+      recordTest('Pre-Op Checklist', 'TC-PRE-01: Verify Smart Pre-Op Checklist Requirements & Surgery Readiness', (Date.now() - start) / 1000, 'PASSED');
     } catch (err) {
-      recordTest('Search', 'TC-SCH-01: Search Patient Record by Keyword', (Date.now() - start) / 1000, 'FAILED', err);
+      recordTest('Pre-Op Checklist', 'TC-PRE-01: Verify Smart Pre-Op Checklist Requirements & Surgery Readiness', (Date.now() - start) / 1000, 'FAILED', err);
       throw err;
     }
   });

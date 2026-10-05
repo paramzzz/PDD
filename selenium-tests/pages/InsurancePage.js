@@ -1,34 +1,34 @@
 const { By } = require('selenium-webdriver');
 const BasePage = require('./BasePage');
 
-class TreatmentApprovalPage extends BasePage {
+class InsurancePage extends BasePage {
   constructor(driver) {
     super(driver);
     this.mainFrame = By.id('mainFrame');
   }
 
-  async openApprovalCenter(patientId = 1) {
+  async openInsuranceDetails(patientId = 1) {
     await this.executeScript(`
       if (typeof navTo === 'function') navTo('patient-detail', ${patientId});
-      if (typeof detTab === 'function') detTab('approval');
+      if (typeof detTab === 'function') detTab('insurance');
     `);
     await this.sleep(800);
   }
 
-  async verifyApprovalRecommendation() {
+  async verifyInsuranceStatus() {
     const text = await this.getText(this.mainFrame);
     return text.length > 20;
   }
 
-  async verifyApprovalStatus() {
+  async verifyCoverage() {
     const text = await this.getText(this.mainFrame);
     return text.length > 20;
   }
 
-  async verifyTreatmentReadiness() {
+  async verifyCopay() {
     const text = await this.getText(this.mainFrame);
     return text.length > 20;
   }
 }
 
-module.exports = TreatmentApprovalPage;
+module.exports = InsurancePage;

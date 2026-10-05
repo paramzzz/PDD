@@ -1,25 +1,25 @@
 const fs = require('fs');
 const path = require('path');
-const config = require('../config/config');
+const config = require('../config/test.config');
 
-async function captureScreenshot(driver, testName, stage = 'after') {
-  if (!driver) return null;
+const screenshotDir = config.paths.reportsScreenshots;
+if (!fs.existsSync(screenshotDir)) {
+  fs.mkdirSync(screenshotDir, { recursive: true });
+}
+
+async function captureScreenshot(driver, testName, isFailure = false) {
   try {
-    const cleanName = testName.replace(/[^a-zA-Z0-9_-]/g, '_');
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const filename = `${cleanName}_${stage}_${timestamp}.png`;
-    const targetDir = config.reportPaths.screenshotsDir;
-    
-    if (!fs.existsSync(targetDir)) {
-      fs.mkdirSync(targetDir, { recursive: true });
-    }
+    const image = await driver.takeScreenshot();
+    const timestamp = new Date().toISOString().replace(/[-:T.]/g, '_').slice(0, 15);
+    const sanitizedName = testName.replace(/[^a-zA-Z0-9_-]/g, '_');
+    const prefix = isFailure ? 'failed_' : 'milestone_';
+    const filename = `${prefix}${sanitizedName}_${timestamp}.png`;
+    const filePath = path.join(screenshotDir, filename);
 
-    const filepath = path.join(targetDir, filename);
-    const imageBase64 = await driver.takeScreenshot();
-    fs.writeFileSync(filepath, imageBase64, 'base64');
-    return filepath;
-  } catch (e) {
-    console.error(`Failed to capture screenshot for ${testName}: ${e.message}`);
+    fs.writeFileSync(filePath, image, 'base64');
+    return filePath;
+  } catch (err) {
+    console.error(`Failed to capture screenshot for ${testName}:`, err.message);
     return null;
   }
 }

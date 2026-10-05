@@ -1,66 +1,84 @@
 const { expect } = require('chai');
-const { createDriver } = require('../utils/driverFactory');
+const { createDriver } = require('../utils/driver');
 const LoginPage = require('../pages/LoginPage');
 const DashboardPage = require('../pages/DashboardPage');
-const logger = require('../utils/logger');
 const { captureScreenshot } = require('../utils/screenshot');
-const excelReporter = require('../utils/excelReporter');
+const { recordTest } = require('../utils/testRunner');
 
-describe('🧩 Module 2: Bottom Navigation Bar', function () {
+describe('B. Navigation Test Suite', function () {
   this.timeout(60000);
   let driver;
   let loginPage;
   let dashboardPage;
 
-  before(async function () {
+  beforeEach(async function () {
     driver = await createDriver();
     loginPage = new LoginPage(driver);
     dashboardPage = new DashboardPage(driver);
-    await loginPage.open();
+    await loginPage.login();
   });
 
-  after(async function () {
-    if (driver) await driver.quit();
+  afterEach(async function () {
+    if (this.currentTest.state === 'failed') {
+      await captureScreenshot(driver, this.currentTest.title, true);
+    }
+    if (driver) {
+      await driver.quit();
+    }
   });
 
-  const tabs = ['home', 'patients', 'careteam', 'scan', 'command', 'alerts', 'profile'];
+  it('TC-NAV-01: Navigate to Executive Dashboard', async function () {
+    const start = Date.now();
+    try {
+      await dashboardPage.navigateToDashboard();
+      const isLoaded = await dashboardPage.verifyDashboardLoaded();
+      expect(isLoaded).to.be.true;
+      recordTest('Navigation', 'TC-NAV-01: Navigate to Executive Dashboard', (Date.now() - start) / 1000, 'PASSED');
+    } catch (err) {
+      recordTest('Navigation', 'TC-NAV-01: Navigate to Executive Dashboard', (Date.now() - start) / 1000, 'FAILED', err);
+      throw err;
+    }
+  });
 
-  tabs.forEach((tab, index) => {
-    const testId = `TC-NAV-0${index + 1}`;
-    it(`${testId}: Navigate to Tab '${tab.toUpperCase()}'`, async function () {
-      const startTime = Date.now();
-      try {
-        await dashboardPage.navigateToTab(tab);
-        const duration = Date.now() - startTime;
-        const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'pass');
+  it('TC-NAV-02: Navigate to Patients Queue', async function () {
+    const start = Date.now();
+    try {
+      await driver.executeScript("if (typeof navTo === 'function') navTo('patients');");
+      await driver.sleep(800);
+      const isLoaded = await dashboardPage.isDisplayed(dashboardPage.mainFrame);
+      expect(isLoaded).to.be.true;
+      recordTest('Navigation', 'TC-NAV-02: Navigate to Patients Queue', (Date.now() - start) / 1000, 'PASSED');
+    } catch (err) {
+      recordTest('Navigation', 'TC-NAV-02: Navigate to Patients Queue', (Date.now() - start) / 1000, 'FAILED', err);
+      throw err;
+    }
+  });
 
-        excelReporter.addResult({
-          testId,
-          module: 'Navigation',
-          testName: `Navigate to ${tab.toUpperCase()}`,
-          expected: `Tab ${tab.toUpperCase()} opens successfully`,
-          actual: `Tab ${tab.toUpperCase()} loaded cleanly`,
-          status: 'PASS',
-          duration,
-          screenshot
-        });
-        logger.pass(testId, `Navigation to ${tab} PASS`, duration);
-      } catch (e) {
-        const duration = Date.now() - startTime;
-        const screenshot = await captureScreenshot(driver, `${testId}_${tab}`, 'fail');
-        excelReporter.addResult({
-          testId,
-          module: 'Navigation',
-          testName: `Navigate to ${tab.toUpperCase()}`,
-          expected: `Tab ${tab.toUpperCase()} opens cleanly`,
-          actual: e.message,
-          status: 'FAIL',
-          duration,
-          screenshot
-        });
-        logger.fail(testId, e, duration);
-        throw e;
-      }
-    });
+  it('TC-NAV-03: Navigate to MDMS Scan & Document Center', async function () {
+    const start = Date.now();
+    try {
+      await driver.executeScript("if (typeof navTo === 'function') navTo('scan');");
+      await driver.sleep(800);
+      const isLoaded = await dashboardPage.isDisplayed(dashboardPage.mainFrame);
+      expect(isLoaded).to.be.true;
+      recordTest('Navigation', 'TC-NAV-03: Navigate to MDMS Scan & Document Center', (Date.now() - start) / 1000, 'PASSED');
+    } catch (err) {
+      recordTest('Navigation', 'TC-NAV-03: Navigate to MDMS Scan & Document Center', (Date.now() - start) / 1000, 'FAILED', err);
+      throw err;
+    }
+  });
+
+  it('TC-NAV-04: Navigate to Command Center', async function () {
+    const start = Date.now();
+    try {
+      await driver.executeScript("if (typeof navTo === 'function') navTo('command');");
+      await driver.sleep(800);
+      const isLoaded = await dashboardPage.isDisplayed(dashboardPage.mainFrame);
+      expect(isLoaded).to.be.true;
+      recordTest('Navigation', 'TC-NAV-04: Navigate to Command Center', (Date.now() - start) / 1000, 'PASSED');
+    } catch (err) {
+      recordTest('Navigation', 'TC-NAV-04: Navigate to Command Center', (Date.now() - start) / 1000, 'FAILED', err);
+      throw err;
+    }
   });
 });

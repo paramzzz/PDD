@@ -128,18 +128,31 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ClearPath-Selenium-E2E-Reports
+          name: CLEAR-PATH-SELENIUM-E2E-REPORT
           path: |
-            selenium-tests/reports/excel/Test_Report.xlsx
-            selenium-tests/reports/excel/Test_Summary.xlsx
+            selenium-tests/reports/excel/
             selenium-tests/reports/html/
             selenium-tests/reports/screenshots/
-            selenium-tests/reports/execution.log
+            selenium-tests/reports/logs/
+          if-no-files-found: warn
           retention-days: 30
 
-      - name: 📊 Display CI/CD Summary Report
+      - name: 📊 Display CI/CD Summary Report & Step Summary
         if: always()
         run: |
+          echo "## 🧪 CLEAR PATH Selenium E2E Test Suite Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Target Frontend** | \`http://localhost:3000\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Target Backend** | \`http://127.0.0.1:8000\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Excel Report** | \`selenium-tests/reports/excel/ClearPath_E2E_Test_Report.xlsx\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **HTML Report** | \`selenium-tests/reports/html/mochawesome.html\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Artifact Name** | \`CLEAR-PATH-SELENIUM-E2E-REPORT\` |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📥 How to Download the Excel Report:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Scroll down to the **Artifacts** section at the bottom of this run summary." >> $GITHUB_STEP_SUMMARY
+          echo "2. Click **CLEAR-PATH-SELENIUM-E2E-REPORT** to download the report package." >> $GITHUB_STEP_SUMMARY
           echo "====================================="
           echo "CLEAR PATH"
           echo "GitHub CI/CD Report"

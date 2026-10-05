@@ -25,7 +25,13 @@ Thumbs.db
 
 # Temporary logs
 *.log
+selenium-tests/reports/logs/
+selenium-tests/reports/screenshots/
+
+# Uploaded test files in backend runtime
+clear-path-backend/clear-path-backend/uploads/
 
 # Load Test Binaries
 load-tests/bin/
+
 

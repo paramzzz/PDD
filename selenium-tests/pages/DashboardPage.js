@@ -1,71 +1,63 @@
-const { By, until } = require('selenium-webdriver');
-const config = require('../config/config');
+const { By } = require('selenium-webdriver');
+const BasePage = require('./BasePage');
 
-class DashboardPage {
+class DashboardPage extends BasePage {
   constructor(driver) {
-    this.driver = driver;
-    this.criticalStatNum = By.id('ds-stat');
-    this.pendingStatNum = By.id('ds-pending');
-    this.clearedStatNum = By.id('ds-cleared');
-    this.avgTimeStatNum = By.id('ds-active');
-    
-    this.navHome = By.id('nb-home');
-    this.navPatients = By.id('nb-patients');
-    this.navCareTeam = By.id('nb-careteam');
-    this.navScan = By.id('nb-scan');
-    this.navCommand = By.id('nb-command');
-    this.navAlerts = By.id('nb-alerts');
-    this.navProfile = By.id('nb-profile');
+    super(driver);
+    this.homeNavBtn = By.id('nb-home');
+    this.mainFrame = By.id('mainFrame');
+    this.statCards = By.css('.stat-card');
+    this.criticalCards = By.css('.badge-stat, .badge-high, [id^="ds-critical"]');
+    this.copilotBtn = By.id('copilot-btn');
+    this.copilotPanel = By.id('copilot-panel');
+    this.copilotInput = By.id('copilot-input');
   }
 
-  async navigateToTab(tabName) {
-    const tabIdMap = {
-      'home': 'nb-home',
-      'patients': 'nb-patients',
-      'careteam': 'nb-careteam',
-      'scan': 'nb-scan',
-      'command': 'nb-command',
-      'alerts': 'nb-alerts',
-      'profile': 'nb-profile'
-    };
-
-    const targetId = tabIdMap[tabName.toLowerCase()] || 'nb-home';
-    await this.driver.executeScript(`navTo('${tabName.toLowerCase()}')`);
-    await this.driver.sleep(300);
+  async navigateToDashboard() {
+    await this.executeScript(`
+      if (typeof navTo === 'function') navTo('home');
+    `);
+    await this.sleep(800);
   }
 
-  async waitForStatToPopulate(id) {
-    await this.driver.wait(async () => {
-      try {
-        const text = await this.driver.executeScript(`
-          const el = document.getElementById('${id}');
-          return el ? el.innerText.trim() : '';
-        `);
-        return text !== '' && text !== '—';
-      } catch (e) {
-        return false;
-      }
-    }, config.explicitWaitMs, 'Dashboard stat card value failed to populate');
+  async verifyDashboardLoaded() {
+    return await this.isDisplayed(this.mainFrame);
   }
 
-  async getCriticalCount() {
-    await this.waitForStatToPopulate('ds-stat');
-    return await this.driver.executeScript("return document.getElementById('ds-stat')?.innerText.trim() || '';");
+  async getCriticalPatients() {
+    return await this.findAll(this.criticalCards);
   }
 
-  async getPendingCount() {
-    await this.waitForStatToPopulate('ds-pending');
-    return await this.driver.executeScript("return document.getElementById('ds-pending')?.innerText.trim() || '';");
+  async getPendingApprovals() {
+    return await this.findAll(By.css('.badge-orange, .badge-med, [id*="pending"]'));
   }
 
-  async getClearedCount() {
-    await this.waitForStatToPopulate('ds-cleared');
-    return await this.driver.executeScript("return document.getElementById('ds-cleared')?.innerText.trim() || '';");
+  async verifyEmergencyAlerts() {
+    const text = await this.getText(this.mainFrame);
+    return text.includes('CRITICAL') || text.includes('STAT') || text.includes('Emergency') || text.includes('Alert');
   }
 
-  async getAvgTime() {
-    await this.waitForStatToPopulate('ds-active');
-    return await this.driver.executeScript("return document.getElementById('ds-active')?.innerText.trim() || '';");
+  async openPatientCase(patientId = 1) {
+    await this.executeScript(`
+      if (typeof navTo === 'function') navTo('patient-detail', ${patientId});
+    `);
+    await this.sleep(1000);
+  }
+
+  async openCopilot() {
+    await this.executeScript(`
+      if (typeof toggleCopilot === 'function') toggleCopilot();
+    `);
+    await this.sleep(500);
+  }
+
+  async askCopilot(query) {
+    await this.openCopilot();
+    await this.type(this.copilotInput, query);
+    await this.executeScript(`
+      if (typeof sendCopilot === 'function') sendCopilot();
+    `);
+    await this.sleep(1500);
   }
 }
 

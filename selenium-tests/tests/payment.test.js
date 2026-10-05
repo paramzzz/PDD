@@ -1,20 +1,20 @@
 const { expect } = require('chai');
 const { createDriver } = require('../utils/driver');
 const LoginPage = require('../pages/LoginPage');
-const PatientPage = require('../pages/PatientPage');
+const PaymentPage = require('../pages/PaymentPage');
 const { captureScreenshot } = require('../utils/screenshot');
 const { recordTest } = require('../utils/testRunner');
 
-describe('N. Search Test Suite', function () {
+describe('I. Payment & Finance Clearance Test Suite', function () {
   this.timeout(60000);
   let driver;
   let loginPage;
-  let patientPage;
+  let paymentPage;
 
   beforeEach(async function () {
     driver = await createDriver();
     loginPage = new LoginPage(driver);
-    patientPage = new PatientPage(driver);
+    paymentPage = new PaymentPage(driver);
     await loginPage.login();
   });
 
@@ -27,15 +27,15 @@ describe('N. Search Test Suite', function () {
     }
   });
 
-  it('TC-SCH-01: Search Patient Record by Keyword', async function () {
+  it('TC-PAY-01: Verify Billing & Finance Clearance Status', async function () {
     const start = Date.now();
     try {
-      await patientPage.searchPatient('Sharma');
-      const isLoaded = await patientPage.isDisplayed(patientPage.mainFrame);
-      expect(isLoaded).to.be.true;
-      recordTest('Search', 'TC-SCH-01: Search Patient Record by Keyword', (Date.now() - start) / 1000, 'PASSED');
+      await paymentPage.openPaymentDetails(1);
+      const isPay = await paymentPage.verifyPaymentStatus();
+      expect(isPay).to.be.true;
+      recordTest('Payment & Finance', 'TC-PAY-01: Verify Billing & Finance Clearance Status', (Date.now() - start) / 1000, 'PASSED');
     } catch (err) {
-      recordTest('Search', 'TC-SCH-01: Search Patient Record by Keyword', (Date.now() - start) / 1000, 'FAILED', err);
+      recordTest('Payment & Finance', 'TC-PAY-01: Verify Billing & Finance Clearance Status', (Date.now() - start) / 1000, 'FAILED', err);
       throw err;
     }
   });

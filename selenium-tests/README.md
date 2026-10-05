@@ -1,99 +1,138 @@
-# CLEAR PATH — Enterprise Selenium E2E Automation Testing Framework
+# CLEAR PATH — Enterprise Selenium End-to-End (E2E) Testing Framework
 
-An enterprise-grade, independent **Selenium WebDriver End-to-End Testing Framework** designed for **CLEAR PATH: An AI-Powered Multi-Document Clinical Intelligence System for Automated Treatment Approval and Emergency Prioritization in Hospitals**.
-
----
-
-## 🛠️ Technology Stack
-
-- **Node.js** (v18+)
-- **Selenium WebDriver** (`selenium-webdriver`)
-- **ChromeDriver** (`@chromedriver/chromedriver`)
-- **Mocha** (Test runner & BDD syntax)
-- **Chai** (Assertion library)
-- **ExcelJS** & **XLSX** (Excel report generation with formatting)
-- **Mochawesome** (Interactive HTML report generator with charts)
-- **dotenv** (Environment configuration)
+This directory contains the complete **Selenium End-to-End (E2E) Testing Framework** for the **CLEAR PATH** hospital clinical workflow web application.
 
 ---
 
-## 📁 Directory Structure
+## 1. Overview & Architecture
 
-```text
+The testing framework uses the **Page Object Model (POM)** design pattern to automate web browser interactions, validate clinical UI workflows, and verify backend state integration.
+
+- **Test Runner:** Mocha
+- **Assertion Library:** Chai
+- **Browser Automation:** Selenium WebDriver (Chrome / Headless Chrome)
+- **Reporting Engine:** ExcelJS (Multi-sheet Excel workbook) & Mochawesome (HTML Dashboard)
+
+---
+
+## 2. Directory & File Structure
+
+```
 selenium-tests/
 ├── config/
-│   └── config.js                   # Framework configuration & environment settings
-├── pages/                          # Page Object Model (POM) Design Pattern
-│   ├── LoginPage.js                # Role switching & user session management
-│   ├── DashboardPage.js            # Executive dashboard telemetry & bottom navigation
-│   ├── PatientPage.js              # Patient directory, card listing & patient search
-│   ├── ScanCenterPage.js           # Medical Document Center & repository management
-│   ├── UploadPage.js               # Multi-document upload modal & step progress
-│   ├── ViewerPage.js               # Medical Document Viewer, controls & AI report
-│   ├── CareTeamPage.js             # Care team directory
-│   ├── AlertsPage.js               # Real-time clinical alerts
-│   └── CommandCenterPage.js        # Operations Command Center
-├── tests/                          # Automated E2E Test Suites
-│   ├── login.test.js               # Application launch & login test cases
-│   ├── navigation.test.js          # Bottom navigation bar verification
-│   ├── dashboard.test.js           # Telemetry stat cards & metrics
-│   ├── patient.test.js             # Patient search & directory
-│   ├── repository.test.js          # Document repository filtering & cards
-│   ├── upload.test.js              # Multi-document upload workflow & animation
-│   ├── aiSummary.test.js           # AI Bundle summary & risk engine report
-│   ├── treatmentApproval.test.js   # Automated treatment approval decision
-│   ├── viewer.test.js              # Image viewer controls & corner close button
-│   ├── search.test.js              # Multi-field search & telemetry
-│   ├── emergencyPriority.test.js   # Emergency priority badges & queue
-│   └── fullWorkflow.test.js        # End-to-end clinical journey
-├── utils/                          # Framework Utilities
-│   ├── driverFactory.js            # Chrome WebDriver instantiation (Headless support)
-│   ├── excelReporter.js            # Formatted Excel reports (Test_Report.xlsx & Test_Summary.xlsx)
-│   ├── screenshot.js               # Automatic screenshot capture
-│   ├── logger.js                   # Execution logger
-│   ├── generateReports.js          # Report generator trigger
-│   └── sampleGenerator.js          # Sample document generator for upload tests
-├── reports/                        # Automated Reports Directory
-│   ├── excel/                      # Excel reports
-│   ├── html/                       # Mochawesome HTML report
-│   └── screenshots/                # Captured screenshots (Pass/Fail/Before/After)
-├── package.json                    # NPM dependencies & scripts
-├── run-all-tests.bat               # One-click Windows batch execution script
-└── README.md                       # Documentation
+│   └── test.config.js               # Framework configuration & environment defaults
+├── pages/                           # Page Object Model (POM) Screen Representations
+│   ├── BasePage.js                  # Common WebDriver helper methods
+│   ├── LoginPage.js                 # Authentication & Role Selection page
+│   ├── DashboardPage.js              # Executive Dashboard & AI Copilot page
+│   ├── PatientPage.js                # Patient Directory & Registration form
+│   ├── DocumentPage.js               # MDMS Upload & Document Viewer modal
+│   ├── ClinicalAnalysisPage.js       # RAG Synthesis & AI Summary card page
+│   ├── RiskScorePage.js              # Clinical Risk Scoring & Priority badge page
+│   ├── InsurancePage.js              # Cashless Pre-Authorization Insurance page
+│   ├── PaymentPage.js                # Billing & Finance Clearance page
+│   ├── PreOpPage.js                  # Smart Pre-Op Checklist & Surgery Readiness page
+│   └── TreatmentApprovalPage.js     # Automated Treatment Approval page
+├── tests/                           # Complete Test Suites
+│   ├── login.test.js                # Authentication test suite
+│   ├── navigation.test.js           # Navigation bar & routing suite
+│   ├── patient.test.js              # Patient registration & listing suite
+│   ├── document_upload.test.js      # Multi-document PDF/Image upload suite
+│   ├── clinical_analysis.test.js    # AI clinical summary & extraction suite
+│   ├── risk_scoring.test.js         # Risk score generation suite
+│   ├── emergency_priority.test.js   # Emergency priority categorization suite
+│   ├── insurance.test.js            # Insurance pre-authorization suite
+│   ├── payment.test.js              # Billing clearance suite
+│   ├── preop.test.js                # Smart Pre-Op checklist suite
+│   ├── treatment_approval.test.js   # Treatment approval recommendation suite
+│   ├── dashboard.test.js            # Telemetry & AI Copilot suite
+│   ├── document_viewer.test.js      # MDMS Document Viewer modal suite
+│   ├── search.test.js               # Keyword search suite
+│   ├── logout.test.js               # Session sign-out suite
+│   └── complete_end_to_end.test.js  # Full 37-step end-to-end journey test suite
+├── utils/
+│   ├── driver.js                    # WebDriver factory
+│   ├── testData.js                  # Synthetic test patient data & file paths
+│   ├── logger.js                    # Formatted file logger
+│   ├── screenshot.js                # Failure screenshot capture utility
+│   ├── excelReport.js               # ExcelJS 5-sheet report generator
+│   ├── testRunner.js                # Test registry & execution recorder
+│   └── mochaHooks.js                # Global Mocha hooks for report generation
+├── test-data/                       # Synthetic Test Files
+│   ├── sample_prescription.pdf
+│   ├── sample_lab_report.pdf
+│   ├── sample_scan_report.pdf
+│   ├── sample_insurance.pdf
+│   └── sample_payment_receipt.pdf
+├── reports/                         # Execution Artifacts
+│   ├── excel/                       # ClearPath_E2E_Test_Report.xlsx
+│   ├── html/                        # HTML test report
+│   ├── screenshots/                 # Captured failure/milestone PNGs
+│   └── logs/                        # ClearPath_E2E_Execution.log
+├── package.json
+├── run-all-tests.bat
+└── README.md
 ```
 
 ---
 
-## 🚀 Execution Instructions
+## 3. How to Run Tests Locally (Windows)
 
-### Option 1: One-Click Windows Execution
-Double-click `run-all-tests.bat` or run from terminal:
+### Prerequisites
+1. Clear Path FastAPI Backend running on `http://localhost:8000`.
+2. Clear Path Web Server running on `http://localhost:3000`.
+
+### Execution Commands
+From the `selenium-tests` directory:
+
+```bash
+# Run all Selenium tests and generate Excel & HTML reports
+npm test
+
+# Run complete 37-step end-to-end journey test suite
+npm run test:e2e
+
+# Generate Excel report from execution log
+npm run report
+```
+
+Or run via Windows batch script:
 ```cmd
-cd selenium-tests
 run-all-tests.bat
 ```
 
-### Option 2: NPM Command Line
-1. **Install dependencies**:
-   ```bash
-   cmd /c npm install
-   ```
-2. **Execute all tests**:
-   ```bash
-   cmd /c npm test
-   ```
-3. **Generate Excel & HTML Reports**:
-   ```bash
-   cmd /c npm run all
-   ```
+### Running in Headless Mode
+To execute tests headlessly (e.g. for CI environments):
+```bash
+HEADLESS=true npm test
+```
 
 ---
 
-## 📊 Automated Reports
+## 4. Multi-Sheet Excel Report (`reports/excel/ClearPath_E2E_Test_Report.xlsx`)
 
-- **Excel Detailed Report**: `reports/excel/Test_Report.xlsx`
-  - Includes: `Test ID`, `Module`, `Test Name`, `Expected Result`, `Actual Result`, `Status` (Green PASS / Red FAIL / Yellow WARNING), `Execution Time`, `Duration`, `Screenshot Path`, `Remarks`.
-- **Excel Executive Summary**: `reports/excel/Test_Summary.xlsx`
-  - Includes: `Total Tests`, `Passed`, `Failed`, `Skipped`, `Success Rate %`, `Execution Time`, `Average API Response Time`, `Average Multi-Doc Upload Time`, `Average Viewer Load Time`.
-- **Mochawesome HTML Report**: `reports/html/mochawesome.html`
-- **Screenshots**: Saved in `reports/screenshots/`
+After every test execution, an Excel workbook is generated with **5 dedicated worksheets**:
+
+1. **Sheet 1: Summary** — High-level metadata (`Test Suite`, `Total Tests`, `Passed`, `Failed`, `Pass Rate %`, `Duration`, `Start Time`, `End Time`).
+2. **Sheet 2: Passed Tests** — `No.`, `Category`, `Test Name`, `Time (sec)`, `Status` (Green badge).
+3. **Sheet 3: Failed Tests** — `No.`, `Category`, `Test Name`, `Error`, `Status` (Red badge), `Timestamp`.
+4. **Sheet 4: Execution Log** — Structured log timestamps, levels, and execution messages.
+5. **Sheet 5: Test Details** — Comprehensive test-by-test failure reason and status matrix.
+
+---
+
+## 5. GitHub Actions Integration & Artifact Download
+
+The GitHub Actions workflow is defined in `.github/workflows/selenium-e2e.yml`.
+
+### How to Download Reports from GitHub Actions:
+1. Go to your repository on GitHub.
+2. Click on the **Actions** tab.
+3. Select **CLEAR PATH Enterprise CI/CD & Selenium E2E Suite**.
+4. Click on the latest workflow run.
+5. Scroll down to the **Artifacts** section at the bottom.
+6. Click **`CLEAR-PATH-SELENIUM-E2E-REPORT`** to download the ZIP package containing:
+   - `ClearPath_E2E_Test_Report.xlsx`
+   - HTML report
+   - Failure screenshots (if any)
+   - Execution log file

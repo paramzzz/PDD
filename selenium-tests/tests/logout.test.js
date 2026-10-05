@@ -1,61 +1,42 @@
 const { expect } = require('chai');
-const { getDriver } = require('../config/browser');
+const { createDriver } = require('../utils/driver');
 const LoginPage = require('../pages/LoginPage');
-const logger = require('../utils/logger');
 const { captureScreenshot } = require('../utils/screenshot');
-const excelReporter = require('../utils/excelReporter');
+const { recordTest } = require('../utils/testRunner');
 
-describe('🚪 User Session & Logout Module', function () {
+describe('O. Logout & Session Termination Test Suite', function () {
   this.timeout(60000);
   let driver;
   let loginPage;
 
-  before(async function () {
-    driver = await getDriver();
+  beforeEach(async function () {
+    driver = await createDriver();
     loginPage = new LoginPage(driver);
-    await loginPage.open();
+    await loginPage.login();
   });
 
-  after(async function () {
-    if (driver) await driver.quit();
+  afterEach(async function () {
+    if (this.currentTest.state === 'failed') {
+      await captureScreenshot(driver, this.currentTest.title, true);
+    }
+    if (driver) {
+      await driver.quit();
+    }
   });
 
-  it('TC-LGO-01: Verify Role Reset & User Session Logout', async function () {
-    const startTime = Date.now();
+  it('TC-LOGOUT-01: User Sign Out & Session Termination', async function () {
+    const start = Date.now();
     try {
-      await loginPage.setRole('DOCTOR');
-      const roleBefore = await loginPage.getActiveRole();
-      expect(roleBefore).to.equal('DOCTOR');
-
-      const duration = Date.now() - startTime;
-      const screenshot = await captureScreenshot(driver, 'TC-LGO-01_Logout', 'pass');
-
-      excelReporter.addResult({
-        testId: 'TC-LGO-01',
-        module: 'Logout',
-        testName: 'Verify Role Reset & Session Logout',
-        expected: 'User session & role reset cleanly',
-        actual: 'Session & active role verified',
-        status: 'PASS',
-        duration,
-        screenshot
-      });
-      logger.pass('TC-LGO-01', 'Logout session reset verified', duration);
-    } catch (e) {
-      const duration = Date.now() - startTime;
-      const screenshot = await captureScreenshot(driver, 'TC-LGO-01_Logout', 'fail');
-      excelReporter.addResult({
-        testId: 'TC-LGO-01',
-        module: 'Logout',
-        testName: 'Verify Role Reset & Session Logout',
-        expected: 'Logout resets cleanly',
-        actual: e.message,
-        status: 'FAIL',
-        duration,
-        screenshot
-      });
-      logger.fail('TC-LGO-01', e, duration);
-      throw e;
+      await driver.executeScript(`
+        if (typeof doLogout === 'function') doLogout();
+      `);
+      await driver.sleep(1000);
+      const isLoginVisible = await loginPage.isDisplayed(loginPage.loginPage);
+      expect(isLoginVisible).to.be.true;
+      recordTest('Logout', 'TC-LOGOUT-01: User Sign Out & Session Termination', (Date.now() - start) / 1000, 'PASSED');
+    } catch (err) {
+      recordTest('Logout', 'TC-LOGOUT-01: User Sign Out & Session Termination', (Date.now() - start) / 1000, 'FAILED', err);
+      throw err;
     }
   });
 });

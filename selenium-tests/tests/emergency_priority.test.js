@@ -1,68 +1,42 @@
 const { expect } = require('chai');
-const { getDriver } = require('../config/browser');
+const { createDriver } = require('../utils/driver');
 const LoginPage = require('../pages/LoginPage');
-const ViewerPage = require('../pages/ViewerPage');
-const logger = require('../utils/logger');
+const RiskScorePage = require('../pages/RiskScorePage');
 const { captureScreenshot } = require('../utils/screenshot');
-const excelReporter = require('../utils/excelReporter');
+const { recordTest } = require('../utils/testRunner');
 
-describe('🚨 Emergency Priority Engine', function () {
+describe('G. Emergency Prioritization Test Suite', function () {
   this.timeout(60000);
   let driver;
   let loginPage;
-  let viewerPage;
+  let riskPage;
 
-  before(async function () {
-    driver = await getDriver();
+  beforeEach(async function () {
+    driver = await createDriver();
     loginPage = new LoginPage(driver);
-    viewerPage = new ViewerPage(driver);
-    await loginPage.open();
-    await loginPage.loginAsDoctor('Dr. Sarah Wilson');
+    riskPage = new RiskScorePage(driver);
+    await loginPage.login();
   });
 
-  after(async function () {
-    if (driver) await driver.quit();
+  afterEach(async function () {
+    if (this.currentTest.state === 'failed') {
+      await captureScreenshot(driver, this.currentTest.title, true);
+    }
+    if (driver) {
+      await driver.quit();
+    }
   });
 
-  it('TC-EME-01: Verify Emergency Priority Level Categorization', async function () {
-    const startTime = Date.now();
+  it('TC-EME-01: Verify Emergency Priority Categorization & Badging', async function () {
+    const start = Date.now();
     try {
-      await viewerPage.openViewerForDocument(1);
-      const text = await viewerPage.getAiClinicalSummaryText();
-
-      expect(text).to.include('Emergency Priority Level');
-
-      const duration = Date.now() - startTime;
-      const screenshot = await captureScreenshot(driver, 'TC-EME-01_Priority', 'pass');
-
-      excelReporter.addResult({
-        testId: 'TC-EME-01',
-        module: 'Emergency Priority',
-        testName: 'Verify Emergency Priority Badge',
-        expected: 'Emergency priority level badge renders cleanly',
-        actual: 'Emergency priority level confirmed',
-        status: 'PASS',
-        duration,
-        screenshot
-      });
-      logger.pass('TC-EME-01', 'Emergency priority verified', duration);
-
-      await viewerPage.closeViewer();
-    } catch (e) {
-      const duration = Date.now() - startTime;
-      const screenshot = await captureScreenshot(driver, 'TC-EME-01_Priority', 'fail');
-      excelReporter.addResult({
-        testId: 'TC-EME-01',
-        module: 'Emergency Priority',
-        testName: 'Verify Emergency Priority Badge',
-        expected: 'Priority badge renders cleanly',
-        actual: e.message,
-        status: 'FAIL',
-        duration,
-        screenshot
-      });
-      logger.fail('TC-EME-01', e, duration);
-      throw e;
+      await riskPage.navigateToRiskOverview();
+      const isPriority = await riskPage.verifyPriorityStatus();
+      expect(isPriority).to.be.true;
+      recordTest('Emergency Prioritization', 'TC-EME-01: Verify Emergency Priority Categorization & Badging', (Date.now() - start) / 1000, 'PASSED');
+    } catch (err) {
+      recordTest('Emergency Prioritization', 'TC-EME-01: Verify Emergency Priority Categorization & Badging', (Date.now() - start) / 1000, 'FAILED', err);
+      throw err;
     }
   });
 });
