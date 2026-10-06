@@ -13,6 +13,14 @@ class AppTheme {
   static const Color textLight = Color(0xFFF8FAFC);
   static const Color textMuted = Color(0xFF94A3B8);
 
+  // Aliases for layout screens
+  static const Color primaryTeal = accentTeal;
+  static const Color accentGreen = emeraldGreen;
+  static const Color accentRed = alertRed;
+  static const Color surfaceDark = cardDark;
+  static const Color textPrimary = textLight;
+  static const Color textSecondary = textMuted;
+
   static ThemeData get darkTheme {
     return ThemeData(
       brightness: Brightness.dark,

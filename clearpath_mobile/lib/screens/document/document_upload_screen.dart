@@ -5,7 +5,7 @@ import '../../services/document_service.dart';
 
 class DocumentUploadScreen extends StatefulWidget {
   final int patientId;
-  const DocumentUploadScreen({super.key, required this.patientId});
+  const DocumentUploadScreen({super.key, this.patientId = 1});
 
   @override
   State<DocumentUploadScreen> createState() => _DocumentUploadScreenState();

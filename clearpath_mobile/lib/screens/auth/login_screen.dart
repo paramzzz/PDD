@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../core/config/api_config.dart';
 import '../../core/theme/app_theme.dart';
 import '../../services/auth_service.dart';
-import '../dashboard/dashboard_screen.dart';
+import '../main_navigation_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() => _isLoading = false);
         if (success) {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (_) => const DashboardScreen()),
+            MaterialPageRoute(builder: (_) => const MainNavigationScreen()),
           );
         } else {
           ScaffoldMessenger.of(context).showSnackBar(

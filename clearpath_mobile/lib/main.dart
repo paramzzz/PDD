@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
 import 'core/utils/session_manager.dart';
 import 'screens/auth/login_screen.dart';
-import 'screens/dashboard/dashboard_screen.dart';
+import 'screens/main_navigation_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +21,7 @@ class ClearPathMobileApp extends StatelessWidget {
       title: 'ClearPath Mobile — Clinical Intelligence & Treatment Approval',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      home: isLoggedIn ? const DashboardScreen() : const LoginScreen(),
+      home: isLoggedIn ? const MainNavigationScreen() : const LoginScreen(),
     );
   }
 }
