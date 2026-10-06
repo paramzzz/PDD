@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/config/api_config.dart';
 import '../../core/theme/app_theme.dart';
 import '../../services/auth_service.dart';
 import '../dashboard/dashboard_screen.dart';
@@ -14,8 +15,64 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController(text: 'doctor@clearpath.ai');
   final _passwordController = TextEditingController(text: 'doctor123');
+  final _customUrlController = TextEditingController();
+  
   String _selectedRole = 'DOCTOR';
   bool _isLoading = false;
+  Map<String, dynamic>? _connectionStatus;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkServerConnection();
+  }
+
+  void _checkServerConnection() async {
+    final status = await ApiConfig.checkBackendHealth();
+    if (mounted) {
+      setState(() {
+        _connectionStatus = status;
+      });
+    }
+  }
+
+  void _showIpDialog() {
+    _customUrlController.text = ApiConfig.baseUrl;
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Server Connection Settings'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              'Specify backend URL for Android Emulator (http://10.0.2.2:8000), Physical Phone (http://192.168.x.x:8000), or Web (http://127.0.0.1:8000):',
+              style: TextStyle(fontSize: 12),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: _customUrlController,
+              decoration: const InputDecoration(labelText: 'Backend Base URL'),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              ApiConfig.customOverrideUrl = _customUrlController.text.trim();
+              Navigator.pop(ctx);
+              _checkServerConnection();
+            },
+            child: const Text('Save & Reconnect'),
+          ),
+        ],
+      ),
+    );
+  }
 
   void _handleLogin() async {
     if (!_formKey.currentState!.validate()) return;
@@ -44,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (mounted) {
         setState(() => _isLoading = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login Error: $e')),
+          SnackBar(content: Text('Login Failure: $e')),
         );
       }
     }
@@ -93,7 +150,49 @@ class _LoginScreenState extends State<LoginScreen> {
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.grey[400], fontSize: 13),
                     ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 16),
+
+                    // Connection Diagnostic Bar
+                    GestureDetector(
+                      onTap: _showIpDialog,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: _connectionStatus == null
+                              ? const Color(0xFF334155)
+                              : (_connectionStatus!['online'] == true
+                                  ? AppTheme.emeraldGreen.withValues(alpha: 0.2)
+                                  : AppTheme.alertRed.withValues(alpha: 0.2)),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: _connectionStatus == null
+                                ? Colors.grey
+                                : (_connectionStatus!['online'] == true ? AppTheme.emeraldGreen : AppTheme.alertRed),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                _connectionStatus == null
+                                    ? 'Checking Backend Connectivity...'
+                                    : '${_connectionStatus!['message']}',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: _connectionStatus == null
+                                      ? Colors.white
+                                      : (_connectionStatus!['online'] == true ? AppTheme.emeraldGreen : Colors.redAccent),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            const Icon(Icons.settings, size: 16, color: Colors.white70),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
 
                     // Role Selector Toggle
                     Container(
