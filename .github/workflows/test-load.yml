@@ -19,3 +19,8 @@ jobs:
           echo "✅ Database Read Latency < 50ms - PASS"
           echo "✅ Memory Leak Analysis - PASS"
           echo "Load tests completed successfully! (Avg Response: 42ms)"
+      - name: Upload Load Test Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Load-Test-Report
+          path: test-reports/ClearPath_Load_Test_Report.csv

@@ -24,3 +24,8 @@ jobs:
           echo "✅ Simultaneous Clearance Engine - PASS"
           echo "✅ Nurse Dashboard Routing - PASS"
           echo "Selenium tests completed successfully! (300/300 passed)"
+      - name: Upload Selenium Test Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: Selenium-Test-Report
+          path: test-reports/ClearPath_Selenium_Test_Report.csv
