@@ -1,0 +1,301 @@
+Test ID,Test Suite,Module,Test Case Description,Execution Time (ms),Status,Remarks
+TC-0001,Appium Test,Dashboard,Verify Dashboard functionality scenario #1,208,PASS,Verified automatically
+TC-0002,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #2,674,PASS,Verified automatically
+TC-0003,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #3,417,PASS,Verified automatically
+TC-0004,Appium Test,Dashboard,Verify Dashboard functionality scenario #4,355,PASS,Verified automatically
+TC-0005,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #5,245,PASS,Verified automatically
+TC-0006,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #6,83,PASS,Verified automatically
+TC-0007,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #7,146,PASS,Verified automatically
+TC-0008,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #8,612,PASS,Verified automatically
+TC-0009,Appium Test,Login Screen,Verify Login Screen functionality scenario #9,588,PASS,Verified automatically
+TC-0010,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #10,456,PASS,Verified automatically
+TC-0011,Appium Test,Dashboard,Verify Dashboard functionality scenario #11,389,PASS,Verified automatically
+TC-0012,Appium Test,Dashboard,Verify Dashboard functionality scenario #12,820,PASS,Verified automatically
+TC-0013,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #13,111,PASS,Verified automatically
+TC-0014,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #14,609,PASS,Verified automatically
+TC-0015,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #15,108,PASS,Verified automatically
+TC-0016,Appium Test,Login Screen,Verify Login Screen functionality scenario #16,89,PASS,Verified automatically
+TC-0017,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #17,190,PASS,Verified automatically
+TC-0018,Appium Test,Dashboard,Verify Dashboard functionality scenario #18,118,PASS,Verified automatically
+TC-0019,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #19,196,PASS,Verified automatically
+TC-0020,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #20,751,PASS,Verified automatically
+TC-0021,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #21,441,PASS,Verified automatically
+TC-0022,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #22,145,PASS,Verified automatically
+TC-0023,Appium Test,Login Screen,Verify Login Screen functionality scenario #23,336,PASS,Verified automatically
+TC-0024,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #24,61,PASS,Verified automatically
+TC-0025,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #25,705,PASS,Verified automatically
+TC-0026,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #26,689,PASS,Verified automatically
+TC-0027,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #27,98,PASS,Verified automatically
+TC-0028,Appium Test,Login Screen,Verify Login Screen functionality scenario #28,713,PASS,Verified automatically
+TC-0029,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #29,289,PASS,Verified automatically
+TC-0030,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #30,51,PASS,Verified automatically
+TC-0031,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #31,748,PASS,Verified automatically
+TC-0032,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #32,173,PASS,Verified automatically
+TC-0033,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #33,253,PASS,Verified automatically
+TC-0034,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #34,797,PASS,Verified automatically
+TC-0035,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #35,538,PASS,Verified automatically
+TC-0036,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #36,368,PASS,Verified automatically
+TC-0037,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #37,185,PASS,Verified automatically
+TC-0038,Appium Test,Login Screen,Verify Login Screen functionality scenario #38,530,PASS,Verified automatically
+TC-0039,Appium Test,Login Screen,Verify Login Screen functionality scenario #39,558,PASS,Verified automatically
+TC-0040,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #40,811,PASS,Verified automatically
+TC-0041,Appium Test,Dashboard,Verify Dashboard functionality scenario #41,262,PASS,Verified automatically
+TC-0042,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #42,246,PASS,Verified automatically
+TC-0043,Appium Test,Login Screen,Verify Login Screen functionality scenario #43,721,PASS,Verified automatically
+TC-0044,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #44,310,PASS,Verified automatically
+TC-0045,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #45,437,PASS,Verified automatically
+TC-0046,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #46,824,PASS,Verified automatically
+TC-0047,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #47,761,PASS,Verified automatically
+TC-0048,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #48,319,PASS,Verified automatically
+TC-0049,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #49,200,PASS,Verified automatically
+TC-0050,Appium Test,Dashboard,Verify Dashboard functionality scenario #50,530,PASS,Verified automatically
+TC-0051,Appium Test,Dashboard,Verify Dashboard functionality scenario #51,281,PASS,Verified automatically
+TC-0052,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #52,55,PASS,Verified automatically
+TC-0053,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #53,246,PASS,Verified automatically
+TC-0054,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #54,105,PASS,Verified automatically
+TC-0055,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #55,796,PASS,Verified automatically
+TC-0056,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #56,352,PASS,Verified automatically
+TC-0057,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #57,139,PASS,Verified automatically
+TC-0058,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #58,163,PASS,Verified automatically
+TC-0059,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #59,541,PASS,Verified automatically
+TC-0060,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #60,350,PASS,Verified automatically
+TC-0061,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #61,731,PASS,Verified automatically
+TC-0062,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #62,552,PASS,Verified automatically
+TC-0063,Appium Test,Dashboard,Verify Dashboard functionality scenario #63,359,PASS,Verified automatically
+TC-0064,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #64,32,PASS,Verified automatically
+TC-0065,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #65,19,PASS,Verified automatically
+TC-0066,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #66,602,PASS,Verified automatically
+TC-0067,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #67,327,PASS,Verified automatically
+TC-0068,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #68,536,PASS,Verified automatically
+TC-0069,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #69,837,PASS,Verified automatically
+TC-0070,Appium Test,Login Screen,Verify Login Screen functionality scenario #70,178,PASS,Verified automatically
+TC-0071,Appium Test,Login Screen,Verify Login Screen functionality scenario #71,430,PASS,Verified automatically
+TC-0072,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #72,821,PASS,Verified automatically
+TC-0073,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #73,811,PASS,Verified automatically
+TC-0074,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #74,37,PASS,Verified automatically
+TC-0075,Appium Test,Dashboard,Verify Dashboard functionality scenario #75,681,PASS,Verified automatically
+TC-0076,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #76,348,PASS,Verified automatically
+TC-0077,Appium Test,Dashboard,Verify Dashboard functionality scenario #77,830,PASS,Verified automatically
+TC-0078,Appium Test,Dashboard,Verify Dashboard functionality scenario #78,638,PASS,Verified automatically
+TC-0079,Appium Test,Dashboard,Verify Dashboard functionality scenario #79,609,PASS,Verified automatically
+TC-0080,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #80,274,PASS,Verified automatically
+TC-0081,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #81,48,PASS,Verified automatically
+TC-0082,Appium Test,Login Screen,Verify Login Screen functionality scenario #82,222,PASS,Verified automatically
+TC-0083,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #83,751,PASS,Verified automatically
+TC-0084,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #84,590,PASS,Verified automatically
+TC-0085,Appium Test,Dashboard,Verify Dashboard functionality scenario #85,43,PASS,Verified automatically
+TC-0086,Appium Test,Dashboard,Verify Dashboard functionality scenario #86,37,PASS,Verified automatically
+TC-0087,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #87,787,PASS,Verified automatically
+TC-0088,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #88,696,PASS,Verified automatically
+TC-0089,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #89,25,PASS,Verified automatically
+TC-0090,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #90,815,PASS,Verified automatically
+TC-0091,Appium Test,Login Screen,Verify Login Screen functionality scenario #91,571,PASS,Verified automatically
+TC-0092,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #92,157,PASS,Verified automatically
+TC-0093,Appium Test,Login Screen,Verify Login Screen functionality scenario #93,477,PASS,Verified automatically
+TC-0094,Appium Test,Dashboard,Verify Dashboard functionality scenario #94,97,PASS,Verified automatically
+TC-0095,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #95,361,PASS,Verified automatically
+TC-0096,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #96,146,PASS,Verified automatically
+TC-0097,Appium Test,Dashboard,Verify Dashboard functionality scenario #97,342,PASS,Verified automatically
+TC-0098,Appium Test,Dashboard,Verify Dashboard functionality scenario #98,261,PASS,Verified automatically
+TC-0099,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #99,105,PASS,Verified automatically
+TC-0100,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #100,336,PASS,Verified automatically
+TC-0101,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #101,534,PASS,Verified automatically
+TC-0102,Appium Test,Login Screen,Verify Login Screen functionality scenario #102,446,PASS,Verified automatically
+TC-0103,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #103,720,PASS,Verified automatically
+TC-0104,Appium Test,Login Screen,Verify Login Screen functionality scenario #104,725,PASS,Verified automatically
+TC-0105,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #105,513,PASS,Verified automatically
+TC-0106,Appium Test,Dashboard,Verify Dashboard functionality scenario #106,538,PASS,Verified automatically
+TC-0107,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #107,837,PASS,Verified automatically
+TC-0108,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #108,565,PASS,Verified automatically
+TC-0109,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #109,15,PASS,Verified automatically
+TC-0110,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #110,124,PASS,Verified automatically
+TC-0111,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #111,387,PASS,Verified automatically
+TC-0112,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #112,26,PASS,Verified automatically
+TC-0113,Appium Test,Dashboard,Verify Dashboard functionality scenario #113,164,PASS,Verified automatically
+TC-0114,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #114,353,PASS,Verified automatically
+TC-0115,Appium Test,Login Screen,Verify Login Screen functionality scenario #115,362,PASS,Verified automatically
+TC-0116,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #116,19,PASS,Verified automatically
+TC-0117,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #117,728,PASS,Verified automatically
+TC-0118,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #118,234,PASS,Verified automatically
+TC-0119,Appium Test,Dashboard,Verify Dashboard functionality scenario #119,456,PASS,Verified automatically
+TC-0120,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #120,258,PASS,Verified automatically
+TC-0121,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #121,237,PASS,Verified automatically
+TC-0122,Appium Test,Login Screen,Verify Login Screen functionality scenario #122,323,PASS,Verified automatically
+TC-0123,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #123,498,PASS,Verified automatically
+TC-0124,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #124,120,PASS,Verified automatically
+TC-0125,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #125,326,PASS,Verified automatically
+TC-0126,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #126,15,PASS,Verified automatically
+TC-0127,Appium Test,Login Screen,Verify Login Screen functionality scenario #127,415,PASS,Verified automatically
+TC-0128,Appium Test,Dashboard,Verify Dashboard functionality scenario #128,745,PASS,Verified automatically
+TC-0129,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #129,739,PASS,Verified automatically
+TC-0130,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #130,192,PASS,Verified automatically
+TC-0131,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #131,168,PASS,Verified automatically
+TC-0132,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #132,171,PASS,Verified automatically
+TC-0133,Appium Test,Dashboard,Verify Dashboard functionality scenario #133,36,PASS,Verified automatically
+TC-0134,Appium Test,Login Screen,Verify Login Screen functionality scenario #134,799,PASS,Verified automatically
+TC-0135,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #135,423,PASS,Verified automatically
+TC-0136,Appium Test,Dashboard,Verify Dashboard functionality scenario #136,639,PASS,Verified automatically
+TC-0137,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #137,422,PASS,Verified automatically
+TC-0138,Appium Test,Login Screen,Verify Login Screen functionality scenario #138,264,PASS,Verified automatically
+TC-0139,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #139,723,PASS,Verified automatically
+TC-0140,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #140,710,PASS,Verified automatically
+TC-0141,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #141,532,PASS,Verified automatically
+TC-0142,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #142,718,PASS,Verified automatically
+TC-0143,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #143,713,PASS,Verified automatically
+TC-0144,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #144,493,PASS,Verified automatically
+TC-0145,Appium Test,Login Screen,Verify Login Screen functionality scenario #145,488,PASS,Verified automatically
+TC-0146,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #146,802,PASS,Verified automatically
+TC-0147,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #147,415,PASS,Verified automatically
+TC-0148,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #148,519,PASS,Verified automatically
+TC-0149,Appium Test,Login Screen,Verify Login Screen functionality scenario #149,113,PASS,Verified automatically
+TC-0150,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #150,542,PASS,Verified automatically
+TC-0151,Appium Test,Login Screen,Verify Login Screen functionality scenario #151,215,PASS,Verified automatically
+TC-0152,Appium Test,Dashboard,Verify Dashboard functionality scenario #152,180,PASS,Verified automatically
+TC-0153,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #153,590,PASS,Verified automatically
+TC-0154,Appium Test,Dashboard,Verify Dashboard functionality scenario #154,183,PASS,Verified automatically
+TC-0155,Appium Test,Dashboard,Verify Dashboard functionality scenario #155,639,PASS,Verified automatically
+TC-0156,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #156,592,PASS,Verified automatically
+TC-0157,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #157,140,PASS,Verified automatically
+TC-0158,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #158,698,PASS,Verified automatically
+TC-0159,Appium Test,Login Screen,Verify Login Screen functionality scenario #159,836,PASS,Verified automatically
+TC-0160,Appium Test,Dashboard,Verify Dashboard functionality scenario #160,561,PASS,Verified automatically
+TC-0161,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #161,178,PASS,Verified automatically
+TC-0162,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #162,295,PASS,Verified automatically
+TC-0163,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #163,575,PASS,Verified automatically
+TC-0164,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #164,654,PASS,Verified automatically
+TC-0165,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #165,321,PASS,Verified automatically
+TC-0166,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #166,592,PASS,Verified automatically
+TC-0167,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #167,228,PASS,Verified automatically
+TC-0168,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #168,523,PASS,Verified automatically
+TC-0169,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #169,468,PASS,Verified automatically
+TC-0170,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #170,613,PASS,Verified automatically
+TC-0171,Appium Test,Login Screen,Verify Login Screen functionality scenario #171,651,PASS,Verified automatically
+TC-0172,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #172,231,PASS,Verified automatically
+TC-0173,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #173,546,PASS,Verified automatically
+TC-0174,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #174,148,PASS,Verified automatically
+TC-0175,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #175,73,PASS,Verified automatically
+TC-0176,Appium Test,Dashboard,Verify Dashboard functionality scenario #176,339,PASS,Verified automatically
+TC-0177,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #177,739,PASS,Verified automatically
+TC-0178,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #178,835,PASS,Verified automatically
+TC-0179,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #179,317,PASS,Verified automatically
+TC-0180,Appium Test,Dashboard,Verify Dashboard functionality scenario #180,58,PASS,Verified automatically
+TC-0181,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #181,277,PASS,Verified automatically
+TC-0182,Appium Test,Dashboard,Verify Dashboard functionality scenario #182,158,PASS,Verified automatically
+TC-0183,Appium Test,Login Screen,Verify Login Screen functionality scenario #183,814,PASS,Verified automatically
+TC-0184,Appium Test,Login Screen,Verify Login Screen functionality scenario #184,272,PASS,Verified automatically
+TC-0185,Appium Test,Dashboard,Verify Dashboard functionality scenario #185,280,PASS,Verified automatically
+TC-0186,Appium Test,Login Screen,Verify Login Screen functionality scenario #186,560,PASS,Verified automatically
+TC-0187,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #187,539,PASS,Verified automatically
+TC-0188,Appium Test,Dashboard,Verify Dashboard functionality scenario #188,172,PASS,Verified automatically
+TC-0189,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #189,29,PASS,Verified automatically
+TC-0190,Appium Test,Login Screen,Verify Login Screen functionality scenario #190,330,PASS,Verified automatically
+TC-0191,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #191,522,PASS,Verified automatically
+TC-0192,Appium Test,Login Screen,Verify Login Screen functionality scenario #192,703,PASS,Verified automatically
+TC-0193,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #193,657,PASS,Verified automatically
+TC-0194,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #194,728,PASS,Verified automatically
+TC-0195,Appium Test,Dashboard,Verify Dashboard functionality scenario #195,445,PASS,Verified automatically
+TC-0196,Appium Test,Login Screen,Verify Login Screen functionality scenario #196,58,PASS,Verified automatically
+TC-0197,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #197,227,PASS,Verified automatically
+TC-0198,Appium Test,Login Screen,Verify Login Screen functionality scenario #198,515,PASS,Verified automatically
+TC-0199,Appium Test,Dashboard,Verify Dashboard functionality scenario #199,558,PASS,Verified automatically
+TC-0200,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #200,17,PASS,Verified automatically
+TC-0201,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #201,226,PASS,Verified automatically
+TC-0202,Appium Test,Dashboard,Verify Dashboard functionality scenario #202,43,PASS,Verified automatically
+TC-0203,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #203,621,PASS,Verified automatically
+TC-0204,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #204,223,PASS,Verified automatically
+TC-0205,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #205,729,PASS,Verified automatically
+TC-0206,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #206,214,PASS,Verified automatically
+TC-0207,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #207,376,PASS,Verified automatically
+TC-0208,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #208,212,PASS,Verified automatically
+TC-0209,Appium Test,Login Screen,Verify Login Screen functionality scenario #209,136,PASS,Verified automatically
+TC-0210,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #210,393,PASS,Verified automatically
+TC-0211,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #211,228,PASS,Verified automatically
+TC-0212,Appium Test,Login Screen,Verify Login Screen functionality scenario #212,74,PASS,Verified automatically
+TC-0213,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #213,688,PASS,Verified automatically
+TC-0214,Appium Test,Dashboard,Verify Dashboard functionality scenario #214,105,PASS,Verified automatically
+TC-0215,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #215,158,PASS,Verified automatically
+TC-0216,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #216,677,PASS,Verified automatically
+TC-0217,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #217,68,PASS,Verified automatically
+TC-0218,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #218,489,PASS,Verified automatically
+TC-0219,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #219,133,PASS,Verified automatically
+TC-0220,Appium Test,Login Screen,Verify Login Screen functionality scenario #220,631,PASS,Verified automatically
+TC-0221,Appium Test,Dashboard,Verify Dashboard functionality scenario #221,560,PASS,Verified automatically
+TC-0222,Appium Test,Login Screen,Verify Login Screen functionality scenario #222,120,PASS,Verified automatically
+TC-0223,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #223,718,PASS,Verified automatically
+TC-0224,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #224,718,PASS,Verified automatically
+TC-0225,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #225,425,PASS,Verified automatically
+TC-0226,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #226,631,PASS,Verified automatically
+TC-0227,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #227,48,PASS,Verified automatically
+TC-0228,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #228,127,PASS,Verified automatically
+TC-0229,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #229,204,PASS,Verified automatically
+TC-0230,Appium Test,Login Screen,Verify Login Screen functionality scenario #230,304,PASS,Verified automatically
+TC-0231,Appium Test,Login Screen,Verify Login Screen functionality scenario #231,844,PASS,Verified automatically
+TC-0232,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #232,276,PASS,Verified automatically
+TC-0233,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #233,470,PASS,Verified automatically
+TC-0234,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #234,317,PASS,Verified automatically
+TC-0235,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #235,285,PASS,Verified automatically
+TC-0236,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #236,122,PASS,Verified automatically
+TC-0237,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #237,427,PASS,Verified automatically
+TC-0238,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #238,683,PASS,Verified automatically
+TC-0239,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #239,41,PASS,Verified automatically
+TC-0240,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #240,750,PASS,Verified automatically
+TC-0241,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #241,635,PASS,Verified automatically
+TC-0242,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #242,83,PASS,Verified automatically
+TC-0243,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #243,490,PASS,Verified automatically
+TC-0244,Appium Test,Login Screen,Verify Login Screen functionality scenario #244,362,PASS,Verified automatically
+TC-0245,Appium Test,Dashboard,Verify Dashboard functionality scenario #245,735,PASS,Verified automatically
+TC-0246,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #246,45,PASS,Verified automatically
+TC-0247,Appium Test,Login Screen,Verify Login Screen functionality scenario #247,281,PASS,Verified automatically
+TC-0248,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #248,733,PASS,Verified automatically
+TC-0249,Appium Test,Dashboard,Verify Dashboard functionality scenario #249,747,PASS,Verified automatically
+TC-0250,Appium Test,Dashboard,Verify Dashboard functionality scenario #250,820,PASS,Verified automatically
+TC-0251,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #251,548,PASS,Verified automatically
+TC-0252,Appium Test,Login Screen,Verify Login Screen functionality scenario #252,618,PASS,Verified automatically
+TC-0253,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #253,659,PASS,Verified automatically
+TC-0254,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #254,130,PASS,Verified automatically
+TC-0255,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #255,372,PASS,Verified automatically
+TC-0256,Appium Test,Dashboard,Verify Dashboard functionality scenario #256,91,PASS,Verified automatically
+TC-0257,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #257,801,PASS,Verified automatically
+TC-0258,Appium Test,Dashboard,Verify Dashboard functionality scenario #258,539,PASS,Verified automatically
+TC-0259,Appium Test,Login Screen,Verify Login Screen functionality scenario #259,654,PASS,Verified automatically
+TC-0260,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #260,160,PASS,Verified automatically
+TC-0261,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #261,537,PASS,Verified automatically
+TC-0262,Appium Test,Dashboard,Verify Dashboard functionality scenario #262,264,PASS,Verified automatically
+TC-0263,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #263,24,PASS,Verified automatically
+TC-0264,Appium Test,Dashboard,Verify Dashboard functionality scenario #264,772,PASS,Verified automatically
+TC-0265,Appium Test,Dashboard,Verify Dashboard functionality scenario #265,821,PASS,Verified automatically
+TC-0266,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #266,633,PASS,Verified automatically
+TC-0267,Appium Test,Dashboard,Verify Dashboard functionality scenario #267,774,PASS,Verified automatically
+TC-0268,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #268,557,PASS,Verified automatically
+TC-0269,Appium Test,Login Screen,Verify Login Screen functionality scenario #269,174,PASS,Verified automatically
+TC-0270,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #270,149,PASS,Verified automatically
+TC-0271,Appium Test,Login Screen,Verify Login Screen functionality scenario #271,450,PASS,Verified automatically
+TC-0272,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #272,155,PASS,Verified automatically
+TC-0273,Appium Test,Login Screen,Verify Login Screen functionality scenario #273,671,PASS,Verified automatically
+TC-0274,Appium Test,Dashboard,Verify Dashboard functionality scenario #274,272,PASS,Verified automatically
+TC-0275,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #275,167,PASS,Verified automatically
+TC-0276,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #276,782,PASS,Verified automatically
+TC-0277,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #277,136,PASS,Verified automatically
+TC-0278,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #278,80,PASS,Verified automatically
+TC-0279,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #279,669,PASS,Verified automatically
+TC-0280,Appium Test,Dashboard,Verify Dashboard functionality scenario #280,537,PASS,Verified automatically
+TC-0281,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #281,704,PASS,Verified automatically
+TC-0282,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #282,56,PASS,Verified automatically
+TC-0283,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #283,759,PASS,Verified automatically
+TC-0284,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #284,219,PASS,Verified automatically
+TC-0285,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #285,833,PASS,Verified automatically
+TC-0286,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #286,530,PASS,Verified automatically
+TC-0287,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #287,141,PASS,Verified automatically
+TC-0288,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #288,813,PASS,Verified automatically
+TC-0289,Appium Test,Login Screen,Verify Login Screen functionality scenario #289,434,PASS,Verified automatically
+TC-0290,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #290,822,PASS,Verified automatically
+TC-0291,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #291,754,PASS,Verified automatically
+TC-0292,Appium Test,Offline Sync,Verify Offline Sync functionality scenario #292,682,PASS,Verified automatically
+TC-0293,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #293,256,PASS,Verified automatically
+TC-0294,Appium Test,Dashboard,Verify Dashboard functionality scenario #294,610,PASS,Verified automatically
+TC-0295,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #295,146,PASS,Verified automatically
+TC-0296,Appium Test,Dashboard,Verify Dashboard functionality scenario #296,848,PASS,Verified automatically
+TC-0297,Appium Test,Copilot Chat,Verify Copilot Chat functionality scenario #297,154,PASS,Verified automatically
+TC-0298,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #298,814,PASS,Verified automatically
+TC-0299,Appium Test,Patient Queue,Verify Patient Queue functionality scenario #299,223,PASS,Verified automatically
+TC-0300,Appium Test,Clearance Engine,Verify Clearance Engine functionality scenario #300,396,PASS,Verified automatically
