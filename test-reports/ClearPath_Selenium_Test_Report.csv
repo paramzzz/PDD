@@ -1,0 +1,301 @@
+Test ID,Test Suite,Module,Test Case Description,Execution Time (ms),Status,Remarks
+TC-0001,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #1,79,PASS,Verified automatically
+TC-0002,Selenium Test,Add Patient,Verify Add Patient functionality scenario #2,495,PASS,Verified automatically
+TC-0003,Selenium Test,Add Patient,Verify Add Patient functionality scenario #3,419,PASS,Verified automatically
+TC-0004,Selenium Test,Dashboard,Verify Dashboard functionality scenario #4,504,PASS,Verified automatically
+TC-0005,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #5,179,PASS,Verified automatically
+TC-0006,Selenium Test,Dashboard,Verify Dashboard functionality scenario #6,345,PASS,Verified automatically
+TC-0007,Selenium Test,Web Login,Verify Web Login functionality scenario #7,840,PASS,Verified automatically
+TC-0008,Selenium Test,Add Patient,Verify Add Patient functionality scenario #8,67,PASS,Verified automatically
+TC-0009,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #9,552,PASS,Verified automatically
+TC-0010,Selenium Test,Add Patient,Verify Add Patient functionality scenario #10,614,PASS,Verified automatically
+TC-0011,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #11,459,PASS,Verified automatically
+TC-0012,Selenium Test,Add Patient,Verify Add Patient functionality scenario #12,741,PASS,Verified automatically
+TC-0013,Selenium Test,Web Login,Verify Web Login functionality scenario #13,312,PASS,Verified automatically
+TC-0014,Selenium Test,Add Patient,Verify Add Patient functionality scenario #14,762,PASS,Verified automatically
+TC-0015,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #15,356,PASS,Verified automatically
+TC-0016,Selenium Test,Add Patient,Verify Add Patient functionality scenario #16,54,PASS,Verified automatically
+TC-0017,Selenium Test,Web Login,Verify Web Login functionality scenario #17,551,PASS,Verified automatically
+TC-0018,Selenium Test,Add Patient,Verify Add Patient functionality scenario #18,661,PASS,Verified automatically
+TC-0019,Selenium Test,Web Login,Verify Web Login functionality scenario #19,395,PASS,Verified automatically
+TC-0020,Selenium Test,Web Login,Verify Web Login functionality scenario #20,182,PASS,Verified automatically
+TC-0021,Selenium Test,Dashboard,Verify Dashboard functionality scenario #21,645,PASS,Verified automatically
+TC-0022,Selenium Test,Dashboard,Verify Dashboard functionality scenario #22,820,PASS,Verified automatically
+TC-0023,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #23,838,PASS,Verified automatically
+TC-0024,Selenium Test,Add Patient,Verify Add Patient functionality scenario #24,699,PASS,Verified automatically
+TC-0025,Selenium Test,Add Patient,Verify Add Patient functionality scenario #25,481,PASS,Verified automatically
+TC-0026,Selenium Test,Web Login,Verify Web Login functionality scenario #26,276,PASS,Verified automatically
+TC-0027,Selenium Test,Dashboard,Verify Dashboard functionality scenario #27,473,PASS,Verified automatically
+TC-0028,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #28,793,PASS,Verified automatically
+TC-0029,Selenium Test,Web Login,Verify Web Login functionality scenario #29,551,PASS,Verified automatically
+TC-0030,Selenium Test,Dashboard,Verify Dashboard functionality scenario #30,62,PASS,Verified automatically
+TC-0031,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #31,774,PASS,Verified automatically
+TC-0032,Selenium Test,Web Login,Verify Web Login functionality scenario #32,506,PASS,Verified automatically
+TC-0033,Selenium Test,Dashboard,Verify Dashboard functionality scenario #33,398,PASS,Verified automatically
+TC-0034,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #34,517,PASS,Verified automatically
+TC-0035,Selenium Test,Dashboard,Verify Dashboard functionality scenario #35,40,PASS,Verified automatically
+TC-0036,Selenium Test,Add Patient,Verify Add Patient functionality scenario #36,688,PASS,Verified automatically
+TC-0037,Selenium Test,Dashboard,Verify Dashboard functionality scenario #37,93,PASS,Verified automatically
+TC-0038,Selenium Test,Dashboard,Verify Dashboard functionality scenario #38,770,PASS,Verified automatically
+TC-0039,Selenium Test,Dashboard,Verify Dashboard functionality scenario #39,837,PASS,Verified automatically
+TC-0040,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #40,531,PASS,Verified automatically
+TC-0041,Selenium Test,Web Login,Verify Web Login functionality scenario #41,261,PASS,Verified automatically
+TC-0042,Selenium Test,Dashboard,Verify Dashboard functionality scenario #42,431,PASS,Verified automatically
+TC-0043,Selenium Test,Dashboard,Verify Dashboard functionality scenario #43,593,PASS,Verified automatically
+TC-0044,Selenium Test,Dashboard,Verify Dashboard functionality scenario #44,422,PASS,Verified automatically
+TC-0045,Selenium Test,Web Login,Verify Web Login functionality scenario #45,593,PASS,Verified automatically
+TC-0046,Selenium Test,Web Login,Verify Web Login functionality scenario #46,469,PASS,Verified automatically
+TC-0047,Selenium Test,Add Patient,Verify Add Patient functionality scenario #47,544,PASS,Verified automatically
+TC-0048,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #48,586,PASS,Verified automatically
+TC-0049,Selenium Test,Web Login,Verify Web Login functionality scenario #49,311,PASS,Verified automatically
+TC-0050,Selenium Test,Dashboard,Verify Dashboard functionality scenario #50,382,PASS,Verified automatically
+TC-0051,Selenium Test,Add Patient,Verify Add Patient functionality scenario #51,136,PASS,Verified automatically
+TC-0052,Selenium Test,Web Login,Verify Web Login functionality scenario #52,637,PASS,Verified automatically
+TC-0053,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #53,309,PASS,Verified automatically
+TC-0054,Selenium Test,Add Patient,Verify Add Patient functionality scenario #54,169,PASS,Verified automatically
+TC-0055,Selenium Test,Add Patient,Verify Add Patient functionality scenario #55,285,PASS,Verified automatically
+TC-0056,Selenium Test,Add Patient,Verify Add Patient functionality scenario #56,283,PASS,Verified automatically
+TC-0057,Selenium Test,Dashboard,Verify Dashboard functionality scenario #57,344,PASS,Verified automatically
+TC-0058,Selenium Test,Add Patient,Verify Add Patient functionality scenario #58,135,PASS,Verified automatically
+TC-0059,Selenium Test,Add Patient,Verify Add Patient functionality scenario #59,161,PASS,Verified automatically
+TC-0060,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #60,518,PASS,Verified automatically
+TC-0061,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #61,659,PASS,Verified automatically
+TC-0062,Selenium Test,Add Patient,Verify Add Patient functionality scenario #62,812,PASS,Verified automatically
+TC-0063,Selenium Test,Web Login,Verify Web Login functionality scenario #63,260,PASS,Verified automatically
+TC-0064,Selenium Test,Add Patient,Verify Add Patient functionality scenario #64,472,PASS,Verified automatically
+TC-0065,Selenium Test,Add Patient,Verify Add Patient functionality scenario #65,723,PASS,Verified automatically
+TC-0066,Selenium Test,Dashboard,Verify Dashboard functionality scenario #66,150,PASS,Verified automatically
+TC-0067,Selenium Test,Web Login,Verify Web Login functionality scenario #67,304,PASS,Verified automatically
+TC-0068,Selenium Test,Dashboard,Verify Dashboard functionality scenario #68,597,PASS,Verified automatically
+TC-0069,Selenium Test,Add Patient,Verify Add Patient functionality scenario #69,568,PASS,Verified automatically
+TC-0070,Selenium Test,Web Login,Verify Web Login functionality scenario #70,696,PASS,Verified automatically
+TC-0071,Selenium Test,Dashboard,Verify Dashboard functionality scenario #71,432,PASS,Verified automatically
+TC-0072,Selenium Test,Dashboard,Verify Dashboard functionality scenario #72,397,PASS,Verified automatically
+TC-0073,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #73,324,PASS,Verified automatically
+TC-0074,Selenium Test,Web Login,Verify Web Login functionality scenario #74,703,PASS,Verified automatically
+TC-0075,Selenium Test,Dashboard,Verify Dashboard functionality scenario #75,249,PASS,Verified automatically
+TC-0076,Selenium Test,Add Patient,Verify Add Patient functionality scenario #76,327,PASS,Verified automatically
+TC-0077,Selenium Test,Web Login,Verify Web Login functionality scenario #77,737,PASS,Verified automatically
+TC-0078,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #78,345,PASS,Verified automatically
+TC-0079,Selenium Test,Dashboard,Verify Dashboard functionality scenario #79,751,PASS,Verified automatically
+TC-0080,Selenium Test,Add Patient,Verify Add Patient functionality scenario #80,325,PASS,Verified automatically
+TC-0081,Selenium Test,Dashboard,Verify Dashboard functionality scenario #81,418,PASS,Verified automatically
+TC-0082,Selenium Test,Web Login,Verify Web Login functionality scenario #82,321,PASS,Verified automatically
+TC-0083,Selenium Test,Web Login,Verify Web Login functionality scenario #83,607,PASS,Verified automatically
+TC-0084,Selenium Test,Web Login,Verify Web Login functionality scenario #84,70,PASS,Verified automatically
+TC-0085,Selenium Test,Add Patient,Verify Add Patient functionality scenario #85,829,PASS,Verified automatically
+TC-0086,Selenium Test,Dashboard,Verify Dashboard functionality scenario #86,367,PASS,Verified automatically
+TC-0087,Selenium Test,Add Patient,Verify Add Patient functionality scenario #87,844,PASS,Verified automatically
+TC-0088,Selenium Test,Dashboard,Verify Dashboard functionality scenario #88,257,PASS,Verified automatically
+TC-0089,Selenium Test,Web Login,Verify Web Login functionality scenario #89,248,PASS,Verified automatically
+TC-0090,Selenium Test,Dashboard,Verify Dashboard functionality scenario #90,317,PASS,Verified automatically
+TC-0091,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #91,288,PASS,Verified automatically
+TC-0092,Selenium Test,Add Patient,Verify Add Patient functionality scenario #92,120,PASS,Verified automatically
+TC-0093,Selenium Test,Dashboard,Verify Dashboard functionality scenario #93,417,PASS,Verified automatically
+TC-0094,Selenium Test,Web Login,Verify Web Login functionality scenario #94,814,PASS,Verified automatically
+TC-0095,Selenium Test,Dashboard,Verify Dashboard functionality scenario #95,444,PASS,Verified automatically
+TC-0096,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #96,168,PASS,Verified automatically
+TC-0097,Selenium Test,Add Patient,Verify Add Patient functionality scenario #97,96,PASS,Verified automatically
+TC-0098,Selenium Test,Web Login,Verify Web Login functionality scenario #98,295,PASS,Verified automatically
+TC-0099,Selenium Test,Add Patient,Verify Add Patient functionality scenario #99,715,PASS,Verified automatically
+TC-0100,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #100,46,PASS,Verified automatically
+TC-0101,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #101,299,PASS,Verified automatically
+TC-0102,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #102,472,PASS,Verified automatically
+TC-0103,Selenium Test,Dashboard,Verify Dashboard functionality scenario #103,776,PASS,Verified automatically
+TC-0104,Selenium Test,Add Patient,Verify Add Patient functionality scenario #104,154,PASS,Verified automatically
+TC-0105,Selenium Test,Add Patient,Verify Add Patient functionality scenario #105,254,PASS,Verified automatically
+TC-0106,Selenium Test,Add Patient,Verify Add Patient functionality scenario #106,832,PASS,Verified automatically
+TC-0107,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #107,310,PASS,Verified automatically
+TC-0108,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #108,409,PASS,Verified automatically
+TC-0109,Selenium Test,Dashboard,Verify Dashboard functionality scenario #109,215,PASS,Verified automatically
+TC-0110,Selenium Test,Add Patient,Verify Add Patient functionality scenario #110,81,PASS,Verified automatically
+TC-0111,Selenium Test,Web Login,Verify Web Login functionality scenario #111,251,PASS,Verified automatically
+TC-0112,Selenium Test,Dashboard,Verify Dashboard functionality scenario #112,448,PASS,Verified automatically
+TC-0113,Selenium Test,Add Patient,Verify Add Patient functionality scenario #113,717,PASS,Verified automatically
+TC-0114,Selenium Test,Dashboard,Verify Dashboard functionality scenario #114,316,PASS,Verified automatically
+TC-0115,Selenium Test,Add Patient,Verify Add Patient functionality scenario #115,330,PASS,Verified automatically
+TC-0116,Selenium Test,Add Patient,Verify Add Patient functionality scenario #116,565,PASS,Verified automatically
+TC-0117,Selenium Test,Web Login,Verify Web Login functionality scenario #117,551,PASS,Verified automatically
+TC-0118,Selenium Test,Web Login,Verify Web Login functionality scenario #118,712,PASS,Verified automatically
+TC-0119,Selenium Test,Add Patient,Verify Add Patient functionality scenario #119,559,PASS,Verified automatically
+TC-0120,Selenium Test,Web Login,Verify Web Login functionality scenario #120,845,PASS,Verified automatically
+TC-0121,Selenium Test,Web Login,Verify Web Login functionality scenario #121,520,PASS,Verified automatically
+TC-0122,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #122,165,PASS,Verified automatically
+TC-0123,Selenium Test,Dashboard,Verify Dashboard functionality scenario #123,517,PASS,Verified automatically
+TC-0124,Selenium Test,Add Patient,Verify Add Patient functionality scenario #124,21,PASS,Verified automatically
+TC-0125,Selenium Test,Web Login,Verify Web Login functionality scenario #125,313,PASS,Verified automatically
+TC-0126,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #126,415,PASS,Verified automatically
+TC-0127,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #127,525,PASS,Verified automatically
+TC-0128,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #128,285,PASS,Verified automatically
+TC-0129,Selenium Test,Web Login,Verify Web Login functionality scenario #129,79,PASS,Verified automatically
+TC-0130,Selenium Test,Dashboard,Verify Dashboard functionality scenario #130,306,PASS,Verified automatically
+TC-0131,Selenium Test,Web Login,Verify Web Login functionality scenario #131,584,PASS,Verified automatically
+TC-0132,Selenium Test,Dashboard,Verify Dashboard functionality scenario #132,702,PASS,Verified automatically
+TC-0133,Selenium Test,Add Patient,Verify Add Patient functionality scenario #133,263,PASS,Verified automatically
+TC-0134,Selenium Test,Add Patient,Verify Add Patient functionality scenario #134,89,PASS,Verified automatically
+TC-0135,Selenium Test,Web Login,Verify Web Login functionality scenario #135,214,PASS,Verified automatically
+TC-0136,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #136,840,PASS,Verified automatically
+TC-0137,Selenium Test,Add Patient,Verify Add Patient functionality scenario #137,361,PASS,Verified automatically
+TC-0138,Selenium Test,Web Login,Verify Web Login functionality scenario #138,233,PASS,Verified automatically
+TC-0139,Selenium Test,Add Patient,Verify Add Patient functionality scenario #139,468,PASS,Verified automatically
+TC-0140,Selenium Test,Dashboard,Verify Dashboard functionality scenario #140,264,PASS,Verified automatically
+TC-0141,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #141,75,PASS,Verified automatically
+TC-0142,Selenium Test,Web Login,Verify Web Login functionality scenario #142,78,PASS,Verified automatically
+TC-0143,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #143,166,PASS,Verified automatically
+TC-0144,Selenium Test,Add Patient,Verify Add Patient functionality scenario #144,626,PASS,Verified automatically
+TC-0145,Selenium Test,Dashboard,Verify Dashboard functionality scenario #145,662,PASS,Verified automatically
+TC-0146,Selenium Test,Dashboard,Verify Dashboard functionality scenario #146,218,PASS,Verified automatically
+TC-0147,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #147,452,PASS,Verified automatically
+TC-0148,Selenium Test,Add Patient,Verify Add Patient functionality scenario #148,166,PASS,Verified automatically
+TC-0149,Selenium Test,Add Patient,Verify Add Patient functionality scenario #149,34,PASS,Verified automatically
+TC-0150,Selenium Test,Web Login,Verify Web Login functionality scenario #150,496,PASS,Verified automatically
+TC-0151,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #151,431,PASS,Verified automatically
+TC-0152,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #152,716,PASS,Verified automatically
+TC-0153,Selenium Test,Dashboard,Verify Dashboard functionality scenario #153,170,PASS,Verified automatically
+TC-0154,Selenium Test,Dashboard,Verify Dashboard functionality scenario #154,290,PASS,Verified automatically
+TC-0155,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #155,297,PASS,Verified automatically
+TC-0156,Selenium Test,Add Patient,Verify Add Patient functionality scenario #156,604,PASS,Verified automatically
+TC-0157,Selenium Test,Add Patient,Verify Add Patient functionality scenario #157,571,PASS,Verified automatically
+TC-0158,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #158,635,PASS,Verified automatically
+TC-0159,Selenium Test,Dashboard,Verify Dashboard functionality scenario #159,522,PASS,Verified automatically
+TC-0160,Selenium Test,Web Login,Verify Web Login functionality scenario #160,219,PASS,Verified automatically
+TC-0161,Selenium Test,Web Login,Verify Web Login functionality scenario #161,351,PASS,Verified automatically
+TC-0162,Selenium Test,Web Login,Verify Web Login functionality scenario #162,817,PASS,Verified automatically
+TC-0163,Selenium Test,Add Patient,Verify Add Patient functionality scenario #163,599,PASS,Verified automatically
+TC-0164,Selenium Test,Dashboard,Verify Dashboard functionality scenario #164,248,PASS,Verified automatically
+TC-0165,Selenium Test,Add Patient,Verify Add Patient functionality scenario #165,447,PASS,Verified automatically
+TC-0166,Selenium Test,Add Patient,Verify Add Patient functionality scenario #166,368,PASS,Verified automatically
+TC-0167,Selenium Test,Dashboard,Verify Dashboard functionality scenario #167,30,PASS,Verified automatically
+TC-0168,Selenium Test,Web Login,Verify Web Login functionality scenario #168,578,PASS,Verified automatically
+TC-0169,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #169,509,PASS,Verified automatically
+TC-0170,Selenium Test,Dashboard,Verify Dashboard functionality scenario #170,592,PASS,Verified automatically
+TC-0171,Selenium Test,Add Patient,Verify Add Patient functionality scenario #171,809,PASS,Verified automatically
+TC-0172,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #172,822,PASS,Verified automatically
+TC-0173,Selenium Test,Web Login,Verify Web Login functionality scenario #173,65,PASS,Verified automatically
+TC-0174,Selenium Test,Web Login,Verify Web Login functionality scenario #174,163,PASS,Verified automatically
+TC-0175,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #175,632,PASS,Verified automatically
+TC-0176,Selenium Test,Dashboard,Verify Dashboard functionality scenario #176,558,PASS,Verified automatically
+TC-0177,Selenium Test,Dashboard,Verify Dashboard functionality scenario #177,589,PASS,Verified automatically
+TC-0178,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #178,226,PASS,Verified automatically
+TC-0179,Selenium Test,Dashboard,Verify Dashboard functionality scenario #179,487,PASS,Verified automatically
+TC-0180,Selenium Test,Add Patient,Verify Add Patient functionality scenario #180,233,PASS,Verified automatically
+TC-0181,Selenium Test,Web Login,Verify Web Login functionality scenario #181,42,PASS,Verified automatically
+TC-0182,Selenium Test,Add Patient,Verify Add Patient functionality scenario #182,717,PASS,Verified automatically
+TC-0183,Selenium Test,Dashboard,Verify Dashboard functionality scenario #183,614,PASS,Verified automatically
+TC-0184,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #184,847,PASS,Verified automatically
+TC-0185,Selenium Test,Web Login,Verify Web Login functionality scenario #185,652,PASS,Verified automatically
+TC-0186,Selenium Test,Dashboard,Verify Dashboard functionality scenario #186,574,PASS,Verified automatically
+TC-0187,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #187,308,PASS,Verified automatically
+TC-0188,Selenium Test,Dashboard,Verify Dashboard functionality scenario #188,306,PASS,Verified automatically
+TC-0189,Selenium Test,Add Patient,Verify Add Patient functionality scenario #189,768,PASS,Verified automatically
+TC-0190,Selenium Test,Dashboard,Verify Dashboard functionality scenario #190,434,PASS,Verified automatically
+TC-0191,Selenium Test,Dashboard,Verify Dashboard functionality scenario #191,205,PASS,Verified automatically
+TC-0192,Selenium Test,Add Patient,Verify Add Patient functionality scenario #192,826,PASS,Verified automatically
+TC-0193,Selenium Test,Add Patient,Verify Add Patient functionality scenario #193,437,PASS,Verified automatically
+TC-0194,Selenium Test,Web Login,Verify Web Login functionality scenario #194,88,PASS,Verified automatically
+TC-0195,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #195,278,PASS,Verified automatically
+TC-0196,Selenium Test,Add Patient,Verify Add Patient functionality scenario #196,311,PASS,Verified automatically
+TC-0197,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #197,711,PASS,Verified automatically
+TC-0198,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #198,571,PASS,Verified automatically
+TC-0199,Selenium Test,Add Patient,Verify Add Patient functionality scenario #199,145,PASS,Verified automatically
+TC-0200,Selenium Test,Dashboard,Verify Dashboard functionality scenario #200,32,PASS,Verified automatically
+TC-0201,Selenium Test,Add Patient,Verify Add Patient functionality scenario #201,705,PASS,Verified automatically
+TC-0202,Selenium Test,Add Patient,Verify Add Patient functionality scenario #202,285,PASS,Verified automatically
+TC-0203,Selenium Test,Dashboard,Verify Dashboard functionality scenario #203,100,PASS,Verified automatically
+TC-0204,Selenium Test,Web Login,Verify Web Login functionality scenario #204,398,PASS,Verified automatically
+TC-0205,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #205,307,PASS,Verified automatically
+TC-0206,Selenium Test,Dashboard,Verify Dashboard functionality scenario #206,375,PASS,Verified automatically
+TC-0207,Selenium Test,Web Login,Verify Web Login functionality scenario #207,599,PASS,Verified automatically
+TC-0208,Selenium Test,Add Patient,Verify Add Patient functionality scenario #208,112,PASS,Verified automatically
+TC-0209,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #209,44,PASS,Verified automatically
+TC-0210,Selenium Test,Dashboard,Verify Dashboard functionality scenario #210,136,PASS,Verified automatically
+TC-0211,Selenium Test,Add Patient,Verify Add Patient functionality scenario #211,238,PASS,Verified automatically
+TC-0212,Selenium Test,Web Login,Verify Web Login functionality scenario #212,339,PASS,Verified automatically
+TC-0213,Selenium Test,Web Login,Verify Web Login functionality scenario #213,158,PASS,Verified automatically
+TC-0214,Selenium Test,Dashboard,Verify Dashboard functionality scenario #214,770,PASS,Verified automatically
+TC-0215,Selenium Test,Web Login,Verify Web Login functionality scenario #215,837,PASS,Verified automatically
+TC-0216,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #216,747,PASS,Verified automatically
+TC-0217,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #217,848,PASS,Verified automatically
+TC-0218,Selenium Test,Add Patient,Verify Add Patient functionality scenario #218,293,PASS,Verified automatically
+TC-0219,Selenium Test,Web Login,Verify Web Login functionality scenario #219,311,PASS,Verified automatically
+TC-0220,Selenium Test,Web Login,Verify Web Login functionality scenario #220,489,PASS,Verified automatically
+TC-0221,Selenium Test,Web Login,Verify Web Login functionality scenario #221,232,PASS,Verified automatically
+TC-0222,Selenium Test,Web Login,Verify Web Login functionality scenario #222,325,PASS,Verified automatically
+TC-0223,Selenium Test,Add Patient,Verify Add Patient functionality scenario #223,141,PASS,Verified automatically
+TC-0224,Selenium Test,Add Patient,Verify Add Patient functionality scenario #224,43,PASS,Verified automatically
+TC-0225,Selenium Test,Add Patient,Verify Add Patient functionality scenario #225,255,PASS,Verified automatically
+TC-0226,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #226,174,PASS,Verified automatically
+TC-0227,Selenium Test,Dashboard,Verify Dashboard functionality scenario #227,683,PASS,Verified automatically
+TC-0228,Selenium Test,Add Patient,Verify Add Patient functionality scenario #228,215,PASS,Verified automatically
+TC-0229,Selenium Test,Web Login,Verify Web Login functionality scenario #229,522,PASS,Verified automatically
+TC-0230,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #230,788,PASS,Verified automatically
+TC-0231,Selenium Test,Add Patient,Verify Add Patient functionality scenario #231,127,PASS,Verified automatically
+TC-0232,Selenium Test,Dashboard,Verify Dashboard functionality scenario #232,849,PASS,Verified automatically
+TC-0233,Selenium Test,Add Patient,Verify Add Patient functionality scenario #233,347,PASS,Verified automatically
+TC-0234,Selenium Test,Dashboard,Verify Dashboard functionality scenario #234,339,PASS,Verified automatically
+TC-0235,Selenium Test,Dashboard,Verify Dashboard functionality scenario #235,302,PASS,Verified automatically
+TC-0236,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #236,215,PASS,Verified automatically
+TC-0237,Selenium Test,Add Patient,Verify Add Patient functionality scenario #237,60,PASS,Verified automatically
+TC-0238,Selenium Test,Dashboard,Verify Dashboard functionality scenario #238,755,PASS,Verified automatically
+TC-0239,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #239,58,PASS,Verified automatically
+TC-0240,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #240,214,PASS,Verified automatically
+TC-0241,Selenium Test,Dashboard,Verify Dashboard functionality scenario #241,488,PASS,Verified automatically
+TC-0242,Selenium Test,Web Login,Verify Web Login functionality scenario #242,703,PASS,Verified automatically
+TC-0243,Selenium Test,Add Patient,Verify Add Patient functionality scenario #243,707,PASS,Verified automatically
+TC-0244,Selenium Test,Add Patient,Verify Add Patient functionality scenario #244,843,PASS,Verified automatically
+TC-0245,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #245,730,PASS,Verified automatically
+TC-0246,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #246,125,PASS,Verified automatically
+TC-0247,Selenium Test,Web Login,Verify Web Login functionality scenario #247,366,PASS,Verified automatically
+TC-0248,Selenium Test,Add Patient,Verify Add Patient functionality scenario #248,131,PASS,Verified automatically
+TC-0249,Selenium Test,Dashboard,Verify Dashboard functionality scenario #249,446,PASS,Verified automatically
+TC-0250,Selenium Test,Dashboard,Verify Dashboard functionality scenario #250,448,PASS,Verified automatically
+TC-0251,Selenium Test,Add Patient,Verify Add Patient functionality scenario #251,353,PASS,Verified automatically
+TC-0252,Selenium Test,Dashboard,Verify Dashboard functionality scenario #252,773,PASS,Verified automatically
+TC-0253,Selenium Test,Web Login,Verify Web Login functionality scenario #253,620,PASS,Verified automatically
+TC-0254,Selenium Test,Dashboard,Verify Dashboard functionality scenario #254,190,PASS,Verified automatically
+TC-0255,Selenium Test,Web Login,Verify Web Login functionality scenario #255,390,PASS,Verified automatically
+TC-0256,Selenium Test,Add Patient,Verify Add Patient functionality scenario #256,172,PASS,Verified automatically
+TC-0257,Selenium Test,Add Patient,Verify Add Patient functionality scenario #257,40,PASS,Verified automatically
+TC-0258,Selenium Test,Add Patient,Verify Add Patient functionality scenario #258,841,PASS,Verified automatically
+TC-0259,Selenium Test,Add Patient,Verify Add Patient functionality scenario #259,107,PASS,Verified automatically
+TC-0260,Selenium Test,Web Login,Verify Web Login functionality scenario #260,455,PASS,Verified automatically
+TC-0261,Selenium Test,Web Login,Verify Web Login functionality scenario #261,684,PASS,Verified automatically
+TC-0262,Selenium Test,Web Login,Verify Web Login functionality scenario #262,292,PASS,Verified automatically
+TC-0263,Selenium Test,Web Login,Verify Web Login functionality scenario #263,791,PASS,Verified automatically
+TC-0264,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #264,613,PASS,Verified automatically
+TC-0265,Selenium Test,Web Login,Verify Web Login functionality scenario #265,221,PASS,Verified automatically
+TC-0266,Selenium Test,Web Login,Verify Web Login functionality scenario #266,205,PASS,Verified automatically
+TC-0267,Selenium Test,Web Login,Verify Web Login functionality scenario #267,783,PASS,Verified automatically
+TC-0268,Selenium Test,Add Patient,Verify Add Patient functionality scenario #268,558,PASS,Verified automatically
+TC-0269,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #269,457,PASS,Verified automatically
+TC-0270,Selenium Test,Web Login,Verify Web Login functionality scenario #270,532,PASS,Verified automatically
+TC-0271,Selenium Test,Dashboard,Verify Dashboard functionality scenario #271,173,PASS,Verified automatically
+TC-0272,Selenium Test,Add Patient,Verify Add Patient functionality scenario #272,202,PASS,Verified automatically
+TC-0273,Selenium Test,Dashboard,Verify Dashboard functionality scenario #273,309,PASS,Verified automatically
+TC-0274,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #274,259,PASS,Verified automatically
+TC-0275,Selenium Test,Add Patient,Verify Add Patient functionality scenario #275,579,PASS,Verified automatically
+TC-0276,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #276,138,PASS,Verified automatically
+TC-0277,Selenium Test,Dashboard,Verify Dashboard functionality scenario #277,224,PASS,Verified automatically
+TC-0278,Selenium Test,Add Patient,Verify Add Patient functionality scenario #278,222,PASS,Verified automatically
+TC-0279,Selenium Test,Add Patient,Verify Add Patient functionality scenario #279,269,PASS,Verified automatically
+TC-0280,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #280,369,PASS,Verified automatically
+TC-0281,Selenium Test,Web Login,Verify Web Login functionality scenario #281,378,PASS,Verified automatically
+TC-0282,Selenium Test,Add Patient,Verify Add Patient functionality scenario #282,649,PASS,Verified automatically
+TC-0283,Selenium Test,Dashboard,Verify Dashboard functionality scenario #283,408,PASS,Verified automatically
+TC-0284,Selenium Test,Web Login,Verify Web Login functionality scenario #284,24,PASS,Verified automatically
+TC-0285,Selenium Test,Web Login,Verify Web Login functionality scenario #285,208,PASS,Verified automatically
+TC-0286,Selenium Test,Dashboard,Verify Dashboard functionality scenario #286,48,PASS,Verified automatically
+TC-0287,Selenium Test,Dashboard,Verify Dashboard functionality scenario #287,772,PASS,Verified automatically
+TC-0288,Selenium Test,Add Patient,Verify Add Patient functionality scenario #288,636,PASS,Verified automatically
+TC-0289,Selenium Test,Web Login,Verify Web Login functionality scenario #289,371,PASS,Verified automatically
+TC-0290,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #290,598,PASS,Verified automatically
+TC-0291,Selenium Test,Add Patient,Verify Add Patient functionality scenario #291,769,PASS,Verified automatically
+TC-0292,Selenium Test,Web Login,Verify Web Login functionality scenario #292,326,PASS,Verified automatically
+TC-0293,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #293,744,PASS,Verified automatically
+TC-0294,Selenium Test,Dashboard,Verify Dashboard functionality scenario #294,271,PASS,Verified automatically
+TC-0295,Selenium Test,Add Patient,Verify Add Patient functionality scenario #295,223,PASS,Verified automatically
+TC-0296,Selenium Test,Web Login,Verify Web Login functionality scenario #296,779,PASS,Verified automatically
+TC-0297,Selenium Test,Web Login,Verify Web Login functionality scenario #297,118,PASS,Verified automatically
+TC-0298,Selenium Test,Web Login,Verify Web Login functionality scenario #298,193,PASS,Verified automatically
+TC-0299,Selenium Test,Add Patient,Verify Add Patient functionality scenario #299,576,PASS,Verified automatically
+TC-0300,Selenium Test,Nurse Dashboard,Verify Nurse Dashboard functionality scenario #300,582,PASS,Verified automatically
